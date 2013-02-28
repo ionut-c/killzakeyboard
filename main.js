@@ -216,24 +216,14 @@ var start = window.mozAnimationStartTime;
 
 function draw(timestamp) {
     var progress = timestamp - start;
-    MyApp.context.clearRect(0, 0, MyApp.canvas.width, MyApp.canvas.height);
+    this.clear();
     //CircleCircle(MyApp.context);
     //CircleLine(MyApp.context);
     //CircleRect(MyApp.context);
 
     if (path.points.length >= 4) {
-        MyApp.context.strokeStyle = "green";
-        MyApp.context.beginPath();
-        MyApp.context.moveTo(path.points[0].x, path.points[0].y);
-        for (i = 1; i < path.points.length; i += 3) {
-            if (path.points[i] != undefined && path.points[i + 1] != undefined && path.points[i + 2] != undefined) {
-                MyApp.context.bezierCurveTo(path.points[i].x, path.points[i].y,
-                                            path.points[i + 1].x, path.points[i + 1].y,
-                                            path.points[i + 2].x, path.points[i + 2].y);
-            }
-        }
-        MyApp.context.stroke();
-        
+        this.strokePath("green", path.points);
+
         p = new Array();
         if (restart) {
             for (i = 0; i < count; i++) {
@@ -251,16 +241,13 @@ function draw(timestamp) {
             }
         }
         for (i = 0; i < count; i++) {
-            MyApp.context.fillStyle = "red";
-            MyApp.context.beginPath();
             v = p.pop();
-            MyApp.context.arc(v.x, v.y, 20, 0, Math.PI * 2);
-            MyApp.context.fill();
+            this.drawCircle("red", v, 20, 0, Math.PI * 2);
         }
     }
 
     MyApp.time += 0.010;
-        requestAnimationFrame(draw);
+    requestAnimationFrame(draw.bind(this));
 }
 function init() {
     var canvas, context;
@@ -288,6 +275,37 @@ function init() {
         walkers.push(new PathWalker());
         walkers[i].path = path;
     }
-    requestAnimationFrame(draw);
+
+    var extension = (function() {
+        function clear() {
+            MyApp.context.clearRect(0, 0, MyApp.canvas.width, MyApp.canvas.height);
+        }
+        function drawCircle(color, vector, s, ss, radius) {
+            MyApp.context.fillStyle = color;
+            MyApp.context.beginPath();
+            MyApp.context.arc(vector.x, vector.y, s, ss, radius);
+            MyApp.context.fill();
+        }
+        function strokePath(color, points) {
+            MyApp.context.strokeStyle = color;
+            MyApp.context.beginPath();
+            MyApp.context.moveTo(points[0].x, points[0].y);
+            for (i = 1; i < points.length; i += 3) {
+                if (points[i] != undefined && points[i + 1] != undefined && points[i + 2] != undefined) {
+                    MyApp.context.bezierCurveTo(points[i].x, points[i].y,
+                                                points[i + 1].x, points[i + 1].y,
+                                                points[i + 2].x, points[i + 2].y);
+                }
+            }
+            MyApp.context.stroke();
+        }
+        return {
+            'clear': clear,
+            'drawCircle': drawCircle,
+            'strokePath': strokePath
+        };
+    })();
+
+    requestAnimationFrame(draw.bind(extension));
     //window.setInterval("draw()", 10);
 }
