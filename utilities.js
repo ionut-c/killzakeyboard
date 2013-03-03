@@ -24,3 +24,10 @@ Vector.prototype.normalize = function () {
 Vector.prototype.dot = function (v) {
     return (this.x * v.x) + (this.y * v.y);
 }
+
+var Rect = function ( x, y, width, height){
+    this.x = x;
+    this.y = y;
+    this.width = width;
+    this.height = height;
+}

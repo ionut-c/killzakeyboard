@@ -4,7 +4,7 @@ function EntityManager(spawners) {
     var colliders = [];
     
     function addCollider(collider){
-        colliders.push(collider);
+        //colliders.push(collider);
     }
     
     function update(deltaTime) {
@@ -14,19 +14,23 @@ function EntityManager(spawners) {
                 return spawned != null;
             });
         entities = entities.concat(spawned) ;
-        entities = entities.filter(function(entity) {
-            for(var i = 0, len = colliders.length; i < len; i++) {
-                if(checkColRR(entity.getBoundingBox(), colliders[i].getBoundingBox())) {
-                    return false;
-                }
-            }
-            return true;
-        });
+        //entities = entities.filter(function(entity) {
+        //    for(var i = 0, len = colliders.length; i < len; i++) {
+        //        if(checkColRR(entity.getBoundingBox(), colliders[i].getBoundingBox())) {
+        //            return false;
+        //        }
+        //    }
+        //    return true;
+        //});
         entities.map(function(entity) { entity.update(deltaTime); });
-        colliders.map(function(entity) { entity.update(deltaTime); });
+        //colliders.map(function(entity) { entity.update(deltaTime); });
     }
     
-    return {'update': update, "addCollider": addCollider};
+    function render(){
+        entities.map(function(entity) { entity.render(); });
+    }
+    
+    return {'update': update, "render": render, "addCollider": addCollider};
 }
 
 
@@ -39,7 +43,7 @@ function EnemySpawner(context, path, enemy_type, numbers, frequency) {
         if(elapsed_time >= frequency && spawned_enemies < numbers) {
             spawned_enemies++;
             elapsed_time = 0;
-            return enemy_type(context, path);
+            return new enemy_type(context, path);
         }
         return null;
     }
@@ -47,18 +51,22 @@ function EnemySpawner(context, path, enemy_type, numbers, frequency) {
     return {'update': update};
 }
 
-function Bird(context, path){
-    var animation = Animation(context, "http://www.iphonegametutorials.com/wp-content/uploads/2010/09/dragon.png", 75, 70, 10, 1, 1);
-    var walker = new PathWalker(path);
-    var speed = 10;
-    walker.getStart();
+BirdModel = new Model("http://www.iphonegametutorials.com/wp-content/uploads/2010/09/dragon.png", 75, 70, 10, 1, 1);
+
+var Bird = function(context, path){
+    this.model = new ModelObject(BirdModel, context);
+    this.bounder = new Bounder("rect", Rect());
+    this.walker = new PathWalker(path);
+    this.speed = 10;
     
-    function update(deltaTime){
-        if( !walker.atEnd()){
-            animation.setPosition(walker.getNext(speed));
+    this.walker.getStart();
+}
+Bird.prototype.update = function (deltaTime){
+    if( !this.walker.atEnd()){
+            this.model.setPosition(this.walker.getNext(this.speed));
         }
-        animation.update(deltaTime);
-    }
-    
-    return { "update": update, "getBoundingBox": animation.getBoundingBox };
+        this.model.update(deltaTime);
+}
+Bird.prototype.render = function (deltaTime){
+    this.model.render();
 }

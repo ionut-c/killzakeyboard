@@ -5,20 +5,29 @@
 })();
 var start = window.animationStartTime;
 
-progress = 0;
+deltaTime = 0;
 prev = 0;
 mousex = 0;
 mousey = 0;
 
-function draw(time) {
-    var context = this.context;
-    var path = this.path;
-    
+function gameLoop(time){
     if (prev != 0) {
-        progress = time - prev;
+        deltaTime = time - prev;
     }
     prev = time;
+    var extension = { "canvas": this.canvas, "context": this.context, 'entityManager': this.entityManager ,"path": this.path};
+    var d = draw.bind(extension);
+    d(deltaTime);
+    this.entityManager.update(deltaTime);
+    requestAnimationFrame(gameLoop.bind(this));
+}
+
+function draw(time) {
+    var path = this.path;
+    var context = this.context;
+    
     context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.entityManager.render();
     
     context.strokeStyle = "green";
     context.beginPath();
@@ -33,10 +42,6 @@ function draw(time) {
     context.stroke();
     
     context.strokeRect(mousex - 25, mousey - 25,50,50);
-
-    this.entityManager.update(progress);
-    
-    requestAnimationFrame(draw.bind(this));
 }
 
 function init() {
@@ -74,6 +79,5 @@ function init() {
             }, false);
     var extension = { "canvas": canvas, "context": context, 'entityManager': entityManager ,"path": path};
     
-    requestAnimationFrame(draw.bind(extension));
-    //window.setInterval("draw()", 10);
+    requestAnimationFrame(gameLoop.bind(extension));
 }

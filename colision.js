@@ -1,4 +1,39 @@
-﻿// circle : x, y, radius
+﻿// type : ["line","rect","circle"]
+// params :
+//           - line : x1, y1, x2, y2
+//           - rect : x, y, width, height
+//           - circle : x, y, radius
+var Bounder = function (type, params){
+    this.type = type;
+    this.params = params;
+}
+Bounder.prototype.getType = function (){
+    return this.type;
+}
+Bounder.prototype.getParams = function (){
+    return this.params;
+}
+Bounder.prototype.checkCollision = function (bounder){
+    var bounder_type = bounder.getType();
+    
+    if( this.type == "cirlce" && bounder_type == "cirlce" ) {return checkColCC(this.params, bounder.getParams())}
+    if( this.type == "line" && bounder_type == "line" ) {return checkColLL(this.params, bounder.getParams())}
+    if( this.type == "rect" && bounder_type == "rect" ) {return checkColRR(this.params, bounder.getParams())}
+    
+    if( (this.type == "circle" || this.type == "line") && (bounder_type == "line" || bounder_type == "circle") ){
+        return checkColCL(this.params, bounder.getParams());
+    }
+    if( (this.type == "circle" || this.type == "rect") && (bounder_type == "rect" || bounder_type == "circle") ){
+        return checkColCR(this.params, bounder.getParams());
+    }
+    if( (this.type == "rect" || this.type == "line") && (bounder_type == "line" || bounder_type == "rect") ){
+        return checkColLR(this.params, bounder.getParams());
+    }
+    
+    return null;
+}
+
+// circle : x, y, radius
 function checkColCC(circle1, circle2) {
     dist = Math.sqrt(Math.pow(circle1.x - circle2.x, 2) + Math.pow(circle1.y - circle2.y, 2));
     if (dist < circle1.radius + circle2.radius) {
@@ -78,7 +113,7 @@ function checkColLL(line1, line2) {
     if(u < 0 || u > 1) { 
         return null;
     }
-    return true;//{ "x": x1 + t * bx, "y": y1 + t * by };
+    return true;
 }
 // This is for normal, not rotated rectangles
 // line   : x1, y1, x2, y2
@@ -109,7 +144,7 @@ function checkColLR(line, rect) {
         else { return true; }
     }
 }
-
+// rect   : x, y, width, height
 function checkColRR(rect1, rect2){
     var rect1_left = rect2.x < rect1.x && rect1.x < rect2.x + rect2.width;
     var rect1_right = rect2.x < rect1.x && rect1.x + rect1.width < rect2.x + rect2.width;
