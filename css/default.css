@@ -105,25 +105,40 @@ button {
     clear: both;
 }
 .level {
-    width: 200px;
+    width: 40px;
     height: 40px;
     display: inline-block;
-    border: 2px solid #fff;
-    background: #00a2ff;
+    border: 6px solid #ccc;
+    background: #999;
     color: #fff;
     line-height: 40px;
     font-weight: bold;
-    border-radius: 5px;
+    border-radius: 26px;
     margin: 10px;
     cursor: pointer;
+}
+.level:hover {
+    color: #333;
 }
 .level.disabled, .level.disabled:hover, .level.disabled:focus, .level.disabled:active {
     background: #999!important;
     color: #fff;
+    border-color: #444;
     cursor: default;
 }
-.level.completed {
-    background: #ff0000!important;
+.level.completed1 {
+    border-color: #fff;
+    background: #00a2ff;
+}
+.level.completed2
+{
+    border-color: green;
+    background: #00a2ff;
+}
+.level.completed3
+{
+    border-color: orange;
+    background: #00a2ff;
 }
 @media screen and (-ms-view-state: fullscreen-landscape) {
 }
