@@ -1,0 +1,138 @@
+﻿body {
+    background: #00a2ff;
+    margin: 0;
+}
+
+*{
+    font-family: Arial;
+    color: white;
+}
+.canvasHolder{
+    width: 100%;
+}
+#canvas{
+    margin: 0 auto;
+    display: block;
+}
+button {
+    background: #07c;
+}
+.navigation {
+    position: absolute;
+    top: 60%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 300px;
+}
+.close-button {
+    float: right;
+    margin: -10px -10px 5px 5px;
+    width: 20px;
+    display: block;
+    border: 2px solid #fff;
+    background: #00a2ff;
+    border-radius: 20px;
+    line-height: 20px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: bold;
+    padding: 5px;
+    height: 20px;
+}
+.close-button:hover, .level:hover, .level.completed:hover {
+    background: #fff!important;
+}
+.navigation button {
+    width: 300px;
+    margin-bottom: 10px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+}
+.debug {
+    width: 273px;
+    overflow-y: scroll;
+    background: rgba(0,0,0,0.2);
+    border: 3px solid rgba(0,0,0,0.5);
+    position: absolute;
+    bottom: 5px;
+    top: 42px;
+    left: 5px;
+    display: none;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+.title-logo {
+    background: url('../assets/titlescreen_logo.png') center 25% no-repeat;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+#WrapsSettings {
+    display: none;
+    text-align: center;
+    width: 700px;
+    margin: 0 auto 0 auto;
+    height: 300px;
+    border-radius: 5px;
+    margin-top: 150px;
+    background: #333;
+    color: #fff;
+
+}
+#WrapsSettings h1, #WrapsLevels h1 {
+    float: left;
+    margin: 0 20px 0 20px;
+    line-height: 30px;
+    padding-top: 0;
+    font-size: 30px;
+}
+#WrapsLevels {
+    width: 80%;
+    display: none;
+    margin: 5% auto;
+    background: #333;
+    border-radius: 5px;
+    height: 80%;
+    text-align: center
+}
+#WrapsLevels ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 100px;
+    clear: both;
+}
+.level {
+    width: 200px;
+    height: 40px;
+    display: inline-block;
+    border: 2px solid #fff;
+    background: #00a2ff;
+    color: #fff;
+    line-height: 40px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+}
+.level.disabled, .level.disabled:hover, .level.disabled:focus, .level.disabled:active {
+    background: #999!important;
+    color: #fff;
+    cursor: default;
+}
+.level.completed {
+    background: #ff0000!important;
+}
+@media screen and (-ms-view-state: fullscreen-landscape) {
+}
+
+@media screen and (-ms-view-state: filled) {
+}
+
+@media screen and (-ms-view-state: snapped) {
+}
+
+@media screen and (-ms-view-state: fullscreen-portrait) {
+}

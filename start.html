@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Modules</title>
+    <link href="css/default.css" rel="stylesheet" />
+
+    <script src="js/utilities.js"></script>
+    <script src="js/input.js"></script>
+    <script src="js/paths.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/projectile.js"></script>
+    <script src="js/bot.js"></script>
+    <script src="js/colision.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/ui.js"></script>
+</head>
+<body>
+    <div id="WrapsLevels">
+        <a onclick="showTitleScreen();" id="A1" class="close-button">X</a>
+        <br /><h1>Level Select</h1>
+        <ul id="Levels">
+        </ul>
+    </div>
+    <div id="WrapsSettings">
+        <a onclick="showTitleScreen();" id="Close" class="close-button">X</a>
+        <br /><h1>Settings</h1>
+    </div>
+    <div id="WrapsTitle">
+	    <div class="title-logo">
+	    </div>
+        <div class="navigation">
+            <button onclick="showLevelSelect();" class="title-button" id="Start">Start</button>
+            <button onclick="showSettings();" class="title-button" id="Settings">Settings</button>
+        </div>
+    </div>
+	<div class="canvasHolder">
+		<canvas style="background-color:#00a2ff" height="0" id="canvas">
+            Your browser doesn't support canvas. Please download a great browser!
+        </canvas>
+	</div>
+    <div id="debug-panel" class="debug"></div>
+</body>
+</html>
