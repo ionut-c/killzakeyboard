@@ -13,6 +13,9 @@ mousex = 0;
 mousey = 0;
 
 // runs the game loop
+window.onresize = function(event) {
+    document.getElementById("canvas").style.transform="scale(0.5,0.5)";
+}
 function gameLoop(time){
     if (prev != 0) {
         deltaTime = time - prev;
@@ -44,7 +47,7 @@ function draw(time) {
     this.player.render();
 }
 
-var fullpage = true;
+var fullpage = false;
 var sx, sy;
 function init() {
     var canvas, context;
