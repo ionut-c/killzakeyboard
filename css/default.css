@@ -16,6 +16,10 @@
 }
 button {
     background: #07c;
+    width: 300px;
+    margin-bottom: 10px;
+    border: 2px solid #fff;
+    border-radius: 5px;
 }
 .navigation {
     position: absolute;
@@ -42,12 +46,6 @@ button {
 }
 .close-button:hover, .level:hover, .level.completed:hover {
     background: #fff!important;
-}
-.navigation button {
-    width: 300px;
-    margin-bottom: 10px;
-    border: 2px solid #fff;
-    border-radius: 5px;
 }
 .debug {
     width: 273px;
