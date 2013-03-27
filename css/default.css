@@ -1,6 +1,7 @@
 ﻿body {
     background: #00a2ff;
     margin: 0;
+    overflow: hidden;
 }
 
 *{
@@ -9,10 +10,12 @@
 }
 .canvasHolder{
     width: 100%;
+    text-align: center;
 }
 #canvas{
-    margin: 0 auto;
-    display: block;
+    display: inline;
+    transform-origin: 50% 0;
+    -webkit-transform-origin: 50% 0;
 }
 button {
     background: #07c;

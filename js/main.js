@@ -14,7 +14,7 @@ mousey = 0;
 
 // runs the game loop
 window.onresize = function(event) {
-    document.getElementById("canvas").style.transform="scale(0.5,0.5)";
+    scale();
 }
 function gameLoop(time){
     if (prev != 0) {
@@ -47,26 +47,38 @@ function draw(time) {
     this.player.render();
 }
 
-var fullpage = false;
-var sx, sy;
+var fullpage = true;
+var sx = 1, sy = 1;
+var canvasWidth = 1024;
+var canvasHeight = 576;
+function scale() {
+    if(fullpage){
+        var tx = 0;
+        var h = window.innerHeight;
+        var w = (h * 16) / 9;
+        if(window.innerWidth < w)
+        {
+            w = window.innerWidth;
+            h = (w * 9) / 16;
+        }
+        sx = w / canvasWidth;
+        sy = h / canvasHeight;
+        
+        d1 = (canvasWidth - w) / 2;
+        d2 = window.innerWidth - d1 - w;
+        d3 = Math.max(0, window.innerWidth - canvasWidth);
+        tx = (d1 - d2 + d3) / 2;
+    }
+    document.getElementById("canvas").style.transform="translate(-"+tx+"px) scale("+sx+","+sy+")";
+    document.getElementById("canvas").style.webkitTransform="translate(-"+tx+"px) scale("+sx+","+sy+")";
+}
 function init() {
+    scale();
     var canvas, context;
     canvas = document.getElementById("canvas");
     canvas.width = 1024;
     canvas.height = 576;
-    if(fullpage){
-        var h = window.innerHeight - 0;
-        var w = (h * 16) / 9;
-        sx = w / canvas.width;
-        sy = h / canvas.height;
-        canvas.width = w;
-        canvas.height = h;
-    } else {
-        sx = 1;
-        sy = 1;
-    }
     context = canvas.getContext("2d");
-    context.scale(sx, sy);
 
     var path = [{"x": canvas.width, "y": 30},
                 {"x": -100, "y": 0},
@@ -100,6 +112,6 @@ function init() {
     var background = new Background(context, "assets/background.png", 2048, 576, 1024, 576);
     var input = InputController();
     var extension = {"background": background,"input": input, "player": player, "canvas": canvas, "context": context, 'level': level };
-    //console.profile();
+    console.profile();
     requestAnimationFrame(gameLoop.bind(extension));
 }

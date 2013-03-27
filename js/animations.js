@@ -45,8 +45,8 @@ ModelObject.prototype.render = function ModelObject_render(){
                       this.current.x, this.current.y,
                       this.modelSize.width,
                       this.modelSize.height,
-                      this.position.x / sx,
-                      this.position.y / sy,
+                      this.position.x,
+                      this.position.y,
                       this.modelSize.width,
                       this.modelSize.height);
 }
