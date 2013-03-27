@@ -10,10 +10,38 @@ var start = window.animationStartTime;
 deltaTime = 0;
 prev = 0;
 
-// runs the game loop
 window.onresize = function(event) {
     scale();
 }
+window.onload = function(event) {
+    scale();
+}
+var fullpage = true;
+var sx = 1, sy = 1;
+var gameWidth = 1024;
+var gameHeight = 576;
+function scale() {
+    if(fullpage){
+        var tx = 0;
+        var h = window.innerHeight;
+        var w = (h * 16) / 9;
+        if(window.innerWidth < w)
+        {
+            w = window.innerWidth;
+            h = (w * 9) / 16;
+        }
+        sx = w / gameWidth;
+        sy = h / gameHeight;
+        
+        d1 = (gameWidth - w) / 2;
+        d2 = window.innerWidth - d1 - w;
+        d3 = Math.max(0, window.innerWidth - gameWidth);
+        tx = (d1 - d2 + d3) / 2;
+    }
+    document.getElementById("GameHolder").style.transform="translate(-"+tx+"px) scale("+sx+","+sy+")";
+    document.getElementById("GameHolder").style.webkitTransform="translate(-"+tx+"px) scale("+sx+","+sy+")";
+}
+// runs the game loop
 function gameLoop(time){
     if (prev != 0) {
         deltaTime = time - prev;
@@ -52,31 +80,6 @@ function draw(time) {
     this.player.render();
 }
 
-var fullpage = true;
-var sx = 1, sy = 1;
-var canvasWidth = 1024;
-var canvasHeight = 576;
-function scale() {
-    if(fullpage){
-        var tx = 0;
-        var h = window.innerHeight;
-        var w = (h * 16) / 9;
-        if(window.innerWidth < w)
-        {
-            w = window.innerWidth;
-            h = (w * 9) / 16;
-        }
-        sx = w / canvasWidth;
-        sy = h / canvasHeight;
-        
-        d1 = (canvasWidth - w) / 2;
-        d2 = window.innerWidth - d1 - w;
-        d3 = Math.max(0, window.innerWidth - canvasWidth);
-        tx = (d1 - d2 + d3) / 2;
-    }
-    document.getElementById("canvas").style.transform="translate(-"+tx+"px) scale("+sx+","+sy+")";
-    document.getElementById("canvas").style.webkitTransform="translate(-"+tx+"px) scale("+sx+","+sy+")";
-}
 function init(level) {
     prev = 0;
     deltaTime = 0;
