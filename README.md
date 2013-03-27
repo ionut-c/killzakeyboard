@@ -13,6 +13,5 @@ killzakeyboard
 - finish ui design
 - hud progress bar
 - win 8 storage save
-- fix ui scalability
 - shoot sound , die sound
 - music
