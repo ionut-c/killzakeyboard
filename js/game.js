@@ -21,7 +21,6 @@ Level.prototype.update = function Level_update(deltaTime){
         if(this.waveIndex == this.waves.length ){
             this.over = true;
             var raport = this.entityManager.getKills() / this.entityManager.getTotalEntitiesCount();
-            alert("Level Ended, You killed  : " + (raport * 100).toFixed(2) + "% .");
             //console.profileEnd();
         }
     }
