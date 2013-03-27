@@ -88,3 +88,4 @@ Wave.prototype.hasEnded = function Wave_hasEnded(){
     }
     return false;
 }
+
