@@ -1,7 +1,13 @@
 killzakeyboard
 ==============
 
+Dragos
+======
+Programming:
 * define 3 levels
+* THE cookie
+
+Art:
 * level completion stars
 * title screen background
 * level selection background and icons
@@ -9,6 +15,8 @@ killzakeyboard
 * fix assets quality
 * death animation
 
+Ionut
+=====
 - bring windows 8 app to date ( ongoing )
 - finish ui design
 - hud progress bar
