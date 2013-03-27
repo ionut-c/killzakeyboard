@@ -10,7 +10,6 @@ Level.prototype.addWave = function Level_addWave(wave){
     this.waves.push(wave);
 }
 Level.prototype.update = function Level_update(deltaTime){
-    if( this.over ) { return; }
     this.time += deltaTime;
     this.entityManager.update(deltaTime);
     var spawned = this.waves[this.waveIndex].getSpawned(deltaTime);
@@ -31,6 +30,9 @@ Level.prototype.render = function Level_render(){
 }
 Level.prototype.getEntityManager = function Level_getEntityManger(){
     return this.entityManager;
+}
+Level.prototype.isOver = function Level_isOver(){
+    return this.over;
 }
 
 function Wave( spawners, startOffset, endOffset){

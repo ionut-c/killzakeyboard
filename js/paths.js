@@ -43,7 +43,6 @@ PathWalker.prototype.getNext = function PathWalker_getNext(speed) {
 
         return { "x": x, "y": y };
     }
-    
     return null;
 }
 PathWalker.prototype.atEnd = function PathWalker_atEnd() {

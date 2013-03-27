@@ -34,10 +34,13 @@
             else {
                 level.setAttribute("class", "level completed");
             }
-            level.onclick = function () {
-                    clearUI();
-                    init();
-                };
+
+            level.onclick = (function ( index ) {
+                    return function(){
+			clearUI();
+			init( index );
+		    };
+                })( i );
         }
         level.innerHTML = levels[i].name;
     }
