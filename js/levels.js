@@ -1,12 +1,12 @@
 function getLevel(level, canvas, context){
     switch( level ){
-    case 0:
+    case 1:
 	return LoadLevel1(canvas, context, level);
 	break;
-    case 1:
+    case 2:
 	return LoadLevel2(canvas, context, level);
 	break;
-    case 2:
+    case 3:
 	return LoadLevel3(canvas, context, level);
 	break;
     default:
@@ -57,12 +57,10 @@ function LoadLevel2(canvas, context, id){
     
     var wave1 = new Wave( [spawner1], 0,0);
     var wave2 = new Wave( [spawner2], 1000, 0);
-    var wave3 = new Wave( [spawner1, spawner2], 1000, 7000);
     
     var level = new Level(id);
     level.addWave(wave1);
     level.addWave(wave2);
-    level.addWave(wave3);
 
     return level;
 }

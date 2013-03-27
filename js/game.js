@@ -39,12 +39,9 @@ Level.prototype.update = function Level_update(deltaTime){
 
     if(this.waves[this.waveIndex].hasEnded()){
         this.waveIndex++;
-        console.log(this.waveIndex);
-	console.log(this.waves.length );
         if(this.waveIndex == this.waves.length ){
             this.over = true;
             this.raport = this.entityManager.getKills() / this.entityManager.getTotalEntitiesCount();
-            //console.profileEnd();
         }
     }
 }

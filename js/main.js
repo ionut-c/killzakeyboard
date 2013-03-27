@@ -54,7 +54,6 @@ function gameLoop(time){
     if ( this.level.isOver() ){
 	document.getElementById("canvas").style.display = "none";
 	showTitleScreen();
-	console.log("ended");
 	levelCompleted(this.level.getId(),this.level.getCompletion());
     } else {
 	requestAnimationFrame(gameLoop.bind(this));
@@ -97,6 +96,6 @@ function init(level) {
     var background = new Background(context, "assets/background.png", 2048, 576, 1024, 576);
     var input = InputController();
     var extension = {"background": background,"input": input, "player": player, "canvas": canvas, "context": context, 'level': level };
-    console.profile();
+    //console.profile();
     requestAnimationFrame(gameLoop.bind(extension));
 }

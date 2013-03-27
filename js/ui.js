@@ -6,6 +6,7 @@ function showLevelSelect() {
     var levels = Array();
     for (i = 1; i <= 5; i++) {
     	temp = getLevelCompletion(i);
+	console.log(temp.unlocked + " | " + temp.completed);
         if(i === 1) {
             temp.unlocked = 1;
         }

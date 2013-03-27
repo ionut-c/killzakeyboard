@@ -13,11 +13,10 @@ function getLevelCompletion(level){
 		y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
 		x=x.replace(/^\s+|\s+$/g,"");
 		if (x == level){
-		    return { completed: parseInt(y.substr(0,y.indexOf("/"))), unlocked: parseInt(y.substr(y.indexOf("/")+1))};
+		    return { completed: parseInt(y.substr(0,y.indexOf("/"))) || 0, unlocked: parseInt(y.substr(y.indexOf("/")+1))};
 		}
-		console.log(y);
     }
-    return { completion: 0, unlocked: 0 };
+    return { completed: 0, unlocked: 0 };
 }
 
 function levelCompleted(level, completion) {
@@ -27,7 +26,6 @@ function levelCompleted(level, completion) {
     var tempNext = getLevelCompletion(level+1);
     if(tempNext.unlocked === 0)
     {
-    	console.log("unlockedNext");
     	setLevelCompletion(level+1, tempNext.completion, 1);
     }
   }
