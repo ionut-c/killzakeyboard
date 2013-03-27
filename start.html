@@ -20,30 +20,34 @@
     <script src="js/ui.js"></script>
 </head>
 <body>
-    <div id="WrapsLevels">
-        <a onclick="showTitleScreen();" id="A1" class="close-button">X</a>
-        <br /><h1>Level Select</h1>
-        <ul id="Levels">
-        </ul>
-    </div>
-    <div id="WrapsSettings">
-        <a onclick="showTitleScreen();" id="Close" class="close-button">X</a>
-        <br /><h1>Settings</h1>
-	<button onclick="resetProgress();" class="title-button" id="Settings">Reset Progress</button>
-    </div>
-    <div id="WrapsTitle">
-	    <div class="title-logo">
-	    </div>
-        <div class="navigation">
-            <button onclick="showLevelSelect();" class="title-button" id="Start">Start</button>
-            <button onclick="showSettings();" class="title-button" id="Settings">Settings</button>
+    <div id="GameHolder">
+        <div id="WrapsLevels">
+            <a onclick="showTitleScreen();" id="A1" class="close-button">X</a>
+            <br /><h1>Level Select</h1>
+            <ul id="Levels">
+            </ul>
         </div>
+        <div id="WrapsSettings">
+            <a onclick="showTitleScreen();" id="Close" class="close-button">X</a>
+            <br /><h1>Settings</h1>
+            <div style="clear:both"></div>
+        	<br /><button onclick="resetProgress();" class="title-button" id="Reset">Reset Progress</button>
+            <br /><button onclick="deleteAllCookies();" class="title-button" id="Freset">Force Reset</button>
+        </div>
+        <div id="WrapsTitle">
+    	    <div class="title-logo">
+    	    </div>
+            <div class="navigation">
+                <button onclick="showLevelSelect();" class="title-button" id="Start">Start</button>
+                <button onclick="showSettings();" class="title-button" id="Settings">Settings</button>
+            </div>
+        </div>
+    	<div class="canvasHolder" id="canvasHolder">
+    		<canvas style="background-color:#00a2ff" height="0" id="canvas">
+                Your browser doesn't support canvas. Please download a great browser!
+            </canvas>
+    	</div>
+        <div id="debug-panel" class="debug"></div>
     </div>
-	<div class="canvasHolder" id="canvasHolder">
-		<canvas style="background-color:#00a2ff" height="0" id="canvas">
-            Your browser doesn't support canvas. Please download a great browser!
-        </canvas>
-	</div>
-    <div id="debug-panel" class="debug"></div>
 </body>
 </html>
