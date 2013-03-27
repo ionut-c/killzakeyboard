@@ -16,16 +16,17 @@ Level.prototype.getReport = function Level_GetReport() {
 }
 Level.prototype.getCompletion = function Level_GetCompletion() {
     if (this.raport >= 0.5 && this.raport < 0.75) {
-	return  1;
+	   return  1;
     }
-    else if (this.raport >= 0.75 && this.rapot < 1)
-    {
-	return 2;
+    else if (this.raport >= 0.75 && this.raport < 1) {
+	   return 2;
     }
     else if (this.raport === 1) {
-	return 3;
+	   return 3;
     }
-    return 0;
+    else {
+        return 0;
+    }
 }
 Level.prototype.addWave = function Level_addWave(wave){
     this.waves.push(wave);

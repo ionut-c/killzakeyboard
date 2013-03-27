@@ -5,8 +5,11 @@ function showLevelSelect() {
     var wrapsLevels = document.getElementById("WrapsLevels");
     var levels = Array();
     for (i = 1; i <= 5; i++) {
-	temp = getLevelCompletion(i);
-	levels.push({ order: i, unlocked: temp.unlocked, completed: temp.completed })
+    	temp = getLevelCompletion(i);
+        if(i === 1) {
+            temp.unlocked = 1;
+        }
+    	levels.push({ order: i, unlocked: temp.unlocked, completed: temp.completed })
     }
     var levelRow;
     for (i = 0; i < levels.length; i++) {
@@ -48,4 +51,6 @@ function showTitleScreen() {
 function showSettings() {
     document.getElementById("WrapsTitle").style.display = "none";
     document.getElementById("WrapsSettings").style.display = "block";
+    document.getElementById("Reset").setAttribute("class","title-button");
+    document.getElementById("Freset").setAttribute("class","title-button");
 }

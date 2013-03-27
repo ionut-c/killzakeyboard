@@ -2,11 +2,29 @@
     background: #00a2ff;
     margin: 0;
     overflow: hidden;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
 }
-
+#GameHolder {
+    width: 1024px;
+    position: relative;
+    margin: 0 auto;
+    height: 576px;
+    transform-origin: 50% 0;
+    -webkit-transform-origin: 50% 0;
+}
 *{
     font-family: Arial;
     color: white;
+    -webkit-touch-callout: none!important;
+    -webkit-user-select: none!important;
+    -khtml-user-select: none!important;
+    -moz-user-select: none!important;
+    -ms-user-select: none!important;
+    user-select: none!important;
 }
 .canvasHolder{
     width: 100%;
@@ -20,13 +38,24 @@
 button {
     background: #07c;
     width: 300px;
+    cursor: pointer;
     margin-bottom: 10px;
     border: 2px solid #fff;
     border-radius: 5px;
+    padding: 5px 0;
+}
+button:hover, button:focus, button:active {
+    background: #fff;
+    color: #333;
+}
+button.disabled {
+    cursor: default;
+    background: #444!important;
+    color: #fff!important;
 }
 .navigation {
     position: absolute;
-    top: 60%;
+    bottom: 50px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -74,29 +103,33 @@ button {
 #WrapsSettings {
     display: none;
     text-align: center;
-    width: 700px;
-    margin: 0 auto 0 auto;
-    height: 300px;
+    position: absolute;
+    left: 100px;
+    right: 100px;
+    bottom: 100px;
+    top: 100px;
     border-radius: 5px;
-    margin-top: 150px;
     background: #333;
     color: #fff;
 
 }
 #WrapsSettings h1, #WrapsLevels h1 {
     float: left;
+    font-weight: normal;
     margin: 0 20px 0 20px;
     line-height: 30px;
     padding-top: 0;
     font-size: 30px;
 }
 #WrapsLevels {
-    width: 80%;
     display: none;
-    margin: 5% auto;
     background: #333;
     border-radius: 5px;
-    height: 80%;
+    position: absolute;
+    left: 100px;
+    right: 100px;
+    bottom: 100px;
+    top: 100px;
     text-align: center
 }
 #WrapsLevels ul {
