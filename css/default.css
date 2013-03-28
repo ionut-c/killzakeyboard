@@ -8,6 +8,11 @@
     top: 0;
     bottom: 0;
 }
+#Music {
+    height: 0;
+    width: 0;
+    overflow: hidden;
+}
 #GameHolder {
     width: 1024px;
     position: relative;

@@ -54,6 +54,7 @@ function gameLoop(time){
     if ( this.level.isOver() ){
 	document.getElementById("canvas").style.display = "none";
 	showTitleScreen();
+    gameMusic.pause();
 	console.log("ended");
 	levelCompleted(this.level.getId(),this.level.getCompletion());
     } else {
@@ -81,6 +82,7 @@ function draw(time) {
 }
 
 function init(level) {
+    playMusic();
     prev = 0;
     deltaTime = 0;
     scale();
