@@ -9,6 +9,11 @@ var start = window.animationStartTime;
 
 deltaTime = 0;
 prev = 0;
+var totalEnemies;
+var fullpage = true;
+var sx = 1, sy = 1;
+var gameWidth = 1024;
+var gameHeight = 576;
 
 window.onresize = function(event) {
     scale();
@@ -16,10 +21,6 @@ window.onresize = function(event) {
 window.onload = function(event) {
     scale();
 }
-var fullpage = true;
-var sx = 1, sy = 1;
-var gameWidth = 1024;
-var gameHeight = 576;
 function scale() {
     if(fullpage){
         var tx = 0;
@@ -53,7 +54,9 @@ function gameLoop(time){
 
     if ( this.level.isOver() ){
 	document.getElementById("canvas").style.display = "none";
+    document.getElementById("ProgressBar").style.display = "none";
 	showTitleScreen();
+	gameMusic.pause();
 	levelCompleted(this.level.getId(),this.level.getCompletion());
     } else {
 	requestAnimationFrame(gameLoop.bind(this));
@@ -78,9 +81,11 @@ function draw(time) {
     this.level.render();
     this.player.render();
 }
-
+var player;
 function init(level) {
+    //playMusic();
     prev = 0;
+    totalEnemies = 0;
     deltaTime = 0;
     scale();
     var canvas, context;
@@ -92,7 +97,9 @@ function init(level) {
 
     level = getLevel( level, canvas, context );
 
-    var player = new Player(20, canvas.height / 2, context, canvas.width, canvas.height);
+    player = new Player(20, canvas.height / 2, context, canvas.width, canvas.height);
+    refreshProgressBar(0);
+    document.getElementById("ProgressBar").style.display = "block";
     var background = new Background(context, "assets/background.png", 2048, 576, 1024, 576);
     var input = InputController();
     var extension = {"background": background,"input": input, "player": player, "canvas": canvas, "context": context, 'level': level };
