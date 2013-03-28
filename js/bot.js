@@ -56,6 +56,7 @@ function EnemySpawner(context, path, enemyType, numbers, frequency, maxX, maxY) 
     this.numbers = numbers;
     this.maxX = maxX;
     this.maxY = maxY;
+    totalEnemies += numbers;
 }
 EnemySpawner.prototype.getSpawned = function EnemySpawner_getSpawned(deltaTime){
     this.elapsedTime += deltaTime;

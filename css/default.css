@@ -21,6 +21,40 @@
     transform-origin: 50% 0;
     -webkit-transform-origin: 50% 0;
 }
+#ProgressBar {
+    width: 968px;
+    height: 8px;
+    display: none;
+    position: absolute;
+    bottom: 24px;
+    left: 28px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.3);
+    transition: opacity 0.2s;
+    -moz-transition: opacity 0.2s; /* Firefox 4 */
+    -webkit-transition: opacity 0.2s; /* Safari and Chrome */
+    -o-transition: opacity 0.2s; /* Opera */
+}
+#ProgressBarIcon {
+    background: url('../assets/raccoon_head.png') center center no-repeat;
+    background-size: contain;
+    width: 45px;
+    height: 36px;
+    position: absolute;
+    top: -18px;
+    right: -23px;
+}
+#ProgressFill {
+    width: 0%;
+    height: 8px;
+    background: #f5211f;
+    border-radius: 12px;
+    position: relative;
+    transition: width 2s;
+    -moz-transition: width 2s; /* Firefox 4 */
+    -webkit-transition: width 2s; /* Safari and Chrome */
+    -o-transition: width 2s; /* Opera */
+}
 *{
     font-family: Arial;
     color: white;
