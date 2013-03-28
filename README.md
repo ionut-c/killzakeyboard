@@ -20,14 +20,12 @@ Ionut
 
 Programming:
 - bring windows 8 app to date ( ongoing )
-- hud progress bar
-- win 8 storage save
+- win 8 storage save (waiting for THE cookie)
 - stop music setting option
 - stop sfx setting option
 
 Art:
 - koocha die sounds (2-4)
-- hud progress bar design
 - finish ui design
 
 Backlog
@@ -37,3 +35,5 @@ Backlog
 - Discuss about saving sound settings (separate cookie or THE cookie)
 - Discuss about Pause and Pause on Escape keypress
 - Discuss whether or not the settings menu should be available while playing.
+- Add level PreScreen
+- Add level PostScreen
