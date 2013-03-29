@@ -4,24 +4,24 @@ killzakeyboard
 Dragos
 ======
 Programming:
-* define 3 levels
+- define 3 levels
 
 Art:
-* level completion stars
-* title screen background
-* level selection background and icons
-* per level backgrounds
-* fix assets quality
-* death animation
+- level completion stars
+- title screen background
+- level selection background and icons
+- per level backgrounds
+- fix assets quality
+- death animation
 
 Ionut
 =====
 
 Programming:
-- bring windows 8 app to date (ongoing)
-- win 8 storage save
+- bring W8A to date (ongoing)
 - stop music setting option
 - stop sfx setting option
+- remove force reset developer option (no longer relevant)
 
 Art:
 - koocha die sounds (2-4)
@@ -29,6 +29,7 @@ Art:
 
 Notable Bugs
 ====
+- Raccoon Head missing from progress bar in W8A
 - Slow Firefox performance
 - Silent Gap when loopping ogg files in Firefox
 - Levels end sooner than they should
