@@ -5,7 +5,6 @@ Dragos
 ======
 Programming:
 * define 3 levels
-* THE cookie
 
 Art:
 * level completion stars
