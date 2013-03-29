@@ -5,12 +5,9 @@ function showLevelSelect() {
     var wrapsLevels = document.getElementById("WrapsLevels");
     var levels = Array();
     for (i = 1; i <= 5; i++) {
-    	temp = getLevelCompletion(i);
-	console.log(temp.unlocked + " | " + temp.completed);
-        if(i === 1) {
-            temp.unlocked = 1;
-        }
-    	levels.push({ order: i, unlocked: temp.unlocked, completed: temp.completed })
+    	var completion = getLevelCompletion(i);
+	var unlocked = isLevelUnlocked(i);
+    	levels.push({ "order": i, "unlocked": unlocked, "completed": completion })
     }
     var levelRow;
     for (i = 0; i < levels.length; i++) {
@@ -20,11 +17,11 @@ function showLevelSelect() {
         }
         var level = document.createElement("a");
         levelRow.appendChild(level);
-        if (levels[i].unlocked === 0) {
+        if (levels[i].unlocked == 0) {
             level.setAttribute("class", "level disabled");
         }
         else {
-            if (levels[i].completed === 0) {
+            if (levels[i].completed == 0) {
                 level.setAttribute("class", "level");
             }
             else {

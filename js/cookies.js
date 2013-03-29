@@ -1,63 +1,54 @@
-function setLevelCompletion(level, completion, unlocked){
-    var exdate=new Date();
-    exdate.setDate(exdate.getDate() + 356);
-    var c_value=escape(completion+"/"+unlocked) + "; expires="+exdate.toUTCString();
-    document.cookie= level + "=" + c_value;
-}
+var _header_size = 5;
+var _levels = 5;
+var _char_per_level = 3;
+// level[0] - level id
+// level[1] - unblocked or not
+// level[2] - progress
 
-function getLevelCompletion(level){
-    var i,x,y,ARRcookies=document.cookie.split(";");
-    for (i=0;i<ARRcookies.length;i++)
-    {
-		x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
-		y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
-		x=x.replace(/^\s+|\s+$/g,"");
-		if (x == level){
-		    return { completed: parseInt(y.substr(0,y.indexOf("/"))) || 0, unlocked: parseInt(y.substr(y.indexOf("/")+1))};
-		}
-    }
-    return { completed: 0, unlocked: 0 };
+function hasLevels() {
+    return (new RegExp("(?:^|;\\s*)" + "levels" + "\\s*\\=")).test(document.cookie);
 }
-
-function levelCompleted(level, completion) {
-  var temp=getLevelCompletion(level);
-  if (completion > temp.completed) {
-    setLevelCompletion(level, completion, 1);
-    var tempNext = getLevelCompletion(level+1);
-    if(tempNext.unlocked === 0)
-    {
-    	setLevelCompletion(level+1, tempNext.completion, 1);
+function getLevels() {
+    if ( hasLevels() ) {
+	var levels = document.cookie.replace(/(?:(?:^|.*;\s*)levels\s*\=\s*((?:[^;](?!;))*[^;]?).*)|.*/, "$1");
+	return levels;
     }
-  }
+    return null;
 }
-function resetProgress() {
-	document.getElementById("Reset").className="title-button disabled";
-    var i,x,y,ARRcookies=document.cookie.split(";");
-    for (level = 1; level <= 5; level++) {
-	for (i=0;i<ARRcookies.length;i++)
-	{
-	    x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
-	    y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
-	    x=x.replace(/^\s+|\s+$/g,"");
-	    if (x == level){
-			if (level === 1) {
-			    setLevelCompletion(level,0,1);
-			}
-			else {
-			    setLevelCompletion(level,0,0);
-			}
-			getLevelCompletion(level);
-	    }
-	}
+function resetLevels() {
+    var levels = "50503";
+    for (var i = 1; i <= 5; i++) {
+	if( i == 1) { levels += i + "10"; }
+	else        { levels += i + "00"; }
+    }
+    document.cookie = "levels=" + levels;
+}
+function printLevels() {
+    var levels = getLevels();
+    if ( levels != null) {
+	console.log( levels );
     }
 }
-function deleteAllCookies() {
-	document.getElementById("Freset").className="title-button disabled";
-    var cookies = document.cookie.split(";");
-    for (var i = 0; i < cookies.length; i++) {
-    	var cookie = cookies[i];
-    	var eqPos = cookie.indexOf("=");
-    	var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-    	document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+function setLevelCompletion(id, completed) {
+    if ( !hasLevels() ) { resetLevels(); }
+    var levels = getLevels().split("");
+    var lIndex =  _header_size + (id - 1) * _char_per_level;
+    if ( completed > levels[ lIndex + 2 ] ) {
+	levels[ lIndex + 2 ] = completed;
     }
+    var nextLIndex = lIndex + _char_per_level;
+    levels[ nextLIndex + 1 ] = 1;
+    document.cookie = "levels=" + levels.join("");
+}
+function getLevelCompletion(id) {
+    if ( !hasLevels() ) { resetLevels(); }
+    var levels = getLevels();
+    var lIndex =  _header_size + (id - 1) * _char_per_level;
+    return levels[ lIndex + 2 ];
+}
+function isLevelUnlocked(id) {
+    if ( !hasLevels() ) { resetLevels(); }
+    var levels = getLevels();
+    var lIndex =  _header_size + (id - 1) * _char_per_level;
+    return levels[ lIndex + 1 ];
 }
