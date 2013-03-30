@@ -31,6 +31,7 @@ Ionut
 =====
 
 **Programming**
+- move application to Full HD
 - bring W8A to date (ongoing)
 - fix progress bar
 - check/repair weird sound cookie values
