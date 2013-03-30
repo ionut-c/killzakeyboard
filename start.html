@@ -28,7 +28,6 @@
                 <div id="ProgressBarIcon"></div>
             </div>
         </div>
-        <div id="Music"></div>
         <div id="WrapsLevels">
             <a onclick="showTitleScreen();" id="A1" class="close-button">X</a>
             <br /><h1>Level Select</h1>
@@ -40,13 +39,14 @@
             <br /><h1>Settings</h1>
             <div style="clear:both"></div>
         	<br /><button onclick="resetLevels();" class="title-button" id="Reset">Reset Progress</button>
-            <br /><button onclick="deleteAllCookies();" class="title-button" id="Freset">Force Reset</button>
+            <br /><button onclick="toggleSound(0, this);" class="title-button" id="ToggleMusic"></button>
+            <br /><button onclick="toggleSound(1, this);" class="title-button" id="ToggleSFX"></button>
         </div>
         <div id="WrapsTitle">
     	    <div class="title-logo">
     	    </div>
             <div class="navigation">
-                <button onclick="showLevelSelect();" class="title-button" id="Start">Start</button>
+                <button onclick="showLevelSelect();" class="title-button" id="Start">Obliterate Koochas</button>
                 <button onclick="showSettings();" class="title-button" id="Settings">Settings</button>
             </div>
         </div>

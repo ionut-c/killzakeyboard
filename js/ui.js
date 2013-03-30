@@ -50,5 +50,18 @@ function showSettings() {
     document.getElementById("WrapsTitle").style.display = "none";
     document.getElementById("WrapsSettings").style.display = "block";
     document.getElementById("Reset").setAttribute("class","title-button");
-    document.getElementById("Freset").setAttribute("class","title-button");
+    if(getSoundSettings(0) === 0)
+    {
+        document.getElementById("ToggleMusic").innerHTML = "Music is Off";
+    }
+    else {
+        document.getElementById("ToggleMusic").innerHTML = "Music is On";
+    }
+    if(getSoundSettings(1) === 0)
+    {
+        document.getElementById("ToggleSFX").innerHTML = "SFX is Off";
+    }
+    else {
+        document.getElementById("ToggleSFX").innerHTML = "SFX is On";
+    }
 }
