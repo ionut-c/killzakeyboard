@@ -7,6 +7,7 @@ ___
 
 ###[Queuing Features]
 - Experimental Post Screen
+- Sound prefferences
 
 ___
 
@@ -31,7 +32,6 @@ Ionut
 
 **Programming**
 - bring W8A to date (ongoing)
-- check Missing Raccoon Head in W8A
 - check canvas in Safari
 
 **Candy**
@@ -42,7 +42,7 @@ Ionut
 
 Notable Bugs
 ====
-- Raccoon Head missing from progress bar in W8A
+- W8A doesn't play music and shoot sound (might not support ogg files)
 - Slow Firefox performance
 - Silent Gap when loopping ogg files in Firefox
 - Levels end sooner than they should
