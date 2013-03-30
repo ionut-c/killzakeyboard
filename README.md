@@ -42,6 +42,8 @@ Ionut
 
 Notable Bugs
 ====
+- Unplayable in Safari - slow performance
+- Safari 5 does not suppor requestAnimationFrame
 - Safari doesn't play sounds (does not support ogg files)
 - W8A doesn't play music and shoot sound (does not support ogg files)
 - Slow Firefox performance
@@ -57,4 +59,4 @@ Backlog
 =====
 - Discuss about Pause and Pause on Escape keypress
 - Discuss whether or not the settings menu should be available while playing.
-- Opera Support (requestAnimationFrame not available)
+- Opera 12 Support (requestAnimationFrame not available)
