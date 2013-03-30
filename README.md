@@ -1,14 +1,24 @@
-killzakeyboard
+#killzakeyboard
 ==============
+___
+
+##W8A - Last Updated: 29.03.2023
+- Added Sound, THE Cookie, Scaling, Progress Bar
+
+###[Queuing Features]
+- Experimental Post Screen
+
+___
 
 Dragos
 ======
-Programming:
+
+**Programming**
 - define 3 levels
 - enemy overhaul
 - display stats in PostScreen (plain text)
 
-Art:
+**Art**
 - level completion stars
 - title screen background
 - level selection background and icons
@@ -19,13 +29,13 @@ Art:
 Ionut
 =====
 
-Programming:
+**Programming**
 - bring W8A to date (ongoing)
 - check Missing Raccoon Head in W8A
 - check canvas in Opera
 - check canvas in Safari
 
-Candy:
+**Candy**
 - koocha die sounds (2-4)
 - PostScreen animation
 - PostScreen sounds
