@@ -50,7 +50,7 @@ Notable Bugs
 - Levels end sooner than they should
 - Progress bar doesn't fill in completely anymore
 - Suspicious Cookie Behaviour in Chrome - not creating cookies (might not apply anymore since THE Cookie, additional testing required).
-- Suspicious Cookie Behaviour in Chrome - music was on but now playing, sfx was on and playing (cookie failure?)
+- Suspicious Cookie Behaviour in Chrome - music was on but not playing, sfx was on and playing (cookie failure?)
 - Safari fails to display canvas
 - Scaling not working in Opera
 - IE10 has some sort of ActiveX block/confirmation (should be bypassed by default).
