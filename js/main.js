@@ -83,7 +83,7 @@ function draw(time) {
 }
 var player;
 function init(level) {
-    //playMusic();
+    playMusic();
     prev = 0;
     totalEnemies = 0;
     deltaTime = 0;
