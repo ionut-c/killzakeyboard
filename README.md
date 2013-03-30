@@ -5,6 +5,7 @@ Dragos
 ======
 Programming:
 - define 3 levels
+- display stats in PostScreen (plain text)
 
 Art:
 - level completion stars
@@ -19,11 +20,14 @@ Ionut
 
 Programming:
 - bring W8A to date (ongoing)
-- Add level PreScreen
-- Add level PostScreen
+- check Missing Raccoon Head in W8A
+- check canvas in Opera
+- check canvas in Safari
 
-Art:
+Candy:
 - koocha die sounds (2-4)
+- PostScreen animation
+- PostScreen sounds
 - finish ui design
 
 Notable Bugs
@@ -41,6 +45,5 @@ Notable Bugs
 
 Backlog
 =====
-- Discuss about saving sound settings (separate cookie or THE cookie)
 - Discuss about Pause and Pause on Escape keypress
 - Discuss whether or not the settings menu should be available while playing.
