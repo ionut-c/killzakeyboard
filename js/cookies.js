@@ -1,5 +1,5 @@
 var _header_size = 5;
-var _levels = 5;
+var _levels = 24;
 var _char_per_level = 3;
 // level[0] - level id
 // level[1] - unblocked or not
@@ -64,7 +64,7 @@ function getSoundSettings(type)
       x=x.replace(/^\s+|\s+$/g,"");
       if (x==soundCookie)
         {
-            console.log(unescape(y));
+            console.log(y);
             hasCookie = true;
         }
     }
@@ -106,8 +106,9 @@ function toggleSound(type, id)
 
         }
         id.innerHTML = id.innerHTML.replace('On', 'Off');
-        var cookieV=escape(value) + "; expires="+exdate.toUTCString();
+        var cookieV=value + "; expires="+exdate.toUTCString();
         document.cookie=soundCookie + "=" + cookieV;
+        console.log(y);
     }
     else {
         var exdate=new Date();
@@ -117,24 +118,27 @@ function toggleSound(type, id)
         var getOtherSetting;
         if(getCurrentSetting == 0)
         {
-            getCurrentSetting++;
+            getCurrentSetting = 1;
             id.innerHTML = id.innerHTML.replace('Off', 'On');
         }
         else {
-            getCurrentSetting--;
+            getCurrentSetting = 0;
             id.innerHTML = id.innerHTML.replace('On', 'Off');
         }
         if(type === 0)
         {
-            getOtherSetting = parseInt(y.substr(type+1,1));
+            console.log(y);
+            console.log(y.substr(0,1)+" here");
+            getOtherSetting = parseInt(y.substr(0,1));
             value = getCurrentSetting + "" + getOtherSetting;
         }
         else {
-            getOtherSetting = parseInt(y.substr(type-1,1));
+            console.log(y.substr(1,1)+" here");
+            getOtherSetting = parseInt(y.substr(1,1));
             value = getOtherSetting + "" + getCurrentSetting;
         }
         console.log(type + " is: " + getCurrentSetting + " and other: " + getOtherSetting);
-        var cookieV=escape(value) + "; expires="+exdate.toUTCString();
+        var cookieV=value + "; expires="+exdate.toUTCString();
         document.cookie=soundCookie + "=" + cookieV;
     }
 }

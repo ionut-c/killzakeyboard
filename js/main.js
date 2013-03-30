@@ -12,8 +12,8 @@ prev = 0;
 var totalEnemies;
 var fullpage = true;
 var sx = 1, sy = 1;
-var gameWidth = 1024;
-var gameHeight = 576;
+var gameWidth = 1920;
+var gameHeight = 1080;
 
 window.onresize = function(event) {
     scale();

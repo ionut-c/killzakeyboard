@@ -4,14 +4,14 @@ function showLevelSelect() {
     document.getElementById("WrapsLevels").style.display = "block";
     var wrapsLevels = document.getElementById("WrapsLevels");
     var levels = Array();
-    for (i = 1; i <= 5; i++) {
+    for (i = 1; i <= 24; i++) {
     	var completion = getLevelCompletion(i);
 	var unlocked = isLevelUnlocked(i);
     	levels.push({ "order": i, "unlocked": unlocked, "completed": completion })
     }
     var levelRow;
     for (i = 0; i < levels.length; i++) {
-        if (i % 4 == 0) {
+        if (i % 6 == 0) {
             var levelRow = document.createElement("li")
             document.getElementById("Levels").appendChild(levelRow);
         }
@@ -83,16 +83,16 @@ function showStats(){
 function animateStats(statsId)
 {
     setTimeout(function(){shootSound();},400);
-    document.getElementById(statsId).className = "test-box show";
-    document.getElementById(statsId).style.bottom = ""+(250 - 45 * parseInt(document.getElementById(statsId).getAttribute("data-order")) || 1) + "px";
+    document.getElementById(statsId).className = "stats-box show";
+    document.getElementById(statsId).style.bottom = ""+(550 - 75 * parseInt(document.getElementById(statsId).getAttribute("data-order")) || 1) + "px";
 }
 function devResetStats(){
     document.getElementById("PostScreenTest").setAttribute("onclick","showStats();");
     document.getElementById("PostScreenTest").innerHTML = "End Level";
     document.getElementById("KilledStats").style.bottom = "-35px";
-    document.getElementById("KilledStats").className = "test-box";
+    document.getElementById("KilledStats").className = "stats-box";
     document.getElementById("MissedStats").style.bottom = "-35px";
-    document.getElementById("MissedStats").className = "test-box";
+    document.getElementById("MissedStats").className = "stats-box";
     document.getElementById("Conclusion").style.bottom = "-35px";
-    document.getElementById("Conclusion").className = "test-box";
+    document.getElementById("Conclusion").className = "stats-box";
 }  
