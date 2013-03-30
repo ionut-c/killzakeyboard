@@ -3,13 +3,19 @@ var shootSnd = new Audio('assets/shoot.ogg');
 
 function shootSound()
 {
-	temp = shootSnd;
-	temp.play();
+	if(getSoundSettings(1) === 1)
+	{
+		var temp = shootSnd;
+		temp.play();
+	}
 }
 
 function playMusic()
 {
-    gameMusic = new Audio('assets/thebeat.ogg');
-	gameMusic.loop = true;
-	gameMusic.play();
+	if(getSoundSettings(0) === 1)
+	{
+	    gameMusic = new Audio('assets/thebeat.ogg');
+		gameMusic.loop = true;
+		gameMusic.play();
+	}
 }
