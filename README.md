@@ -42,7 +42,8 @@ Ionut
 
 Notable Bugs
 ====
-- W8A doesn't play music and shoot sound (might not support ogg files)
+- Safari doesn't play sounds (does not support ogg files)
+- W8A doesn't play music and shoot sound (does not support ogg files)
 - Slow Firefox performance
 - Silent Gap when loopping ogg files in Firefox
 - Levels end sooner than they should
