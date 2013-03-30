@@ -5,6 +5,7 @@ Dragos
 ======
 Programming:
 - define 3 levels
+- enemy overhaul
 - display stats in PostScreen (plain text)
 
 Art:
