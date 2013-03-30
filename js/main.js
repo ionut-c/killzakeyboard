@@ -55,8 +55,8 @@ function gameLoop(time){
     if ( this.level.isOver() ){
 	document.getElementById("canvas").style.display = "none";
     document.getElementById("ProgressBar").style.display = "none";
-	showTitleScreen();
-	//gameMusic.pause();
+	showPostScreen();
+	gameMusic.pause();
 	setLevelCompletion(this.level.getId(),this.level.getCompletion());
     } else {
 	requestAnimationFrame(gameLoop.bind(this));

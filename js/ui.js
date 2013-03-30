@@ -40,14 +40,16 @@ function showLevelSelect() {
 function clearUI() {
     document.getElementById("Levels").innerHTML = "";
     document.getElementById("WrapsLevels").style.display = "none";
+    document.getElementById("WrapsSettings").style.display = "none";
+    document.getElementById("WrapsTitle").style.display = "none";
+    document.getElementById("WrapsPostScreen").style.display = "none";
 }
 function showTitleScreen() {
+    clearUI();
     document.getElementById("WrapsTitle").style.display = "block";
-    document.getElementById("WrapsSettings").style.display = "none";
-    document.getElementById("WrapsLevels").style.display = "none";
 }
 function showSettings() {
-    document.getElementById("WrapsTitle").style.display = "none";
+    clearUI()
     document.getElementById("WrapsSettings").style.display = "block";
     document.getElementById("Reset").setAttribute("class","title-button");
     if(getSoundSettings(0) === 0)
@@ -65,3 +67,32 @@ function showSettings() {
         document.getElementById("ToggleSFX").innerHTML = "SFX is On";
     }
 }
+function showPostScreen() {
+    clearUI();
+    devResetStats();
+    document.getElementById("WrapsPostScreen").style.display = "block";
+    setTimeout(function(){showStats()},200);
+}
+function showStats(){
+    document.getElementById("PostScreenTest").setAttribute("onclick","devResetStats();");
+    document.getElementById("PostScreenTest").innerHTML = "RESET";
+    animateStats("KilledStats");
+    setTimeout(function(){animateStats("MissedStats")},400);
+    setTimeout(function(){animateStats("Conclusion")},800);
+} 
+function animateStats(statsId)
+{
+    setTimeout(function(){shootSound();},400);
+    document.getElementById(statsId).className = "test-box show";
+    document.getElementById(statsId).style.bottom = ""+(250 - 45 * parseInt(document.getElementById(statsId).getAttribute("data-order")) || 1) + "px";
+}
+function devResetStats(){
+    document.getElementById("PostScreenTest").setAttribute("onclick","showStats();");
+    document.getElementById("PostScreenTest").innerHTML = "End Level";
+    document.getElementById("KilledStats").style.bottom = "-35px";
+    document.getElementById("KilledStats").className = "test-box";
+    document.getElementById("MissedStats").style.bottom = "-35px";
+    document.getElementById("MissedStats").className = "test-box";
+    document.getElementById("Conclusion").style.bottom = "-35px";
+    document.getElementById("Conclusion").className = "test-box";
+}  
