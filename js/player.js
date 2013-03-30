@@ -12,7 +12,7 @@ function Player(x, y, context, maxX, maxY){
     
     this.model.setPosition(this.position);
     this.s = this.model.getSize();
-    this.bounder = new Bounder("rect", new Rect(this.position.x, this.position.y + 29, this.s.width, this.s.height - 37));
+    this.bounder = new Collision.Bounder("rect", new Rect(this.position.x, this.position.y + 29, this.s.width, this.s.height - 37));
 };
 Player.prototype.checkCollision = function Player_checkCollision(bounder){
     return this.bounder.checkCollision(bounder);

@@ -10,7 +10,7 @@ function Apple(x, y, context, maxX, maxY){
     
     this.model.setPosition(this.position);
     var s = this.model.getSize();
-    this.bounder = new Bounder("circle", new Circle(this.position.x + s.width / 2, this.position.y + s.height / 2, s.width / 2));
+    this.bounder = new Collision.Bounder("circle", new Circle(this.position.x + s.width / 2, this.position.y + s.height / 2, s.width / 2));
 }
 Apple.prototype.checkCollision = function Apple_checkCollision(bounder){ return this.bounder.checkCollision(bounder); }
 Apple.prototype.getBounder = function Apple_getBounder(){ return this.bounder; }

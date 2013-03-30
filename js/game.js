@@ -1,10 +1,10 @@
-function Level(id){
+function Level(id, maxX, maxY){
     this.waves = [];
     this.score = 0;
     this.time = 0;
     this.id = id;
     this.raport = 0;
-    this.entityManager = new EntityManager();
+    this.entityManager = new EntityManager(maxX, maxY);
     this.waveIndex = 0;
     this.over = false;
 }

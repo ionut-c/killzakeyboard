@@ -1,38 +1,41 @@
-﻿// type : ["line","rect","circle"]
+﻿var Collision = Collision || { };
+
+// type : ["line","rect","circle"]
 // params :
 //           - line : x1, y1, x2, y2
 //           - rect : x, y, width, height
 //           - circle : x, y, radius
-function Bounder(type, params){
+Collision.Bounder = function Bounder(type, params){
     this.type = type;
     this.params = params;
 }
-Bounder.prototype.getType = function Bounder_getType(){
+Collision.Bounder.prototype.getType = function Bounder_getType(){
     return this.type;
 }
-Bounder.prototype.getParams = function Bounder_getParams(){
+Collision.Bounder.prototype.getParams = function Bounder_getParams(){
     return this.params;
 }
-Bounder.prototype.setParams = function Bounder_setParams(params){
+Collision.Bounder.prototype.setParams = function Bounder_setParams(params){
     this.params = params;
 }
-Bounder.prototype.checkCollision = function Bounder_checkCollision(bounder){
+Collision.Bounder.prototype.checkCollision = function Bounder_checkCollision(bounder){
     var bounder_type = bounder.getType();
     
-    if( this.type == "cirlce" && bounder_type == "cirlce" ) {return checkColCC(this.params, bounder.getParams())}
-    if( this.type == "line" && bounder_type == "line" ) {return checkColLL(this.params, bounder.getParams())}
-    if( this.type == "rect" && bounder_type == "rect" ) {return checkColRR(this.params, bounder.getParams())}
-    
-    if( this.type == "circle" && bounder_type == "line"){ return checkColCL(this.params, bounder.getParams()); }
-    if( this.type == "line" && bounder_type == "circle"){ return checkColCL(bounder.getParams(), this.params); }
-    if( this.type == "circle" && bounder_type == "rect"){ return checkColCR(this.params, bounder.getParams()); }
-    if( this.type == "rect" && bounder_type == "circle"){ return checkColCR(bounder.getParams(), this.params); }
-    if( this.type == "rect" && bounder_type == "line"){ return checkColLR(this.params, bounder.getParams()); }
-    if( this.type == "line" && bounder_type == "rect"){ return checkColLR(this.params, bounder.getParams()); }
-    
+    with( Collision ){
+        if( this.type == "cirlce" && bounder_type == "cirlce" ) {return checkCircleCircle(this.params, bounder.getParams())}
+        if( this.type == "line" && bounder_type == "line" ) {return checkLineLine(this.params, bounder.getParams())}
+        if( this.type == "rect" && bounder_type == "rect" ) {return checkRectangleRectangle(this.params, bounder.getParams())}
+        
+        if( this.type == "circle" && bounder_type == "line"){ return checkCircleLine(this.params, bounder.getParams()); }
+        if( this.type == "line" && bounder_type == "circle"){ return checkCircleLine(bounder.getParams(), this.params); }
+        if( this.type == "circle" && bounder_type == "rect"){ return checkCircleRectangle(this.params, bounder.getParams()); }
+        if( this.type == "rect" && bounder_type == "circle"){ return checkCircleRectangle(bounder.getParams(), this.params); }
+        if( this.type == "rect" && bounder_type == "line"){ return checkLineRectangle(this.params, bounder.getParams()); }
+        if( this.type == "line" && bounder_type == "rect"){ return checkLineRectangle(this.params, bounder.getParams()); }
+    }
     return false;
 }
-Bounder.prototype.render = function Bounder_render(color, context){
+Collision.Bounder.prototype.render = function Bounder_render(color, context){
     if(this.type == "circle"){
         context.strokeStyle = color;
         context.beginPath();
@@ -52,7 +55,7 @@ Bounder.prototype.render = function Bounder_render(color, context){
 }
 
 // circle : x, y, radius
-function checkColCC(circle1, circle2) {
+Collision.checkCircleCircle = function collisionCC(circle1, circle2) {
     dist = Math.sqrt(Math.pow(circle1.x - circle2.x, 2) + Math.pow(circle1.y - circle2.y, 2));
     if (dist < circle1.radius + circle2.radius) {
         return true;
@@ -61,7 +64,7 @@ function checkColCC(circle1, circle2) {
 }
 // circle : x, y, radius
 // line   : x1, y1, x2, y2
-function checkColCL(circle, line) {
+Collision.checkCircleLine = function collisionCL(circle, line) {
     var v = new Vector(line.x2 - line.x1, line.y2 - line.y1);
     var w = new Vector(circle.x - line.x1, circle.y - line.y1);
     var t = w.dot(v) / v.dot(v);
@@ -78,7 +81,7 @@ function checkColCL(circle, line) {
 // This is for normal, not rotated rectangles
 // circle : x, y, radius
 // rect   : x, y, width, height
-function checkColCR(circle, rect) {
+Collision.checkCircleRectangle = function collisionCR(circle, rect) {
     // check to see if the circle is close enough to one of the lines
     // WARNING : this counts on the fact that the rectangle is not rotated
     var testY = circle.y > rect.y && circle.y < rect.y + rect.height;
@@ -100,7 +103,7 @@ function checkColCR(circle, rect) {
     return false;
 }
 // line   : x1, y1, x2, y2
-function checkColLL(line1, line2) {
+Collision.checkLineLine = function collisionLL(line1, line2) {
     var b = new Vector(line1.x2 - line1.x1, line1.y2 - line1.y1);
     var d = new Vector(line2.x2 - line2.x1, line2.y2 - line2.y1);
     var b_dot_d_perp = b.x * d.y - b.y * d.x;
@@ -121,7 +124,7 @@ function checkColLL(line1, line2) {
 // This is for normal, not rotated rectangles
 // line   : x1, y1, x2, y2
 // rect   : x, y, width, height
-function checkColLR(line, rect) {
+Collision.checkLineRectangle = function collisionLR(line, rect) {
     var p = new Array({ "x": rect.x, "y": rect.y },
                       { "x": rect.x, "y": rect.y - rect.height },
                       { "x": rect.x + rect.width, "y": rect.y },
@@ -148,15 +151,15 @@ function checkColLR(line, rect) {
     }
 }
 // rect   : x, y, width, height
-function checkColRR(rect1, rect2){
+Collision.checkRectangleRectangle = function collisionRR(rect1, rect2){
     var rect1_left = rect2.x < rect1.x && rect1.x < rect2.x + rect2.width;
-    var rect1_right = rect2.x < rect1.x && rect1.x + rect1.width < rect2.x + rect2.width;
+    var rect1_right = rect2.x < rect1.x + rect1.width && rect1.x + rect1.width < rect2.x + rect2.width;
     var rect1_top = rect2.y < rect1.y && rect1.y < rect2.y + rect2.height;
     var rect1_bottom = rect2.y < rect1.y + rect1.height && rect1.y + rect1.height < rect2.y + rect2.height;
     if( (rect1_left || rect1_right) && (rect1_top || rect1_bottom)){ return true; }
     
     var rect2_left = rect1.x < rect2.x && rect2.x < rect1.x + rect1.width;
-    var rect2_right = rect1.x < rect2.x && rect2.x + rect2.width < rect1.x + rect1.width;
+    var rect2_right = rect1.x < rect2.x + rect2.width && rect2.x + rect2.width < rect1.x + rect1.width;
     var rect2_top = rect1.y < rect2.y && rect2.y < rect1.y + rect1.height;
     var rect2_bottom = rect1.y < rect2.y + rect2.height && rect2.y + rect2.height < rect1.y + rect1.height;
     if( (rect2_left || rect2_right) && (rect2_top || rect2_bottom)){ return true; }
