@@ -32,7 +32,6 @@ Ionut
 **Programming**
 - bring W8A to date (ongoing)
 - check Missing Raccoon Head in W8A
-- check canvas in Opera
 - check canvas in Safari
 
 **Candy**
@@ -49,7 +48,6 @@ Notable Bugs
 - Levels end sooner than they should
 - Progress bar doesn't fill in completely anymore
 - Suspicious Cookie Behaviour in Chrome - not creating cookies (might not apply anymore since THE Cookie, additional testing required).
-- Opera fails to display canvas
 - Safari fails to display canvas
 - Scaling not working in Opera
 - IE10 has some sort of ActiveX block/confirmation (should be bypassed by default).
@@ -58,3 +56,4 @@ Backlog
 =====
 - Discuss about Pause and Pause on Escape keypress
 - Discuss whether or not the settings menu should be available while playing.
+- Opera Support (requestAnimationFrame not available)
