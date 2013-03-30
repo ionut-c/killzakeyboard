@@ -19,9 +19,8 @@ Ionut
 
 Programming:
 - bring W8A to date (ongoing)
-- stop music setting option
-- stop sfx setting option
-- remove force reset developer option (no longer relevant)
+- Add level PreScreen
+- Add level PostScreen
 
 Art:
 - koocha die sounds (2-4)
@@ -45,5 +44,3 @@ Backlog
 - Discuss about saving sound settings (separate cookie or THE cookie)
 - Discuss about Pause and Pause on Escape keypress
 - Discuss whether or not the settings menu should be available while playing.
-- Add level PreScreen
-- Add level PostScreen
