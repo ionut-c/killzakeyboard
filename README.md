@@ -10,6 +10,8 @@ ___
 - Sound prefferences
 - New Enemy spawning (waiting)
 - Full HD User Interface
+- Full HD Canvas
+- Sound support (MP3)
 
 ___
 
@@ -21,6 +23,7 @@ Dragos
 - enemy spawning overhaul
 - change level selection from 5 levels to 12 (number is discussible)
 - display stats in PostScreen (plain text)
+- increase canvas objects/assets by 87.5% (background already increased)
 
 **Art**
 - level completion stars
