@@ -35,8 +35,6 @@ Ionut
 
 **Programming**
 - bring W8A to date (ongoing)
-- add mp3 version of shoot sound
-- add mp3 version of music
 - test wav files in Firefox (might get rid of the sound gap)
 - pause game and show menu on ESCAPE
 
@@ -48,6 +46,7 @@ Ionut
 
 Notable Bugs
 ====
+- Chrome plays StatsSound lower if apple sound was played
 - THE Cookie stopped working (aditional testing required, suspecting conflict with SRS cookie)
 - THE Cookie overrides the SRS Cookie with 50503... value after playing a game, sound system fails.
 - W8A doesn't play music and shoot sound (does not support ogg files)
