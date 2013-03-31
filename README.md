@@ -24,6 +24,7 @@ Dragos
 - change level selection from 5 levels to 12 (number is discussible)
 - display stats in PostScreen (plain text)
 - increase canvas objects/assets by 87.5% (background already increased)
+- pause game on ESCAPE
 
 **Art**
 - level completion stars
@@ -38,8 +39,7 @@ Ionut
 
 **Programming**
 - bring W8A to date (ongoing)
-- test wav files in Firefox (might get rid of the sound gap)
-- pause game and show menu on ESCAPE
+- build ESCAPE menu (called when on game pause, closing the menu unpauses the game)
 
 **Candy**
 - koocha die sounds (2-4)
@@ -53,7 +53,6 @@ Notable Bugs
 - THE Cookie overrides the SRS Cookie with 50503... value after playing a game, sound system fails.
 
 - Slower rendering/movment in Firefox (questionable, aditional testing required)
-- Silent Gap when loopping ogg files in Firefox (might be solved with wav files)
 - Levels end sooner than they should (suspecting enemy spawn system)
 - Suspicious Cookie Behaviour in Chrome - not creating cookies (might not apply anymore since THE Cookie, additional testing required).
 
@@ -65,3 +64,4 @@ Other Issues / Abandoned
 - No Support for Opera (requestAnimationFrame not available)
 - No Support for Safari (requestAnimationFrame not available)
 - Chrome plays PostScreen sounds lower than normal after playing shootSnd and Music
+- Silent Gap when loopping music in Firefox (declared bug on Bugzilla)
