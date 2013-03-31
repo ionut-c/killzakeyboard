@@ -39,7 +39,7 @@ Player.prototype.update = function Player_update(inputHandler, deltaTime){
     this.bounder.setParams(new Rect(this.position.x, this.position.y, this.s.width, this.s.height));
     
     if (inputHandler.checkKey(32) && this.canShoot) {
-        shootSound();
+        playSFX(shootSnd);
         var tor = new Apple(this.position.x + this.s.width, this.position.y + this.s.height / 2, this.model.getContext(), this.maxX, this.maxY);
         this.canShoot = false;
     }
