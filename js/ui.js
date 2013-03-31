@@ -4,7 +4,7 @@ function showLevelSelect() {
     document.getElementById("WrapsLevels").style.display = "block";
     var wrapsLevels = document.getElementById("WrapsLevels");
     var levels = Array();
-    for (i = 1; i <= 24; i++) {
+    for (i = 1; i <= 5; i++) {
     	var completion = getLevelCompletion(i);
 	var unlocked = isLevelUnlocked(i);
     	levels.push({ "order": i, "unlocked": unlocked, "completed": completion })

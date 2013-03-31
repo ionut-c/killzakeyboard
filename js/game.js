@@ -33,7 +33,6 @@ Level.prototype.addWave = function Level_addWave(wave){
 }
 Level.prototype.update = function Level_update(deltaTime){
     this.time += deltaTime;
-    refreshProgressBar((this.entityManager.getTotalEntitiesCount()/totalEnemies)*100);
     this.entityManager.update(deltaTime);
     var spawned = this.waves[this.waveIndex].getSpawned(deltaTime);
     if( spawned != null){ this.entityManager.addEntities(spawned); }
