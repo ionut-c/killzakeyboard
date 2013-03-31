@@ -8,6 +8,10 @@ ___
 ###[Queuing Features]
 - Experimental Post Screen
 - Sound prefferences
+- New Enemy spawning (waiting)
+- Full HD User Interface
+- Full HD Canvas
+- Sound support (MP3)
 
 ___
 
@@ -16,8 +20,11 @@ Dragos
 
 **Programming**
 - define 3 levels
-- enemy overhaul
+- enemy spawning overhaul
+- change level selection from 5 levels to 12 (number is discussible)
 - display stats in PostScreen (plain text)
+- increase canvas objects/assets by 87.5% (background already increased)
+- pause game on ESCAPE
 
 **Art**
 - level completion stars
@@ -31,35 +38,30 @@ Ionut
 =====
 
 **Programming**
-- move application to Full HD
 - bring W8A to date (ongoing)
-- fix progress bar
-- check/repair weird sound cookie values
+- build ESCAPE menu (called when on game pause, closing the menu unpauses the game)
 
 **Candy**
 - koocha die sounds (2-4)
-- PostScreen animation
-- PostScreen sounds
-- finish ui design
+- PostScreen animation (waiting for final layout)
+- PostScreen sounds (waiting for final layout)
+- finish ui design (waiting for Art)
 
 Notable Bugs
 ====
-- W8A doesn't play music and shoot sound (does not support ogg files)
-- Slower rendering/movment in Firefox
-- Silent Gap when loopping ogg files in Firefox
-- Levels end sooner than they should
-- Progress bar stopped working
+- THE Cookie stopped working (conflict with SRS Cookie)
+- THE Cookie overrides the SRS Cookie with 50503... value after playing a game, sound system fails.
+
+- Slower rendering/movment in Firefox (questionable, aditional testing required)
+- Levels end sooner than they should (suspecting enemy spawn system)
 - Suspicious Cookie Behaviour in Chrome - not creating cookies (might not apply anymore since THE Cookie, additional testing required).
-- Suspicious Cookie Behaviour in Chrome - value 4 or 5 instead of 1 or 0
-- IE10 has some sort of ActiveX block/confirmation (should be bypassed by default).
 
 Backlog
 =====
-- Discuss about Pause and Pause on Escape keypress
-- Discuss whether or not the settings menu should be available while playing.
 
-Other Issues
+Other Issues / Abandoned
 =====
 - No Support for Opera (requestAnimationFrame not available)
 - No Support for Safari (requestAnimationFrame not available)
-- ogg files not supported in Safari
+- Chrome plays PostScreen sounds lower than normal after playing shootSnd and Music
+- Silent Gap when loopping music in Firefox (declared bug on Bugzilla)
