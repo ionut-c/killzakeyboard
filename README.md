@@ -8,6 +8,8 @@ ___
 ###[Queuing Features]
 - Experimental Post Screen
 - Sound prefferences
+- New Enemy spawning (waiting)
+- Full HD User Interface
 
 ___
 
@@ -16,7 +18,8 @@ Dragos
 
 **Programming**
 - define 3 levels
-- enemy overhaul
+- enemy spawning overhaul
+- change level selection from 5 levels to 12 (number is discussible)
 - display stats in PostScreen (plain text)
 
 **Art**
@@ -31,34 +34,33 @@ Ionut
 =====
 
 **Programming**
-- move application to Full HD
 - bring W8A to date (ongoing)
-- fix progress bar
-- check/repair weird sound cookie values
+- add mp3 version of shoot sound
+- add mp3 version of music
+- test wav files in Firefox (might get rid of the sound gap)
+- pause game and show menu on ESCAPE
 
 **Candy**
 - koocha die sounds (2-4)
-- PostScreen animation
-- PostScreen sounds
-- finish ui design
+- PostScreen animation (waiting for final layout)
+- PostScreen sounds (waiting for final layout)
+- finish ui design (waiting for Art)
 
 Notable Bugs
 ====
+- THE Cookie stopped working (aditional testing required, suspecting conflict with SRS cookie)
+- THE Cookie overrides the SRS Cookie with 50503... value after playing a game, sound system fails.
 - W8A doesn't play music and shoot sound (does not support ogg files)
-- Slower rendering/movment in Firefox
-- Silent Gap when loopping ogg files in Firefox
-- Levels end sooner than they should
-- Progress bar stopped working
+- Slower rendering/movment in Firefox (questionable, aditional testing required)
+- Silent Gap when loopping ogg files in Firefox (might be solved with wav files)
+- Levels end sooner than they should (suspecting enemy spawn system)
 - Suspicious Cookie Behaviour in Chrome - not creating cookies (might not apply anymore since THE Cookie, additional testing required).
-- Suspicious Cookie Behaviour in Chrome - value 4 or 5 instead of 1 or 0
 - IE10 has some sort of ActiveX block/confirmation (should be bypassed by default).
 
 Backlog
 =====
-- Discuss about Pause and Pause on Escape keypress
-- Discuss whether or not the settings menu should be available while playing.
 
-Other Issues
+Other Issues / Abandoned
 =====
 - No Support for Opera (requestAnimationFrame not available)
 - No Support for Safari (requestAnimationFrame not available)
