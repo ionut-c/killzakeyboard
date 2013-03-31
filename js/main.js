@@ -56,11 +56,13 @@ function gameLoop(time){
     process.call(this, deltaTime);
 
     if ( this.level.isOver() ){
-	document.getElementById("canvas").style.display = "none";
+    document.getElementById("canvas").style.display = "none";
     document.getElementById("ProgressBar").style.display = "none";
-	showPostScreen();
-	gameMusic.pause();
+    gameMusic.pause();
+    gameMusic = null;
+    showPostScreen();
 	setLevelCompletion(this.level.getId(),this.level.getCompletion());
+
     } else {
 	requestAnimationFrame(gameLoop.bind(this));
     }
@@ -93,8 +95,8 @@ function init(level) {
     scale();
     var canvas, context;
     canvas = document.getElementById("canvas");
-    canvas.width = 1024;
-    canvas.height = 576;
+    canvas.width = 1920;
+    canvas.height = 1080;
 
     context = canvas.getContext("2d");
 
@@ -103,7 +105,7 @@ function init(level) {
     player = new Player(20, canvas.height / 2, context, canvas.width, canvas.height);
     refreshProgressBar(0);
     document.getElementById("ProgressBar").style.display = "block";
-    var background = new Background(context, "assets/background.png", 2048, 576, 1024, 576);
+    var background = new Background(context, "assets/background.png", 3840, 180, 1920, 1080);
     var input = InputController();
     var extension = {"background": background,"input": input, "player": player, "canvas": canvas, "context": context, 'level': level };
     //console.profile();

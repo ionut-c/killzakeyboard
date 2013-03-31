@@ -52,10 +52,10 @@
     background: #f5211f;
     border-radius: 20px;
     position: relative;
-    transition: width 2s;
-    -moz-transition: width 2s; /* Firefox 4 */
-    -webkit-transition: width 2s; /* Safari and Chrome */
-    -o-transition: width 2s; /* Opera */
+    transition: width 1s;
+    -moz-transition: width 1s; /* Firefox 4 */
+    -webkit-transition: width 1s; /* Safari and Chrome */
+    -o-transition: width 1s; /* Opera */
 }
 *{
     font-family: Arial;
