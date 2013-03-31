@@ -5,6 +5,7 @@
     <title>Modules</title>
     <link href="css/default.css" rel="stylesheet" />
 
+    <script src="js/main.js"></script>
     <script src="js/levels.js"></script>
     <script src="js/utilities.js"></script>
     <script src="js/input.js"></script>
@@ -18,7 +19,6 @@
     <script src="js/colision.js"></script>
     <script src="js/player.js"></script>
     <script src="js/game.js"></script>
-    <script src="js/main.js"></script>
     <script src="js/ui.js"></script>
 </head>
 <body>
@@ -38,9 +38,9 @@
             <a onclick="showTitleScreen();" id="Close" class="close-button">X</a>
             <br /><h1>Settings</h1>
             <div style="clear:both"></div>
-        	<br /><button onclick="resetLevels();" class="title-button" id="Reset">Reset Progress</button>
-            <br /><button onclick="toggleSound(0, this);" class="title-button" id="ToggleMusic"></button>
-            <br /><button onclick="toggleSound(1, this);" class="title-button" id="ToggleSFX"></button>
+        	<br /><button onclick="Cookies.resetLevels();" class="title-button" id="Reset">Reset Progress</button>
+            <br /><button onclick="Cookies.toggleSound(this);" class="title-button" id="ToggleMusic"></button>
+            <br /><button onclick="Cookies.toggleSound(this);" class="title-button" id="ToggleSFX"></button>
         </div>
         <div id="WrapsTitle">
     	    <div class="title-logo">

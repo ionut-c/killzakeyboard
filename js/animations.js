@@ -90,21 +90,21 @@ Background.prototype.render = function Background_render(){
         var w1 = this.width - this.position.x;
         this.context.drawImage(this.image,
                            this.position.x, this.position.y,
-                           w1, this.screen.height,
+                           w1, this.height,
                            0, 0,
-                           w1, this.screen.height - 1);
+                           w1, this.screen.height);
         var w2 = this.position.x + this.screen.width - this.width;
         this.context.drawImage(this.image,
                            0, this.position.y,
-                           w2, this.screen.height,
+                           w2, this.height,
                            w1 , 0,
-                           w2, this.screen.height - 1);
+                           w2, this.screen.height);
     } else {
     this.context.drawImage(this.image,
                            this.position.x, this.position.y,
-                           this.screen.width, this.screen.height,
+                           this.screen.width, this.height,
                            0, 0,
-                           this.screen.width - 1, this.screen.height - 1);
+                           this.screen.width, this.screen.height);
     }
     this.context.restore();
 }

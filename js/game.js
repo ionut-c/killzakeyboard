@@ -1,3 +1,9 @@
+function _levelUpdateUI(level) {
+    var kills = level.entityManager.getKills();
+    var projCount = level.entityManager.getTotalProjectileCount();
+    updateKilledStats( kills );
+    updateMissedStats( projCount - kills );
+}
 function Level(id, maxX, maxY){
     this.waves = [];
     this.score = 0;
@@ -7,6 +13,7 @@ function Level(id, maxX, maxY){
     this.entityManager = new EntityManager(maxX, maxY);
     this.waveIndex = 0;
     this.over = false;
+    this.totalEnemies = 0;
 }
 Level.prototype.getId = function Level_GetId() {
     return this.id;
@@ -29,20 +36,28 @@ Level.prototype.getCompletion = function Level_GetCompletion() {
     }
 }
 Level.prototype.addWave = function Level_addWave(wave){
+    this.totalEnemies += wave.getEnemiesCount();
     this.waves.push(wave);
 }
 Level.prototype.update = function Level_update(deltaTime){
     this.time += deltaTime;
-    refreshProgressBar((this.entityManager.getTotalEntitiesCount()/totalEnemies)*100);
+    
     this.entityManager.update(deltaTime);
     var spawned = this.waves[this.waveIndex].getSpawned(deltaTime);
     if( spawned != null){ this.entityManager.addEntities(spawned); }
-
+    
+    this.killProc = this.entityManager.getKills() / this.totalEnemies;
+    Hud.refreshProgressBar( this.killProc * 100 );
+    if ( this.killProc == 1) {
+	this.over = true;
+	_levelUpdateUI();
+    }
+    
     if(this.waves[this.waveIndex].hasEnded()){
         this.waveIndex++;
         if(this.waveIndex == this.waves.length ){
             this.over = true;
-            this.raport = this.entityManager.getKills() / this.entityManager.getTotalEntitiesCount();
+	    _levelUpdateUI();
         }
     }
 }
@@ -56,6 +71,8 @@ Level.prototype.isOver = function Level_isOver(){
     return this.over;
 }
 
+
+
 function Wave( spawners, startOffset, endOffset){
     this.startOffset = startOffset;
     this.endOffset = endOffset;
@@ -65,8 +82,12 @@ function Wave( spawners, startOffset, endOffset){
 	this.duration = spawners.reduce( function (prev, cur) { 	
 	    return Math.max(prev.getDuration(), cur.getDuration());
 	});
+	this.enemiesCount = spawners.reduce( function (prev, cur){
+	   return prev.getEnemiesCount() + cur.getEnemiesCount(); 
+	});
     } else {
 	this.duration = spawners[0].getDuration();
+	this.enemiesCount = spawners[0].getEnemiesCount();
     }
 }
 Wave.prototype.getSpawned = function Wave_getSpawned(deltaTime){
@@ -87,4 +108,6 @@ Wave.prototype.hasEnded = function Wave_hasEnded(){
     }
     return false;
 }
-
+Wave.prototype.getEnemiesCount = function Wave_getEnemiesCount(){
+    return this.enemiesCount;
+}

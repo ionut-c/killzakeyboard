@@ -1,144 +1,98 @@
+var Cookies = Cookies || { };
+
 var _header_size = 5;
 var _levels = 24;
-var _char_per_level = 3;
-// level[0] - level id
-// level[1] - unblocked or not
-// level[2] - progress
+var _char_per_level = 4;
+// level[0,1] - level id
+// level[2] - unblocked or not
+// level[3] - progress
 
-function hasLevels() {
+function _getLevelCompletionIndex(id) {
+    return _header_size + 3 + (id - 1) * _char_per_level;
+}
+function _getLevelUnlockedIndex(id) {
+    return _header_size + 2 + (id - 1) * _char_per_level
+}
+function _hasLevels() {
     return (new RegExp("(?:^|;\\s*)" + "levels" + "\\s*\\=")).test(document.cookie);
 }
-function getLevels() {
-    if ( hasLevels() ) {
+function _getLevels() {
+    if ( _hasLevels() ) {
 	var levels = document.cookie.replace(/(?:(?:^|.*;\s*)levels\s*\=\s*((?:[^;](?!;))*[^;]?).*)|.*/, "$1");
 	return levels;
     }
-    return null;
+    return Cookies.resetLevels();
 }
-function resetLevels() {
-    var levels = "50503";
-    for (var i = 1; i <= 5; i++) {
-	if( i == 1) { levels += i + "10"; }
-	else        { levels += i + "00"; }
+Cookies.resetLevels = function _resetLevels() {
+    var levels = "505040110";
+    for (var i = 2; i <= 24; i++) {
+	if( i < 10 ) { levels += +"0"; }
+	levels += i + "00";
     }
     document.cookie = "levels=" + levels;
+    return levels;
 }
-function printLevels() {
-    var levels = getLevels();
-    if ( levels != null) {
-	console.log( levels );
-    }
-}
-function setLevelCompletion(id, completed) {
-    if ( !hasLevels() ) { resetLevels(); }
-    var levels = getLevels().split("");
-    var lIndex =  _header_size + (id - 1) * _char_per_level;
+Cookies.setLevelCompletion = function setLevelCompletion(id, completed) {
+    var levels = _getLevels().split("");
+    var lIndex = _getLevelCompletionIndex(id);
     if ( completed > levels[ lIndex + 2 ] ) {
-	levels[ lIndex + 2 ] = completed;
+	levels[ lIndex ] = completed;
     }
-    var nextLIndex = lIndex + _char_per_level;
-    levels[ nextLIndex + 1 ] = 1;
+    var nextLIndex = _getLevelUnlockedIndex(id + 1);
+    levels[ nextLIndex ] = 1;
     document.cookie = "levels=" + levels.join("");
 }
-function getLevelCompletion(id) {
-    if ( !hasLevels() ) { resetLevels(); }
-    var levels = getLevels();
-    var lIndex =  _header_size + (id - 1) * _char_per_level;
-    return levels[ lIndex + 2 ];
+Cookies.getLevelCompletion = function getLevelCompletion(id) {
+    var levels = _getLevels();
+    var lIndex =  _getLevelCompletionIndex(id);
+    return levels[ lIndex ];
 }
-function isLevelUnlocked(id) {
-    if ( !hasLevels() ) { resetLevels(); }
-    var levels = getLevels();
-    var lIndex =  _header_size + (id - 1) * _char_per_level;
-    return levels[ lIndex + 1 ];
+Cookies.isLevelUnlocked = function isLevelUnlocked(id) {
+    var levels = _getLevels();
+    var lIndex =  _getLevelUnlockedIndex(id);
+    return levels[ lIndex ];
 }
-function getSoundSettings(type)
-{
-    var soundCookie = "SRS";
-    var hasCookie = false;
-    var i,x,y,ARRcookies=document.cookie.split(";");
-    for (i=0;i<ARRcookies.length;i++)
-    {
-      x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
-      y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
-      x=x.replace(/^\s+|\s+$/g,"");
-      if (x==soundCookie)
-        {
-            console.log(y);
-            hasCookie = true;
-        }
-    }
-    if(hasCookie === false)
-    {
-        return 1;
-    }
-    else {
-        return parseInt(y.substr(type,1));
-    }
-}
-function toggleSound(type, id)
-{
-    var soundCookie = "SRS";
-    var hasCookie = false;
-    var i,x,y,ARRcookies=document.cookie.split(";");
-    for (i=0;i<ARRcookies.length;i++)
-    {
-      x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
-      y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
-      x=x.replace(/^\s+|\s+$/g,"");
-      if (x==soundCookie)
-        {
-            hasCookie = true;
-        }
-    }
-    if(hasCookie === false)
-    {
-        var exdate=new Date();
-        var value;
-        exdate.setDate(exdate.getDate() + 365);
-        if(type === 0)
-        {
-            value = "01";
-        }
-        else if(type === 1)
-        {
-            value = "10";
 
-        }
-        id.innerHTML = id.innerHTML.replace('On', 'Off');
-        var cookieV=value + "; expires="+exdate.toUTCString();
-        document.cookie=soundCookie + "=" + cookieV;
-        console.log(y);
+function _hasSound() {
+    return (new RegExp("(?:^|;\\s*)" + "SRS" + "\\s*\\=")).test(document.cookie);
+}
+function _getSound() {
+    if ( _hasSound() ) {
+	var sound = document.cookie.replace(/(?:(?:^|.*;\s*)SRS\s*\=\s*((?:[^;](?!;))*[^;]?).*)|.*/, "$1");
+	return sound;
     }
-    else {
-        var exdate=new Date();
-        var value;
-        exdate.setDate(exdate.getDate() + 365);
-        var getCurrentSetting = parseInt(y.substr(type,1));
-        var getOtherSetting;
-        if(getCurrentSetting == 0)
-        {
-            getCurrentSetting = 1;
-            id.innerHTML = id.innerHTML.replace('Off', 'On');
-        }
-        else {
-            getCurrentSetting = 0;
-            id.innerHTML = id.innerHTML.replace('On', 'Off');
-        }
-        if(type === 0)
-        {
-            console.log(y);
-            console.log(y.substr(0,1)+" here");
-            getOtherSetting = parseInt(y.substr(0,1));
-            value = getCurrentSetting + "" + getOtherSetting;
-        }
-        else {
-            console.log(y.substr(1,1)+" here");
-            getOtherSetting = parseInt(y.substr(1,1));
-            value = getOtherSetting + "" + getCurrentSetting;
-        }
-        console.log(type + " is: " + getCurrentSetting + " and other: " + getOtherSetting);
-        var cookieV=value + "; expires="+exdate.toUTCString();
-        document.cookie=soundCookie + "=" + cookieV;
+    return _resetSound();
+}
+function _resetSound() {
+    var sound = "11";
+    document.cookie = "SRS=" + levels;
+    return sound;
+}
+Cookies.getSoundSettings = function getSoundSettings(type){
+    var sound = _getSound();
+    switch ( type ) {
+	case "music":
+	    return sound[0];
+	case "sfx":
+	    return sound[1];
+	default:
+	    return 0;
     }
+    return 0;
+}
+Cookies.toggleSound = function toggleSound(element){
+    var sound = _getSound().split("");
+    var index = -1;
+    
+    if ( element.id == "ToggleMusic") { index = 0; }
+    if ( element.id == "ToggleSFX")   { index = 1; }
+    
+    if ( sound[index] == 0) {
+	sound[index] = 1;
+	element.innerHTML = element.innerHTML.replace('Off', 'On');
+    } else {
+	sound[index] = 0;
+	element.innerHTML = element.innerHTML.replace('On', 'Off');
+    }
+    document.cookie = "SRS=" + sound.join("");
 }

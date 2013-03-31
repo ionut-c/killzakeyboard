@@ -3,13 +3,13 @@ function EntityManager(maxX, maxY) {
     this.entities = [];
     this.colliders = [];
     this.kills = 0;
-    this.entitiesTotalCount = 0;
+    this.projectileTotalCount = 0;
 }
 EntityManager.prototype.addCollider = function EntityManager_addCollider(collider){
+    this.projectileTotalCount += 1;
     this.colliders.push(collider);
 }
 EntityManager.prototype.addEntities = function EntityManager_addEntities(entities){
-    this.entitiesTotalCount += entities.length;
     this.entities = this.entities.concat(entities);
 }
 EntityManager.prototype.update = function EntityManager_update(deltaTime) {
@@ -46,8 +46,8 @@ EntityManager.prototype.render = function EntityManager_render(){
 EntityManager.prototype.getKills = function EntityManager_getKills(){
     return this.kills;
 }
-EntityManager.prototype.getTotalEntitiesCount = function EntityManager_getTotalEntitiesCount(){
-    return this.entitiesTotalCount;
+EntityManager.prototype.getTotalProjectileCount = function EntityManager_getTotalProjectileCount(){
+    return this.projectileTotalCount;
 }
 
 function EnemySpawner(context, path, enemyType, numbers, frequency) {
@@ -69,7 +69,10 @@ EnemySpawner.prototype.getSpawned = function EnemySpawner_getSpawned(deltaTime){
         return null;
 }
 EnemySpawner.prototype.getDuration = function EnemySpawner_getDuration(){
-    return this.numbers * this.frequency;
+    return (this.numbers + 1) * this.frequency;
+}
+EnemySpawner.prototype.getEnemiesCount = function EnemySpawner_getEnemiesCount(){
+    return this.numbers;
 }
 
 BirdModel = new Model("assets/koocha_sprite_2.png", 88, 94, 23, 1, 1000/24);

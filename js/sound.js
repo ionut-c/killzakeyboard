@@ -1,24 +1,28 @@
-var gameMusic;
+var Sound = Sound || {};
+
+var Music;
+
 if(Audio !== undefined)
 {
 var shootSnd = new Audio('assets/shoot.ogg');
 }
 
-function shootSound()
-{
-	if(getSoundSettings(1) === 1 && Audio !== undefined)
-	{
-		var temp = shootSnd;
-		temp.play();
-	}
+Sound.shoot = function shootSound(){
+    if(Cookies.getSoundSettings("sfx") == 1 && Audio !== undefined){
+	var temp = shootSnd;
+	temp.play();
+    }
 }
 
-function playMusic()
-{
-	if(getSoundSettings(0) === 1 && Audio !== undefined)
-	{
-	    gameMusic = new Audio('assets/thebeat.ogg');
-		gameMusic.loop = true;
-		gameMusic.play();
-	}
+Sound.playMusic = function playMusic(){
+    if(Cookies.getSoundSettings("music") == 1 && Audio !== undefined){
+	Music = new Audio('assets/thebeat.ogg');
+	Music.loop = true;
+	Music.play();
+    }
+}
+Sound.pauseMusic = function pauseMusic(){
+    if (Music != undefined) {
+	Music.pause();
+    }
 }

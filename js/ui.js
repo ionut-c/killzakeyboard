@@ -5,8 +5,8 @@ function showLevelSelect() {
     var wrapsLevels = document.getElementById("WrapsLevels");
     var levels = Array();
     for (i = 1; i <= 24; i++) {
-    	var completion = getLevelCompletion(i);
-	var unlocked = isLevelUnlocked(i);
+    	var completion = Cookies.getLevelCompletion(i);
+	var unlocked = Cookies.isLevelUnlocked(i);
     	levels.push({ "order": i, "unlocked": unlocked, "completed": completion })
     }
     var levelRow;
@@ -49,21 +49,19 @@ function showTitleScreen() {
     document.getElementById("WrapsTitle").style.display = "block";
 }
 function showSettings() {
-    clearUI()
+    clearUI();
     document.getElementById("WrapsSettings").style.display = "block";
     document.getElementById("Reset").setAttribute("class","title-button");
-    if(getSoundSettings(0) === 0)
-    {
+    
+    if(Cookies.getSoundSettings("music") == 0){
         document.getElementById("ToggleMusic").innerHTML = "Music is Off";
-    }
-    else {
+    } else {
         document.getElementById("ToggleMusic").innerHTML = "Music is On";
     }
-    if(getSoundSettings(1) === 0)
-    {
+    
+    if(Cookies.getSoundSettings("sfx") == 0){
         document.getElementById("ToggleSFX").innerHTML = "SFX is Off";
-    }
-    else {
+    } else {
         document.getElementById("ToggleSFX").innerHTML = "SFX is On";
     }
 }
@@ -82,7 +80,7 @@ function showStats(){
 } 
 function animateStats(statsId)
 {
-    setTimeout(function(){shootSound();},400);
+    setTimeout(function(){Sound.shoot();},400);
     document.getElementById(statsId).className = "stats-box show";
     document.getElementById(statsId).style.bottom = ""+(550 - 75 * parseInt(document.getElementById(statsId).getAttribute("data-order")) || 1) + "px";
 }
@@ -95,4 +93,10 @@ function devResetStats(){
     document.getElementById("MissedStats").className = "stats-box";
     document.getElementById("Conclusion").style.bottom = "-35px";
     document.getElementById("Conclusion").className = "stats-box";
-}  
+}
+function updateKilledStats(value) {
+    document.getElementById("KilledStats").innerHTML = "You killed " + value + " koochas.";
+}
+function updateMissedStats(value) {
+    document.getElementById("MissedStats").innerHTML = "You missed " + value + " times.";
+}

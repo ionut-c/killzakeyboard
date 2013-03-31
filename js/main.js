@@ -9,7 +9,6 @@ var start = window.animationStartTime;
 
 deltaTime = 0;
 prev = 0;
-var totalEnemies;
 var fullpage = true;
 var sx = 1, sy = 1;
 var gameWidth = 1920;
@@ -22,8 +21,8 @@ window.onload = function(event) {
     scale();
 }
 function scale() {
+    var tx = 0;
     if(fullpage){
-        var tx = 0;
         var h = window.innerHeight;
         var w = (h * 16) / 9;
         if(window.innerWidth < w)
@@ -59,8 +58,8 @@ function gameLoop(time){
 	document.getElementById("canvas").style.display = "none";
     document.getElementById("ProgressBar").style.display = "none";
 	showPostScreen();
-	gameMusic.pause();
-	setLevelCompletion(this.level.getId(),this.level.getCompletion());
+	Sound.pauseMusic();
+	Cookies.setLevelCompletion(this.level.getId(),this.level.getCompletion());
     } else {
 	requestAnimationFrame(gameLoop.bind(this));
     }
@@ -86,24 +85,24 @@ function draw(time) {
 }
 var player;
 function init(level) {
-    playMusic();
+    Sound.playMusic();
     prev = 0;
     totalEnemies = 0;
     deltaTime = 0;
     scale();
     var canvas, context;
     canvas = document.getElementById("canvas");
-    canvas.width = 1024;
-    canvas.height = 576;
-
+    canvas.width = gameWidth;
+    canvas.height = gameHeight;
+    
     context = canvas.getContext("2d");
 
     level = getLevel( level, canvas, context );
 
     player = new Player(20, canvas.height / 2, context, canvas.width, canvas.height);
-    refreshProgressBar(0);
+    Hud.refreshProgressBar(0);
     document.getElementById("ProgressBar").style.display = "block";
-    var background = new Background(context, "assets/background.png", 2048, 576, 1024, 576);
+    var background = new Background(context, "assets/background.png", 2048, 576, canvas.width, canvas.height);
     var input = InputController();
     var extension = {"background": background,"input": input, "player": player, "canvas": canvas, "context": context, 'level': level };
     //console.profile();

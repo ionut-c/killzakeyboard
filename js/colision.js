@@ -163,6 +163,6 @@ Collision.checkRectangleRectangle = function collisionRR(rect1, rect2){
     var rect2_top = rect1.y < rect2.y && rect2.y < rect1.y + rect1.height;
     var rect2_bottom = rect1.y < rect2.y + rect2.height && rect2.y + rect2.height < rect1.y + rect1.height;
     if( (rect2_left || rect2_right) && (rect2_top || rect2_bottom)){ return true; }
-    
+
     return false;
 }
