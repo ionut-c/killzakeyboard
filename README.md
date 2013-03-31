@@ -49,15 +49,13 @@ Ionut
 
 Notable Bugs
 ====
-- Chrome plays StatsSound lower if apple sound was played
-- THE Cookie stopped working (aditional testing required, suspecting conflict with SRS cookie)
+- THE Cookie stopped working (conflict with SRS Cookie)
 - THE Cookie overrides the SRS Cookie with 50503... value after playing a game, sound system fails.
-- W8A doesn't play music and shoot sound (does not support ogg files)
+
 - Slower rendering/movment in Firefox (questionable, aditional testing required)
 - Silent Gap when loopping ogg files in Firefox (might be solved with wav files)
 - Levels end sooner than they should (suspecting enemy spawn system)
 - Suspicious Cookie Behaviour in Chrome - not creating cookies (might not apply anymore since THE Cookie, additional testing required).
-- IE10 has some sort of ActiveX block/confirmation (should be bypassed by default).
 
 Backlog
 =====
@@ -66,4 +64,4 @@ Other Issues / Abandoned
 =====
 - No Support for Opera (requestAnimationFrame not available)
 - No Support for Safari (requestAnimationFrame not available)
-- ogg files not supported in Safari
+- Chrome plays PostScreen sounds lower than normal after playing shootSnd and Music
