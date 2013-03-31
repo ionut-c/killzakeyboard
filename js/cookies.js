@@ -1,5 +1,5 @@
 var _header_size = 5;
-var _levels = 24;
+var _levels = 5;
 var _char_per_level = 3;
 // level[0] - level id
 // level[1] - unblocked or not
