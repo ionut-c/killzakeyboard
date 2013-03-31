@@ -24,13 +24,13 @@
     -o-transform-origin: 50% 0;
 }
 #ProgressBar {
-    width: 968px;
-    height: 8px;
+    width: 1860px;
+    height: 12px;
     display: none;
     position: absolute;
-    bottom: 24px;
-    left: 28px;
-    border-radius: 12px;
+    bottom: 20px;
+    left: 30px;
+    border-radius: 24px;
     background: rgba(255,255,255,0.3);
     transition: opacity 0.2s;
     -moz-transition: opacity 0.2s; /* Firefox 4 */
@@ -48,9 +48,9 @@
 }
 #ProgressFill {
     width: 0%;
-    height: 8px;
+    height: 12px;
     background: #f5211f;
-    border-radius: 12px;
+    border-radius: 20px;
     position: relative;
     transition: width 2s;
     -moz-transition: width 2s; /* Firefox 4 */
@@ -83,7 +83,7 @@ button {
     font-size: 24px;
     margin-bottom: 20px;
     border: 2px solid #fff;
-    border-radius: 5px;
+    border-radius: 12px;
     padding: 15px 0;
 }
 button:hover, button:focus, button:active {
@@ -153,7 +153,7 @@ button.disabled {
     right: 100px;
     bottom: 100px;
     top: 100px;
-    border-radius: 5px 0 5px 5px;
+    border-radius: 15px 0 15px 15px;
     background: #333;
     color: #fff;
     overflow: hidden;
@@ -164,6 +164,9 @@ button.disabled {
 }
 .stats-box {
     transition: all 0.8s cubic-bezier(1, -0.53, 0.0, 1.1);
+    -webkit-transition: all 0.8s cubic-bezier(1, -0.53, 0.0, 1.1);
+    -o-transition: all 0.8s cubic-bezier(1, -0.53, 0.0, 1.1);
+    -moz-transition: all 0.8s cubic-bezier(1, -0.53, 0.0, 1.1);
     font-size: 24px;
     height: 50px;
     border: 2px solid transparent;
@@ -172,7 +175,7 @@ button.disabled {
     position: absolute;
     bottom: -35px;
     right: 20px;
-    border-radius: 6px;
+    border-radius: 12px;
     background: #333;
     line-height: 50px;
 }

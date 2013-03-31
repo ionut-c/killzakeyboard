@@ -25,13 +25,13 @@ function LoadLevel1(canvas, context, id){
                  {"x": -100        , "y": canvas.height - 90}];
 
     var spawner1 = new EnemySpawner(context, path, Bird, 1, 1000);
-    var spawner2 = new EnemySpawner(context, path2, Bird, 10, 1000);
-    var spawner3 = new EnemySpawner(context, path, Bird, 10, 1000);
-    var spawner4 = new EnemySpawner(context, path2, Bird, 10, 1000);
+    //var spawner2 = new EnemySpawner(context, path2, Bird, 10, 1000);
+    //var spawner3 = new EnemySpawner(context, path, Bird, 10, 1000);
+    //var spawner4 = new EnemySpawner(context, path2, Bird, 10, 1000);
     
     var wave1 = new Wave( [spawner1], 0,5000);
-    var wave2 = new Wave( [spawner2], 0,0);
-    var wave3 = new Wave( [spawner3, spawner4], 0, 0);
+    //var wave2 = new Wave( [spawner2], 0,0);
+    //var wave3 = new Wave( [spawner3, spawner4], 0, 0);
     
     var level = new Level(id, canvas.width, canvas.height);
     level.addWave(wave1);

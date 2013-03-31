@@ -49,7 +49,6 @@ EntityManager.prototype.getKills = function EntityManager_getKills(){
 EntityManager.prototype.getTotalEntitiesCount = function EntityManager_getTotalEntitiesCount(){
     return this.entitiesTotalCount;
 }
-
 function EnemySpawner(context, path, enemyType, numbers, frequency) {
     this.elapsedTime = 0;
     this.spawnedEnemies = 0;
@@ -58,11 +57,13 @@ function EnemySpawner(context, path, enemyType, numbers, frequency) {
     this.context = context;
     this.enemyType = enemyType;
     this.numbers = numbers;
+    totalEnemies += numbers;
 }
 EnemySpawner.prototype.getSpawned = function EnemySpawner_getSpawned(deltaTime){
     this.elapsedTime += deltaTime;
         if(this.elapsedTime >= this.frequency && this.spawnedEnemies < this.numbers) {
             this.spawnedEnemies++;
+            refreshProgressBar((this.spawnedEnemies/totalEnemies)*100);
             this.elapsedTime = 0;
             return new this.enemyType(this.context, this.path);
         }
