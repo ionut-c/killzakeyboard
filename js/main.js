@@ -56,10 +56,10 @@ function gameLoop(time){
 
     if ( this.level.isOver() ){
 	document.getElementById("canvas").style.display = "none";
-    document.getElementById("ProgressBar").style.display = "none";
+	document.getElementById("ProgressBar").style.display = "none";
 	showPostScreen();
 	Sound.pauseMusic();
-	Cookies.setLevelCompletion(this.level.getId(),this.level.getCompletion());
+        Cookies.setLevelCompletion(this.level.getId(),this.level.getCompletion());
     } else {
 	requestAnimationFrame(gameLoop.bind(this));
     }
@@ -92,6 +92,7 @@ function init(level) {
     scale();
     var canvas, context;
     canvas = document.getElementById("canvas");
+
     canvas.width = gameWidth;
     canvas.height = gameHeight;
     
@@ -102,7 +103,7 @@ function init(level) {
     player = new Player(20, canvas.height / 2, context, canvas.width, canvas.height);
     Hud.refreshProgressBar(0);
     document.getElementById("ProgressBar").style.display = "block";
-    var background = new Background(context, "assets/background.png", 2048, 576, canvas.width, canvas.height);
+    var background = new Background(context, "assets/background.png", 3840, 180, 1920, 1080);
     var input = InputController();
     var extension = {"background": background,"input": input, "player": player, "canvas": canvas, "context": context, 'level': level };
     //console.profile();

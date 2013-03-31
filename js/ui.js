@@ -80,7 +80,8 @@ function showStats(){
 } 
 function animateStats(statsId)
 {
-    setTimeout(function(){Sound.shoot();},400);
+    //setTimeout(function(){Sound.shoot();},400);
+    setTimeout(function(){playSFX(statsSnd);},300);
     document.getElementById(statsId).className = "stats-box show";
     document.getElementById(statsId).style.bottom = ""+(550 - 75 * parseInt(document.getElementById(statsId).getAttribute("data-order")) || 1) + "px";
 }
