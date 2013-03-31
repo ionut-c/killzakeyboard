@@ -69,7 +69,7 @@ function LoadLevel2(canvas, context, paths, id){
     
     var level = new Level(id, canvas.width, canvas.height);
     level.addWave(wave1);
-    //level.addWave(wave2);
+    level.addWave(wave2);
 
     return level;
 }

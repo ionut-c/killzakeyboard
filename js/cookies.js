@@ -65,7 +65,7 @@ function _getSound() {
 }
 function _resetSound() {
     var sound = "11";
-    document.cookie = "SRS=" + levels;
+    document.cookie = "SRS=" + sound;
     return sound;
 }
 Cookies.getSoundSettings = function getSoundSettings(type){

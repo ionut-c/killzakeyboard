@@ -103,7 +103,7 @@ function init(level) {
     player = new Player(20, canvas.height / 2, context, canvas.width, canvas.height);
     Hud.refreshProgressBar(0);
     document.getElementById("ProgressBar").style.display = "block";
-    var background = new Background(context, "assets/background.png", 3840, 180, 1920, 1080);
+    var background = new Background(context, "assets/background.png", 3840, 1080, canvas.width, canvas.height);
     var input = InputController();
     var extension = {"background": background,"input": input, "player": player, "canvas": canvas, "context": context, 'level': level };
     //console.profile();
