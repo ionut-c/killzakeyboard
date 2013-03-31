@@ -63,7 +63,6 @@ EnemySpawner.prototype.getSpawned = function EnemySpawner_getSpawned(deltaTime){
     this.elapsedTime += deltaTime;
         if(this.elapsedTime >= this.frequency && this.spawnedEnemies < this.numbers) {
             this.spawnedEnemies++;
-            refreshProgressBar((this.spawnedEnemies/totalEnemies)*100);
             this.elapsedTime = 0;
             return new this.enemyType(this.context, this.path);
         }

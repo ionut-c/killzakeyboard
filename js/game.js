@@ -50,14 +50,14 @@ Level.prototype.update = function Level_update(deltaTime){
     Hud.refreshProgressBar( this.killProc * 100 );
     if ( this.killProc == 1) {
 	this.over = true;
-	_levelUpdateUI();
+	_levelUpdateUI(this);
     }
     
     if(this.waves[this.waveIndex].hasEnded()){
         this.waveIndex++;
         if(this.waveIndex == this.waves.length ){
             this.over = true;
-	    _levelUpdateUI();
+	    _levelUpdateUI(this);
         }
     }
 }
