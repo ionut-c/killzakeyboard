@@ -38,19 +38,15 @@ Ionut
 **Programming**
 - bring W8A up to date (ongoing)
 - build ESCAPE menu (called when on game pause, closing the menu unpauses the game)
+- build PostScreen (as in .png for now)
+- concluding PostScreen sound (when killrate appears)
 
 **Candy**
 - koocha die sounds (2-4)
-- PostScreen animation (waiting for final layout)
-- PostScreen sounds (waiting for final layout)
 - finish ui design (waiting for Art)
 
 Notable Bugs
 ====
-- THE Cookie stopped working (conflict with SRS Cookie)
-- THE Cookie overrides the SRS Cookie with 50503... value after playing a game, sound system fails.
-
-___
 - Slower rendering/movment in Firefox (questionable, aditional testing required)
 - Levels end sooner than they should (suspecting enemy spawn system)
 - Suspicious Cookie Behaviour in Chrome - not creating cookies (might not apply anymore since THE Cookie, additional testing required).
