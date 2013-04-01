@@ -40,6 +40,7 @@ Ionut
 **Programming**
 - bring W8A to date (ongoing)
 - build ESCAPE menu (called when on game pause, closing the menu unpauses the game)
+- fix SFX sound for PostScreen
 
 **Candy**
 - koocha die sounds (2-4)
