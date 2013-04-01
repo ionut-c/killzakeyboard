@@ -1,7 +1,7 @@
 var Cookies = Cookies || { };
 
 var _header_size = 5;
-var _levels = 24;
+var _levels = 12;
 var _char_per_level = 4;
 // level[0,1] - level id
 // level[2] - unblocked or not
@@ -25,7 +25,7 @@ function _getLevels() {
 }
 Cookies.resetLevels = function _resetLevels() {
     var levels = "505040110";
-    for (var i = 2; i <= 24; i++) {
+    for (var i = 2; i <= _levels; i++) {
 	if( i < 10 ) { levels += +"0"; }
 	levels += i + "00";
     }
