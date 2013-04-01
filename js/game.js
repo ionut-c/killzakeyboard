@@ -23,18 +23,10 @@ Level.prototype.getReport = function Level_GetReport() {
     return this.raport;
 }
 Level.prototype.getCompletion = function Level_GetCompletion() {
-    if (this.raport >= 0.5 && this.raport < 0.75) {
-	   return  1;
-    }
-    else if (this.raport >= 0.75 && this.raport < 1) {
-	   return 2;
-    }
-    else if (this.raport === 1) {
-	   return 3;
-    }
-    else {
-        return 0;
-    }
+    if     (this.raport == 1.00 ) { return 3; }
+    else if(this.raport >= 0.75 ) { return 2; }
+    else if(this.raport >= 0.50 ) { return 1; }
+    else                          { return 0; }
 }
 Level.prototype.addWave = function Level_addWave(wave){
     this.totalEnemies += wave.getEnemiesCount();
@@ -48,16 +40,11 @@ Level.prototype.update = function Level_update(deltaTime){
     var spawned = this.waves[this.waveIndex].getSpawned(deltaTime);
     if( spawned != null){ this.entityManager.addEntities(spawned); }
     
-    this.killProc = this.entityManager.getKills() / this.totalEnemies;
+    this.raport = this.entityManager.getKills() / this.totalEnemies;
     //var proc = this.time / this.duration;
     var proc = this.entityManager.getTotalEntitiesCount() / this.totalEnemies;
     proc = Math.ceil(proc * 100);
     Hud.refreshProgressBar( proc );
-    if ( this.killProc == 1) {
-	this.over = true;
-	_levelUpdateUI(this);
-    }
-    
     if(this.waves[this.waveIndex].hasEnded()){
         this.waveIndex++;
         if(this.waveIndex == this.waves.length ){
