@@ -4,12 +4,14 @@ function EntityManager(maxX, maxY) {
     this.colliders = [];
     this.kills = 0;
     this.projectileTotalCount = 0;
+    this.entitiesTotalCount = 0;
 }
 EntityManager.prototype.addCollider = function EntityManager_addCollider(collider){
     this.projectileTotalCount += 1;
     this.colliders.push(collider);
 }
 EntityManager.prototype.addEntities = function EntityManager_addEntities(entities){
+    this.entitiesTotalCount += entities.length;
     this.entities = this.entities.concat(entities);
 }
 EntityManager.prototype.update = function EntityManager_update(deltaTime) {
@@ -49,6 +51,10 @@ EntityManager.prototype.getKills = function EntityManager_getKills(){
 EntityManager.prototype.getTotalProjectileCount = function EntityManager_getTotalProjectileCount(){
     return this.projectileTotalCount;
 }
+EntityManager.prototype.getTotalEntitiesCount = function EntityManager_getTotalEntitiesCount(){
+    return this.entitiesTotalCount;
+}
+
 function EnemySpawner(context, path, enemyType, numbers, frequency) {
     this.elapsedTime = 0;
     this.spawnedEnemies = 0;
