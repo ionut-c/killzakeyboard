@@ -1,61 +1,43 @@
 var Sound = Sound || {};
-
-var Music;
-
-if(Audio !== undefined)
-{
-var shootSnd2 = new Audio('assets/shoot.ogg');
-}
-
-Sound.shoot = function shootSound(){
-    if(Cookies.getSoundSettings("sfx") == 1 && Audio !== undefined){
-	var temp = shootSnd2;
-	temp.play();
-    }
-}
-
-Sound.playMusic = function playMusic(){
-    if(Cookies.getSoundSettings("music") == 1 && Audio !== undefined){
-	Music = new Audio('assets/thebeat.ogg');
-	Music.loop = true;
-	Music.play();
-    }
-}
-Sound.pauseMusic = function pauseMusic(){
-    if (Music != undefined) {
-	Music.pause();
-    }
-}
-var shootSnd = "assets/shoot";
-var statsSnd = "assets/postscreen_stats";
 var temp;
+var music;
 
-function playSFX(sound)
-{
-	if(Cookies.getSoundSettings("sfx") === 1 && Audio !== undefined)
-	{
+Sound.SFXConst = {
+				shoot: "assets/shoot",
+				stats: "assets/postscreen_stats"
+			}
+Sound.MusicConst = {
+				music1: "assets/thebeat",
+			}
+
+Sound.playSFX = function playSFX(soundConst){
+    if(Cookies.getSoundSettings("sfx") == 1 && Audio !== undefined){
 		temp = null;
-		temp = new Audio(sound+".ogg");
+		temp = new Audio(soundConst+".ogg");
 		if(!temp.canPlayType('audio/ogg'))
 		{
-			temp = new Audio(sound+".mp3");
+			temp = new Audio(soundConst+".mp3");
 		}
 		temp.volume = 0.8;
 		temp.play();
-	}
+    }
 }
 
-function playMusic()
-{
-	if(Cookies.getSoundSettings("music") === 1 && Audio !== undefined)
-	{
-	    gameMusic = new Audio('assets/thebeat.ogg');
-	    if(!gameMusic.canPlayType('audio/ogg'))
+Sound.playMusic = function playMusic(musicConst){
+    if(Cookies.getSoundSettings("music") == 1 && Audio !== undefined){
+    	music = null;
+	    music = new Audio(musicConst+'.ogg');
+	    if(!music.canPlayType('audio/ogg'))
 		{
-			gameMusic = new Audio('assets/thebeat.mp3');
+			music = new Audio(musicConst+'.mp3');
 		}
-		gameMusic.loop = true;
-		gameMusic.volume = 0.6;
-		gameMusic.play();
-	}
+		music.loop = true;
+		music.volume = 0.4;
+		music.play();
+    }
+}
+Sound.pauseMusic = function pauseMusic(){
+    if (music != undefined) {
+		music.pause();
+    }
 }
