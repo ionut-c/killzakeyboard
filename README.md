@@ -8,10 +8,11 @@ ___
 ###[Queuing Features]
 - Experimental Post Screen
 - Sound prefferences
-- New Enemy spawning (waiting)
+- New Enemy spawning
 - Full HD User Interface
 - Full HD Canvas
 - Sound support (MP3)
+- Namespaces
 
 ___
 
@@ -19,10 +20,7 @@ Dragos
 ======
 
 **Programming**
-- define 3 levels
-- enemy spawning overhaul
-- change level selection from 5 levels to 12 (number is discussible)
-- display stats in PostScreen (plain text)
+- define 12 levels
 - increase canvas objects/assets by 87.5% (background already increased)
 - pause game on ESCAPE
 
@@ -38,9 +36,8 @@ Ionut
 =====
 
 **Programming**
-- bring W8A to date (ongoing)
+- bring W8A up to date (ongoing)
 - build ESCAPE menu (called when on game pause, closing the menu unpauses the game)
-- fix SFX sound for PostScreen
 
 **Candy**
 - koocha die sounds (2-4)
