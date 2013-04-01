@@ -49,7 +49,8 @@ Level.prototype.update = function Level_update(deltaTime){
     if( spawned != null){ this.entityManager.addEntities(spawned); }
     
     this.killProc = this.entityManager.getKills() / this.totalEnemies;
-    var proc = this.time / this.duration;
+    //var proc = this.time / this.duration;
+    var proc = this.entityManager.getTotalEntitiesCount() / this.totalEnemies;
     proc = Math.ceil(proc * 100);
     Hud.refreshProgressBar( proc );
     if ( this.killProc == 1) {
