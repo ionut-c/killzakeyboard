@@ -4,7 +4,7 @@ function showLevelSelect() {
     document.getElementById("WrapsLevels").style.display = "block";
     var wrapsLevels = document.getElementById("WrapsLevels");
     var levels = Array();
-    for (i = 1; i <= 24; i++) {
+    for (i = 1; i <= 12; i++) {
     	var completion = Cookies.getLevelCompletion(i);
 	var unlocked = Cookies.isLevelUnlocked(i);
     	levels.push({ "order": i, "unlocked": unlocked, "completed": completion })
@@ -80,8 +80,7 @@ function showStats(){
 } 
 function animateStats(statsId)
 {
-    //setTimeout(function(){Sound.shoot();},400);
-    setTimeout(function(){playSFX(statsSnd);},300);
+    setTimeout(function(){Sound.playSFX(Sound.SFXConst.stats);},300);
     document.getElementById(statsId).className = "stats-box show";
     document.getElementById(statsId).style.bottom = ""+(550 - 75 * parseInt(document.getElementById(statsId).getAttribute("data-order")) || 1) + "px";
 }

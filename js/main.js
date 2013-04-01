@@ -85,7 +85,7 @@ function draw(time) {
 }
 var player;
 function init(level) {
-    Sound.playMusic();
+    Sound.playMusic(Sound.MusicConst.music1);
     prev = 0;
     totalEnemies = 0;
     deltaTime = 0;

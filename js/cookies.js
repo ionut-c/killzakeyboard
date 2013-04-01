@@ -1,7 +1,7 @@
 var Cookies = Cookies || { };
 
 var _header_size = 5;
-var _levels = 24;
+var _levels = 12;
 var _char_per_level = 4;
 // level[0,1] - level id
 // level[2] - unblocked or not
