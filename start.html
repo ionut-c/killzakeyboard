@@ -72,13 +72,17 @@
             <a onclick="showTitleScreen();" class="close-button">X</a>
             <button id="ScoreScreenTest" onclick="showStats(this);" style="width: 120px; position:absolute; left: 10px; top: 10px">End Level</button>
             <div id="Conclusion" class="stats-box" data-order="1">YOU FREAKING ROCK!</div>
-            <div id="KilledStats" class="stats-box" data-order="2">You killed: 1500 Koochas</div>
-            <div id="MissedStats" class="stats-box" data-order="3">You missed: 32 Koochas</div>
+            <div id="KilledStats" class="stats-box" data-order="2">You killed 0 koochas.</div>
+            <div id="MissedStats" class="stats-box" data-order="3">You missed 0 times.</div>
             <div id="KillRate" class="kill-rate-box">
                 <h2>Kill Rate</h2>
                 <hr />
                 <div id="KRStars"></div>
                 <div id="KRPercentage">0%</div>
+            </div>
+            <div id="ScoreScreenNav">
+                <button id="NextLevel">NEXT</button>
+                <button id="ReplayLevel">REPLAY</button>
             </div>
         </div>
     	<div class="canvasHolder" id="canvasHolder">
