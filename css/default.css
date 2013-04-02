@@ -163,6 +163,9 @@ button.disabled {
     color: #fff;
     overflow: hidden;
 }
+#WrapsScoreScreen.winner {
+    background: url('../assets/scorescreen_2.png') 600px center no-repeat #333;
+}
 #WrapsPauseMenu {
     right: 700px;
     top: 150px;
@@ -236,6 +239,35 @@ button.disabled {
 .kill-rate-box #KRStars.s3 {
     background-position: -1587px 0;
     /*background: url('../assets/krs_3.png') 0 0 no-repeat;*/
+}
+#ScoreScreenNav {
+    position: absolute;
+    display: none;
+    right: 20px;
+    width: 400px;
+    top: 100px;
+}
+#NextLevel {
+    background: #0d86cc;
+    border-radius: 10px;
+    border: 0;
+    width: 100%;
+    line-height: 90px;
+    text-indent: 10px;
+    padding: 0;
+    text-align: left;
+    font-size: 60px;
+}
+#ReplayLevel {
+    background: #5e5e5e;
+    border-radius: 10px;
+    border: 0;
+    width: 100%;
+    line-height: 40px;
+    text-indent: 10px;
+    padding: 0;
+    text-align: left;
+    font-size: 30px;
 }
 #WrapsSettings h2, #WrapsLevels h2 {
     float: left;
