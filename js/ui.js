@@ -87,27 +87,68 @@ function showScoreScreen() {
     setTimeout(function(){showStats()},200);
 }
 function showStats(){
+    animateKillRate(100);
     document.getElementById("ScoreScreenTest").setAttribute("onclick","devResetStats();");
     document.getElementById("ScoreScreenTest").innerHTML = "RESET";
-    animateStats("KilledStats");
-    setTimeout(function(){animateStats("MissedStats")},400);
-    setTimeout(function(){animateStats("Conclusion")},800);
+    animateStats("Conclusion");
+    setTimeout(function(){animateStats("KilledStats")},400);
+    setTimeout(function(){animateStats("MissedStats")},800);
 } 
 function animateStats(statsId)
 {
     setTimeout(function(){Sound.playSFX(Sound.SFXConst.stats);},300);
     document.getElementById(statsId).className = "stats-box show";
-    document.getElementById(statsId).style.bottom = ""+(550 - 75 * parseInt(document.getElementById(statsId).getAttribute("data-order")) || 1) + "px";
+    document.getElementById(statsId).style.bottom = "" + (400 - 115 * parseInt(document.getElementById(statsId).getAttribute("data-order")) || 1) + "px";
+}
+function animateKillRate(currentPercentage)
+{
+    currentPercentage = parseInt(currentPercentage);
+    var actualPercentage = document.getElementById("KRPercentage").innerHTML;
+    actualPercentage = parseInt(actualPercentage.substr(0,actualPercentage.indexOf("%")));
+    var int = setInterval(function() { 
+        if(actualPercentage < currentPercentage)
+        {
+            if(currentPercentage >= 50 && actualPercentage < 50)
+            {
+                actualPercentage = 50;
+                Sound.playSFX(Sound.SFXConst.shoot);
+                document.getElementById("KRStars").className = "s1";
+            }
+            else if(currentPercentage >= 75 && actualPercentage < 75)
+            {
+                actualPercentage = 75;
+                Sound.playSFX(Sound.SFXConst.shoot);
+                document.getElementById("KRStars").className = "s2";
+            }
+            else if(currentPercentage == 100 && actualPercentage < 100)
+            {
+                actualPercentage = 100;
+                Sound.playSFX(Sound.SFXConst.shoot);
+                document.getElementById("KRStars").className = "s3";
+            }
+            else
+            {
+                actualPercentage = currentPercentage;
+            }
+            document.getElementById("KRPercentage").innerHTML = actualPercentage + "%";
+        }
+        else
+        {
+            clearInterval(int);
+        }
+    },400);
 }
 function devResetStats(){
     document.getElementById("ScoreScreenTest").setAttribute("onclick","showStats();");
     document.getElementById("ScoreScreenTest").innerHTML = "End Level";
-    document.getElementById("KilledStats").style.bottom = "-35px";
+    document.getElementById("KilledStats").style.bottom = "-80px";
     document.getElementById("KilledStats").className = "stats-box";
-    document.getElementById("MissedStats").style.bottom = "-35px";
+    document.getElementById("MissedStats").style.bottom = "-80px";
     document.getElementById("MissedStats").className = "stats-box";
-    document.getElementById("Conclusion").style.bottom = "-35px";
+    document.getElementById("Conclusion").style.bottom = "-80px";
     document.getElementById("Conclusion").className = "stats-box";
+    document.getElementById("KRPercentage").innerHTML = "0%";
+    document.getElementById("KRStars").className = "";
 }
 function updateKilledStats(value) {
     document.getElementById("KilledStats").innerHTML = "You killed " + value + " koochas.";
