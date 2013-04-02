@@ -2,18 +2,10 @@
 ==============
 ___
 
-##W8A - Last Updated: 29.03.2013
-- Added Sound, THE Cookie, Scaling, Progress Bar
+##W8A - Last Updated: 02.04.2013
+- Experimental Post Screen, Sound prefferences, New Enemy spawning, Full HD User Interface, Full HD Canvas, Sound support (MP3), Namespaces, New Score Screen
 
 ###[Queuing Features]
-- Experimental Post Screen
-- Sound prefferences
-- New Enemy spawning
-- Full HD User Interface
-- Full HD Canvas
-- Sound support (MP3)
-- Namespaces
-- New Score Screen
 
 ___
 
@@ -38,6 +30,7 @@ Ionut
 
 **Programming**
 - bring W8A up to date (ongoing)
+- make divs for level completion stars
 
 **Candy**
 - koocha die sounds (2-4)
