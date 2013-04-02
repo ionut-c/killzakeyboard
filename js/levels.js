@@ -44,7 +44,7 @@ function getLevel(level, canvas, context){
     return 0;
 }
 function LoadLevel1(canvas, context, paths, id){    
-    var spawner1 = new EnemySpawner(context, paths[0], Bird, 10, 1000);
+    var spawner1 = new EnemySpawner(context, paths[0], Bird, 2, 1000);
     var spawner2 = new EnemySpawner(context, paths[1], Bird, 10, 1000);
     var spawner3 = new EnemySpawner(context, paths[0], Bird, 10, 1000);
     var spawner4 = new EnemySpawner(context, paths[1], Bird, 10, 1000);

@@ -14,6 +14,30 @@ var sx = 1, sy = 1;
 var gameWidth = 1920;
 var gameHeight = 1080;
 
+var paused = false;
+var _esc_up = true;
+
+function updatePause( context, canvas, value ) {
+    console.log( paused !== value );
+    if ( _esc_up == true && paused != value ) {
+	console.log( _esc_up);
+	console.log( paused);
+	console.log( value);
+	paused = value;
+	if ( paused == true ) {
+	    context.save();
+	    context.fillStyle = "rgba( 0, 0, 0, 0.2)"; 
+	    context.fillRect(0, 0, canvas.width, canvas.height );
+	    context.restore();
+	}
+    }
+    if ( value == false ) {
+	_esc_up = true;
+    } else {
+	_esc_up = false;
+    }
+}
+
 window.onresize = function(event) {
     scale();
 }
@@ -50,9 +74,13 @@ function gameLoop(time){
         deltaTime = time - prev;
     }
     prev = time;
+    //console.log( this.input.checkKey(27) );
+    updatePause( this.context, this.canvas, this.input.checkKey(27) );
 
-    draw.call(this, deltaTime);
-    process.call(this, deltaTime);
+    if ( !paused ) {
+	draw.call(this, deltaTime);
+	process.call(this, deltaTime);
+    }
 
     if ( this.level.isOver() ){
 	document.getElementById("canvas").style.display = "none";
