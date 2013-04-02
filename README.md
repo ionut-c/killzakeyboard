@@ -13,6 +13,7 @@ ___
 - Full HD Canvas
 - Sound support (MP3)
 - Namespaces
+- New Score Screen
 
 ___
 
@@ -37,9 +38,6 @@ Ionut
 
 **Programming**
 - bring W8A up to date (ongoing)
-- build ESCAPE menu (called when on game pause, closing the menu unpauses the game)
-- build PostScreen (as in .png for now)
-- concluding PostScreen sound (when killrate appears)
 
 **Candy**
 - koocha die sounds (2-4)
@@ -52,6 +50,9 @@ Notable Bugs
 
 Backlog
 =====
+- Make ScoreScreen Kill Rate Work
+- Make ScoreScreen Next (play Next Level) - still need to discuss about losing a level and hiding this button also hiding the button on the last level
+- Make Scorescreen Replay (replay current Level) - available after any level
 
 Known Issues / Abandoned
 =====
