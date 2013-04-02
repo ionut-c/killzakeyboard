@@ -57,7 +57,7 @@ function gameLoop(time){
     if ( this.level.isOver() ){
 	document.getElementById("canvas").style.display = "none";
 	document.getElementById("ProgressBar").style.display = "none";
-	showPostScreen();
+	showScoreScreen();
 	Sound.pauseMusic();
         Cookies.setLevelCompletion(this.level.getId(),this.level.getCompletion());
     } else {
