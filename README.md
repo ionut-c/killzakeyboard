@@ -47,16 +47,17 @@ Ionut
 
 Notable Bugs
 ====
-- Slower rendering/movment in Firefox (questionable, aditional testing required)
+- Slower rendering/movement in Firefox (questionable, aditional testing required)
 - Levels end sooner than they should (suspecting enemy spawn system)
-- Suspicious Cookie Behaviour in Chrome - not creating cookies (might not apply anymore since THE Cookie, additional testing required).
 
 Backlog
 =====
 
-Other Issues / Abandoned
+Known Issues / Abandoned
 =====
 - No Support for Opera (requestAnimationFrame not available)
 - No Support for Safari (requestAnimationFrame not available)
 - Chrome plays PostScreen sounds lower than normal after playing shootSnd and Music
 - Silent Gap when loopping music in Firefox (declared bug on Bugzilla)
+- (only locally) IE requests to allow block content
+- (only locally) Chrome must be started with the following parameter: --enable-file-cookies, to store cookies

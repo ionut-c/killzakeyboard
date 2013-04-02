@@ -35,7 +35,7 @@
             </ul>
         </div>
         <div id="WrapsSettings">
-            <a onclick="showTitleScreen();" id="Close" class="close-button">X</a>
+            <a onclick="showTitleScreen();" class="close-button">X</a>
             <br /><h1>Settings</h1>
             <div style="clear:both"></div>
         	<br /><button onclick="Cookies.resetLevels();" class="title-button" id="Reset">Reset Progress</button>
@@ -48,12 +48,29 @@
             <div class="navigation">
                 <button onclick="showLevelSelect();" class="title-button" id="Start">Obliterate Koochas</button>
                 <button onclick="showSettings();" class="title-button" id="Settings">Settings</button>
-                <button onclick="showPostScreen();" class="title-button" id="Settings">[DEV] PostScreen</button>
+                <button onclick="showScoreScreen();" class="title-button" id="ScoreScreen">[DEV] Score Screen</button>
+                <button onclick="showPauseMenu();" class="title-button" id="PauseMenu">[DEV] Pause Menu</button>
             </div>
         </div>
-        <div id="WrapsPostScreen">
-            <a onclick="showTitleScreen();" id="Close" class="close-button">X</a>
-            <button id="PostScreenTest" onclick="showStats(this);" style="width: 120px; position:absolute; left: 10px; top: 10px">End Level</button>
+        <div id="WrapsPauseMenu">
+            <a onclick="showTitleScreen();" class="close-button">X</a>
+            <br /><h1>Pause</h1>
+            <div class="button-group">
+                <button onclick="showTitleScreen()" class="title-button" id="Resume">RESUME</button>
+                <br /><button onclick="showTitleScreen()" class="title-button" id="RestartLevel">Restart Level</button>
+                <br /><button onclick="showLevelSelect()" class="title-button" id="ChangeLevel">Change Level</button>
+            </div>
+            <div class="button-group">
+                <button onclick="Cookies.toggleSound(this);" class="title-button" id="PMToggleMusic"></button>
+                <br /><button onclick="Cookies.toggleSound(this);" class="title-button" id="PMToggleSFX"></button>
+            </div>
+            <div class="button-group">
+                <button onclick="showTitleScreen()" class="title-button" id="EndLevel">BACK TO MAIN MENU</button>
+            </div>
+        </div>
+        <div id="WrapsScoreScreen">
+            <a onclick="showTitleScreen();" class="close-button">X</a>
+            <button id="ScoreScreenTest" onclick="showStats(this);" style="width: 120px; position:absolute; left: 10px; top: 10px">End Level</button>
             <div id="KilledStats" class="stats-box" data-order="1">You killed: 1500 Koochas</div>
             <div id="MissedStats" class="stats-box" data-order="2">You missed: 32 Koochas</div>
             <div id="Conclusion" class="stats-box" data-order="3">YOU FREAKING ROCK!</div>
