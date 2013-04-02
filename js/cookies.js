@@ -84,8 +84,11 @@ Cookies.toggleSound = function toggleSound(element){
     var sound = _getSound().split("");
     var index = -1;
     
-    if ( element.id == "ToggleMusic" || element.id == "PMToggleMusic") { index = 0; }
-    if ( element.id == "ToggleSFX" || element.id == "PMToggleSFX")   { index = 1; }
+    var testMusic  = element.id.search("ToggleMusic");
+    var testSFX  = element.id.search("ToggleSFX");
+    
+    if ( testMusic != -1) { index = 0; }
+    if ( testSFX   != -1) { index = 1; }
     
     if ( sound[index] == 0) {
 	sound[index] = 1;
