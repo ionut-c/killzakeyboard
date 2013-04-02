@@ -87,7 +87,7 @@ function showScoreScreen() {
     setTimeout(function(){showStats()},200);
 }
 function showStats(){
-    animateKillRate(100);
+    setTimeout(function(){animateKillRate(100);},1300);
     document.getElementById("ScoreScreenTest").setAttribute("onclick","devResetStats();");
     document.getElementById("ScoreScreenTest").innerHTML = "RESET";
     animateStats("Conclusion");
@@ -111,19 +111,19 @@ function animateKillRate(currentPercentage)
             if(currentPercentage >= 50 && actualPercentage < 50)
             {
                 actualPercentage = 50;
-                Sound.playSFX(Sound.SFXConst.shoot);
+                Sound.playSFX(Sound.SFXConst.stats);
                 document.getElementById("KRStars").className = "s1";
             }
             else if(currentPercentage >= 75 && actualPercentage < 75)
             {
                 actualPercentage = 75;
-                Sound.playSFX(Sound.SFXConst.shoot);
+                Sound.playSFX(Sound.SFXConst.stats);
                 document.getElementById("KRStars").className = "s2";
             }
             else if(currentPercentage == 100 && actualPercentage < 100)
             {
                 actualPercentage = 100;
-                Sound.playSFX(Sound.SFXConst.shoot);
+                Sound.playSFX(Sound.SFXConst.stats);
                 document.getElementById("KRStars").className = "s3";
             }
             else
@@ -134,6 +134,9 @@ function animateKillRate(currentPercentage)
         }
         else
         {
+            Sound.playSFX(Sound.SFXConst.stats);
+            document.getElementById("ScoreScreenNav").style.display = "block"
+            document.getElementById("WrapsScoreScreen").className = "winner";
             clearInterval(int);
         }
     },400);
@@ -149,6 +152,8 @@ function devResetStats(){
     document.getElementById("Conclusion").className = "stats-box";
     document.getElementById("KRPercentage").innerHTML = "0%";
     document.getElementById("KRStars").className = "";
+    document.getElementById("ScoreScreenNav").style.display = "none"
+    document.getElementById("WrapsScoreScreen").className = "";
 }
 function updateKilledStats(value) {
     document.getElementById("KilledStats").innerHTML = "You killed " + value + " koochas.";
