@@ -30,13 +30,13 @@
         </div>
         <div id="WrapsLevels">
             <a onclick="showTitleScreen();" id="A1" class="close-button">X</a>
-            <br /><h1>Level Select</h1>
+            <br /><h2>Level Select</h2>
             <ul id="Levels">
             </ul>
         </div>
         <div id="WrapsSettings">
             <a onclick="showTitleScreen();" class="close-button">X</a>
-            <br /><h1>Settings</h1>
+            <br /><h2>Settings</h2>
             <div style="clear:both"></div>
         	<br /><button onclick="Cookies.resetLevels();" class="title-button" id="Reset">Reset Progress</button>
             <br /><button onclick="Cookies.toggleSound(this);" class="title-button" id="ToggleMusic"></button>
@@ -54,7 +54,7 @@
         </div>
         <div id="WrapsPauseMenu">
             <a onclick="showTitleScreen();" class="close-button">X</a>
-            <br /><h1>Pause</h1>
+            <br /><h2>Pause</h2>
             <div class="button-group">
                 <button onclick="showTitleScreen()" class="title-button" id="Resume">RESUME</button>
                 <br /><button onclick="showTitleScreen()" class="title-button" id="RestartLevel">Restart Level</button>
@@ -71,9 +71,15 @@
         <div id="WrapsScoreScreen">
             <a onclick="showTitleScreen();" class="close-button">X</a>
             <button id="ScoreScreenTest" onclick="showStats(this);" style="width: 120px; position:absolute; left: 10px; top: 10px">End Level</button>
-            <div id="KilledStats" class="stats-box" data-order="1">You killed: 1500 Koochas</div>
-            <div id="MissedStats" class="stats-box" data-order="2">You missed: 32 Koochas</div>
-            <div id="Conclusion" class="stats-box" data-order="3">YOU FREAKING ROCK!</div>
+            <div id="Conclusion" class="stats-box" data-order="1">YOU FREAKING ROCK!</div>
+            <div id="KilledStats" class="stats-box" data-order="2">You killed: 1500 Koochas</div>
+            <div id="MissedStats" class="stats-box" data-order="3">You missed: 32 Koochas</div>
+            <div id="KillRate" class="kill-rate-box">
+                <h2>Kill Rate</h2>
+                <hr />
+                <div id="KRStars"></div>
+                <div id="KRPercentage">0%</div>
+            </div>
         </div>
     	<div class="canvasHolder" id="canvasHolder">
     		<canvas style="background-color:#00a2ff" height="0" id="canvas">

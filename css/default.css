@@ -114,7 +114,7 @@ button.disabled {
     width: 100px;
     display: block;
     border: 4px solid #fff;
-    background: #00a2ff;
+    background: #33B4FF;
     border-radius: 100px;
     line-height: 145px;
     cursor: pointer;
@@ -127,6 +127,7 @@ button.disabled {
 }
 .close-button:hover, .level:hover, .level.completed:hover {
     background: #fff!important;
+    color: #333;
 }
 .debug {
     width: 273px;
@@ -153,11 +154,10 @@ button.disabled {
     display: none;
     text-align: center;
     position: absolute;
-    left: 100px;
-    border: 2px solid #333;
-    right: 100px;
-    bottom: 100px;
-    top: 100px;
+    left: 150px;
+    right: 150px;
+    bottom: 150px;
+    top: 150px;
     border-radius: 15px 0 15px 15px;
     background: #333;
     color: #fff;
@@ -170,7 +170,6 @@ button.disabled {
     left: 700px;
 }
 .stats-box.show {
-    border: 2px solid #fff;
     color: #fff;
 }
 .stats-box {
@@ -179,18 +178,66 @@ button.disabled {
     -o-transition: all 0.8s cubic-bezier(1, -0.53, 0.0, 1.1);
     -moz-transition: all 0.8s cubic-bezier(1, -0.53, 0.0, 1.1);
     font-size: 24px;
-    height: 50px;
     border: 2px solid transparent;
-    width: 600px;
+    height: 80px;
+    line-height: 80px;
+    width: 400px;
     color: #333;
     position: absolute;
-    bottom: -35px;
+    bottom: -80px;
     right: 20px;
     border-radius: 12px;
-    background: #333;
-    line-height: 50px;
+    background: #222;
 }
-#WrapsSettings h1, #WrapsLevels h1 {
+.kill-rate-box {
+    transition: all 0.8s cubic-bezier(1, -0.53, 0.0, 1.1);
+    -webkit-transition: all 0.8s cubic-bezier(1, -0.53, 0.0, 1.1);
+    -o-transition: all 0.8s cubic-bezier(1, -0.53, 0.0, 1.1);
+    -moz-transition: all 0.8s cubic-bezier(1, -0.53, 0.0, 1.1);
+    background: #222;
+    width: 550px;
+    color: #222;
+    height: 600px;
+    border-radius: 20px;
+    font-size: 175px;
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+}
+.kill-rate-box h2 {
+    font-size: 80px;
+    line-height: 80px;
+    margin: 30px 0 0;
+    padding: 0;
+}
+.kill-rate-box hr {
+    color: #777;
+    margin: 5px 20px 15px 20px;
+}
+.kill-rate-box #KRPercentage {
+    position: absolute;
+    bottom: 20px;
+    width: 550px;
+    text-align: center;
+}
+.kill-rate-box #KRStars {
+    width: 529px;
+    height: 272px;
+    background: url('../assets/killrate_stars.png') 0 0 no-repeat;
+}
+.kill-rate-box #KRStars.s1 {
+    background-position: -529px 0;
+    /*background: url('../assets/krs_1.png') 0 0 no-repeat;*/
+}
+.kill-rate-box #KRStars.s2 {
+    background-position: -1058px 0;
+    /*background: url('../assets/krs_2.png') 0 0 no-repeat;*/
+}
+.kill-rate-box #KRStars.s3 {
+    background-position: -1587px 0;
+    /*background: url('../assets/krs_3.png') 0 0 no-repeat;*/
+}
+#WrapsSettings h2, #WrapsLevels h2 {
     float: left;
     font-weight: normal;
     margin: 20px 20px 0 30px;
@@ -198,7 +245,7 @@ button.disabled {
     padding-top: 0;
     font-size: 56px;
 }
-#WrapsPauseMenu h1 
+#WrapsPauseMenu h2 
 {
     text-align: left;
     font-weight: normal;
