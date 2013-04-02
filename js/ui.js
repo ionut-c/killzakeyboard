@@ -1,6 +1,5 @@
 function showLevelSelect() {
-    document.getElementById("Levels").innerHTML = "";
-    document.getElementById("WrapsTitle").style.display = "none";
+    clearUI();
     document.getElementById("WrapsLevels").style.display = "block";
     var wrapsLevels = document.getElementById("WrapsLevels");
     var levels = Array();
@@ -42,11 +41,27 @@ function clearUI() {
     document.getElementById("WrapsLevels").style.display = "none";
     document.getElementById("WrapsSettings").style.display = "none";
     document.getElementById("WrapsTitle").style.display = "none";
-    document.getElementById("WrapsPostScreen").style.display = "none";
+    document.getElementById("WrapsScoreScreen").style.display = "none";
+    document.getElementById("WrapsPauseMenu").style.display = "none";
 }
 function showTitleScreen() {
     clearUI();
     document.getElementById("WrapsTitle").style.display = "block";
+}
+function showPauseMenu() {
+    clearUI();
+    document.getElementById("WrapsPauseMenu").style.display = "block";
+    if(Cookies.getSoundSettings("music") == 0){
+        document.getElementById("PMToggleMusic").innerHTML = "Music is Off";
+    } else {
+        document.getElementById("PMToggleMusic").innerHTML = "Music is On";
+    }
+    
+    if(Cookies.getSoundSettings("sfx") == 0){
+        document.getElementById("PMToggleSFX").innerHTML = "SFX is Off";
+    } else {
+        document.getElementById("PMToggleSFX").innerHTML = "SFX is On";
+    }
 }
 function showSettings() {
     clearUI();
@@ -65,15 +80,15 @@ function showSettings() {
         document.getElementById("ToggleSFX").innerHTML = "SFX is On";
     }
 }
-function showPostScreen() {
+function showScoreScreen() {
     clearUI();
     devResetStats();
-    document.getElementById("WrapsPostScreen").style.display = "block";
+    document.getElementById("WrapsScoreScreen").style.display = "block";
     setTimeout(function(){showStats()},200);
 }
 function showStats(){
-    document.getElementById("PostScreenTest").setAttribute("onclick","devResetStats();");
-    document.getElementById("PostScreenTest").innerHTML = "RESET";
+    document.getElementById("ScoreScreenTest").setAttribute("onclick","devResetStats();");
+    document.getElementById("ScoreScreenTest").innerHTML = "RESET";
     animateStats("KilledStats");
     setTimeout(function(){animateStats("MissedStats")},400);
     setTimeout(function(){animateStats("Conclusion")},800);
@@ -85,8 +100,8 @@ function animateStats(statsId)
     document.getElementById(statsId).style.bottom = ""+(550 - 75 * parseInt(document.getElementById(statsId).getAttribute("data-order")) || 1) + "px";
 }
 function devResetStats(){
-    document.getElementById("PostScreenTest").setAttribute("onclick","showStats();");
-    document.getElementById("PostScreenTest").innerHTML = "End Level";
+    document.getElementById("ScoreScreenTest").setAttribute("onclick","showStats();");
+    document.getElementById("ScoreScreenTest").innerHTML = "End Level";
     document.getElementById("KilledStats").style.bottom = "-35px";
     document.getElementById("KilledStats").className = "stats-box";
     document.getElementById("MissedStats").style.bottom = "-35px";

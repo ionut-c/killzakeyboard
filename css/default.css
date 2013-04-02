@@ -88,6 +88,9 @@ button {
     border-radius: 12px;
     padding: 15px 0;
 }
+.button-group {
+    margin: 50px 0;
+}
 button:hover, button:focus, button:active {
     background: #fff;
     color: #333;
@@ -146,7 +149,7 @@ button.disabled {
     left: 0;
     bottom: 0;
 }
-#WrapsSettings, #WrapsLevels, #WrapsPostScreen {
+#WrapsPauseMenu, #WrapsSettings, #WrapsLevels, #WrapsScoreScreen {
     display: none;
     text-align: center;
     position: absolute;
@@ -159,6 +162,12 @@ button.disabled {
     background: #333;
     color: #fff;
     overflow: hidden;
+}
+#WrapsPauseMenu {
+    right: 700px;
+    top: 150px;
+    bottom: 150px;
+    left: 700px;
 }
 .stats-box.show {
     border: 2px solid #fff;
@@ -186,6 +195,15 @@ button.disabled {
     font-weight: normal;
     margin: 20px 20px 0 30px;
     line-height: 30px;
+    padding-top: 0;
+    font-size: 56px;
+}
+#WrapsPauseMenu h1 
+{
+    text-align: left;
+    font-weight: normal;
+    margin: 20px 0px 40px 30px;
+    line-height: 40px;
     padding-top: 0;
     font-size: 56px;
 }
