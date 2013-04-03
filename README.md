@@ -16,6 +16,10 @@ Dragos
 - define 12 levels
 - increase canvas objects/assets by 87.5% (background already increased)
 - pause game on ESCAPE
+- pause game on blur
+- ScoreScreen Real Kill Rate
+- ScoreScreen Next button (play Next Level) - only show Replay button if level was lost (not enough kill rate), hide button when last level was completed
+- Scorescreen Replay (replay current Level) - available after any level
 
 **Art**
 - level completion stars
@@ -31,6 +35,8 @@ Ionut
 **Programming**
 - bring W8A up to date (ongoing)
 - make divs for level completion stars
+- folder structure
+- check namespaces
 
 **Candy**
 - koocha die sounds (2-4)
@@ -43,9 +49,6 @@ Notable Bugs
 
 Backlog
 =====
-- Make ScoreScreen Kill Rate Work
-- Make ScoreScreen Next (play Next Level) - still need to discuss about losing a level and hiding this button also hiding the button on the last level
-- Make Scorescreen Replay (replay current Level) - available after any level
 
 Known Issues / Abandoned
 =====
