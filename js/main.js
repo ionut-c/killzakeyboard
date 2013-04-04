@@ -15,27 +15,22 @@ var gameWidth = 1920;
 var gameHeight = 1080;
 
 var paused = false;
-var _esc_up = true;
+var prev_state = false;
 
 function updatePause( context, canvas, value ) {
-    console.log( paused !== value );
-    if ( _esc_up == true && paused != value ) {
-	console.log( _esc_up);
-	console.log( paused);
-	console.log( value);
-	paused = value;
-	if ( paused == true ) {
-	    context.save();
-	    context.fillStyle = "rgba( 0, 0, 0, 0.2)"; 
-	    context.fillRect(0, 0, canvas.width, canvas.height );
-	    context.restore();
-	}
+    if ( prev_state == false && value == true ) {
+	paused = !paused;
+	showPauseMenu();
+	context.save();
+	context.fillStyle = "rgba( 0, 0, 0, 0.2)"; 
+	context.fillRect(0, 0, canvas.width, canvas.height );
+	context.restore();
     }
-    if ( value == false ) {
-	_esc_up = true;
-    } else {
-	_esc_up = false;
+    if( !paused ){
+	clearUI();
     }
+    prev_state = value;
+
 }
 
 window.onresize = function(event) {
