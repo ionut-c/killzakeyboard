@@ -11,7 +11,7 @@ Sound.MusicConst = {
 			}
 
 Sound.playSFX = function playSFX(soundConst){
-    if(Cookies.getSoundSettings("sfx") == 1 && Audio !== undefined){
+    if(Storage.getSoundSettings("sfx") == 1 && Audio !== undefined){
 		temp = null;
 		temp = new Audio(soundConst+".ogg");
 		if(!temp.canPlayType('audio/ogg'))
@@ -24,7 +24,7 @@ Sound.playSFX = function playSFX(soundConst){
 }
 
 Sound.playMusic = function playMusic(musicConst){
-    if(Cookies.getSoundSettings("music") == 1 && Audio !== undefined){
+    if(Storage.getSoundSettings("music") == 1 && Audio !== undefined){
     	music = null;
 	    music = new Audio(musicConst+'.ogg');
 	    if(!music.canPlayType('audio/ogg'))

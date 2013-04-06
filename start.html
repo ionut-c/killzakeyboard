@@ -5,21 +5,27 @@
     <title>Modules</title>
     <link href="css/default.css" rel="stylesheet" />
 
-    <script src="js/main.js"></script>
-    <script src="js/levels.js"></script>
-    <script src="js/utilities.js"></script>
-    <script src="js/input.js"></script>
-    <script src="js/paths.js"></script>
-    <script src="js/sound.js"></script>
-    <script src="js/hud.js"></script>
-    <script src="js/animations.js"></script>
-    <script src="js/projectile.js"></script>
-    <script src="js/bot.js"></script>
-    <script src="js/cookies.js"></script>
-    <script src="js/colision.js"></script>
-    <script src="js/player.js"></script>
-    <script src="js/game.js"></script>
-    <script src="js/ui.js"></script>
+    <script src="js/game/main.js"></script>
+    <script src="js/game/player.js"></script>
+    <script src="js/game/level.js"></script>
+    <script src="js/game/enemy_spawner.js"></script>
+    <script src="js/game/entity_manager.js"></script>
+    <script src="js/game/entities.js"></script>
+    
+    <script src="js/graphics/animations.js"></script>
+    <script src="js/graphics/background.js"></script>
+    <script src="js/gui/gui.js"></script>
+    <script src="js/gui/hud.js"></script>
+    
+    <script src="js/miscellaneous/utilities.js"></script>
+    <script src="js/miscellaneous/input.js"></script>
+    
+    <script src="js/physics/colision.js"></script>
+    
+    <script src="js/sound/sound.js"></script>
+    
+    <script src="js/storage/levels.js"></script>
+    <script src="js/storage/cookies.js"></script>
 </head>
 <body>
     <div id="GameHolder">
@@ -29,48 +35,48 @@
             </div>
         </div>
         <div id="WrapsLevels">
-            <a onclick="showTitleScreen();" id="A1" class="close-button">X</a>
+            <a onclick="Gui.showTitleScreen();" id="A1" class="close-button">X</a>
             <br /><h2>Level Select</h2>
             <ul id="Levels">
             </ul>
         </div>
         <div id="WrapsSettings">
-            <a onclick="showTitleScreen();" class="close-button">X</a>
+            <a onclick="Gui.showTitleScreen();" class="close-button">X</a>
             <br /><h2>Settings</h2>
             <div style="clear:both"></div>
-        	<br /><button onclick="Cookies.resetLevels();" class="title-button" id="Reset">Reset Progress</button>
-            <br /><button onclick="Cookies.toggleSound(this);" class="title-button" id="ToggleMusic"></button>
-            <br /><button onclick="Cookies.toggleSound(this);" class="title-button" id="ToggleSFX"></button>
+        	<br /><button onclick="Storage.resetLevels();" class="title-button" id="Reset">Reset Progress</button>
+            <br /><button onclick="Storage.toggleSound(this);" class="title-button" id="ToggleMusic"></button>
+            <br /><button onclick="Storage.toggleSound(this);" class="title-button" id="ToggleSFX"></button>
         </div>
         <div id="WrapsTitle">
     	    <div class="title-logo">
     	    </div>
             <div class="navigation">
-                <button onclick="showLevelSelect();" class="title-button" id="Start">Obliterate Koochas</button>
-                <button onclick="showSettings();" class="title-button" id="Settings">Settings</button>
-                <button onclick="showScoreScreen();" class="title-button" id="ScoreScreen">[DEV] Score Screen</button>
-                <button onclick="showPauseMenu();" class="title-button" id="PauseMenu">[DEV] Pause Menu</button>
+                <button onclick="Gui.showLevelSelect();" class="title-button" id="Start">Obliterate Koochas</button>
+                <button onclick="Gui.showSettings();" class="title-button" id="Settings">Settings</button>
+                <button onclick="Gui.showScoreScreen();" class="title-button" id="ScoreScreen">[DEV] Score Screen</button>
+                <button onclick="Gui.showPauseMenu();" class="title-button" id="PauseMenu">[DEV] Pause Menu</button>
             </div>
         </div>
         <div id="WrapsPauseMenu">
-            <a onclick="showTitleScreen();" class="close-button">X</a>
+            <a onclick="Gui.showTitleScreen();" class="close-button">X</a>
             <br /><h2>Pause</h2>
             <div class="button-group">
-                <button onclick="showTitleScreen()" class="title-button" id="Resume">RESUME</button>
-                <br /><button onclick="showTitleScreen()" class="title-button" id="RestartLevel">Restart Level</button>
-                <br /><button onclick="showLevelSelect()" class="title-button" id="ChangeLevel">Change Level</button>
+                <button onclick="Game.setPaused(false)" class="title-button" id="Resume">RESUME</button>
+                <br /><button onclick="Game.restartLevel()" class="title-button" id="RestartLevel">Restart Level</button>
+                <br /><button onclick="Gui.showLevelSelect()" class="title-button" id="ChangeLevel">Change Level</button>
             </div>
             <div class="button-group">
-                <button onclick="Cookies.toggleSound(this);" class="title-button" id="PMToggleMusic"></button>
-                <br /><button onclick="Cookies.toggleSound(this);" class="title-button" id="PMToggleSFX"></button>
+                <button onclick="Storage.toggleSound(this);" class="title-button" id="PMToggleMusic"></button>
+                <br /><button onclick="Storage.toggleSound(this);" class="title-button" id="PMToggleSFX"></button>
             </div>
             <div class="button-group">
-                <button onclick="showTitleScreen()" class="title-button" id="EndLevel">BACK TO MAIN MENU</button>
+                <button onclick="Gui.showTitleScreen()" class="title-button" id="EndLevel">BACK TO MAIN MENU</button>
             </div>
         </div>
         <div id="WrapsScoreScreen">
-            <a onclick="showTitleScreen();" class="close-button">X</a>
-            <button id="ScoreScreenTest" onclick="showStats(this);" style="width: 120px; position:absolute; left: 10px; top: 10px">End Level</button>
+            <a onclick="Gui.showTitleScreen();" class="close-button">X</a>
+            <button id="ScoreScreenTest" onclick="Gui.showStats(this);" style="width: 120px; position:absolute; left: 10px; top: 10px">End Level</button>
             <div id="Conclusion" class="stats-box" data-order="1">YOU FREAKING ROCK!</div>
             <div id="KilledStats" class="stats-box" data-order="2">You killed 0 koochas.</div>
             <div id="MissedStats" class="stats-box" data-order="3">You missed 0 times.</div>
@@ -81,8 +87,8 @@
                 <div id="KRPercentage">0%</div>
             </div>
             <div id="ScoreScreenNav">
-                <button id="NextLevel">NEXT</button>
-                <button id="ReplayLevel">REPLAY</button>
+                <button onclick="Game.playNextLevel();" id="NextLevel">NEXT</button>
+                <button onclick="Game.replayLevel();" id="ReplayLevel">REPLAY</button>
             </div>
         </div>
     	<div class="canvasHolder" id="canvasHolder">

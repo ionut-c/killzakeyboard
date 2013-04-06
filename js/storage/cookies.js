@@ -1,4 +1,4 @@
-var Cookies = Cookies || { };
+var Storage = Storage || { };
 
 var _header_size = 5;
 var _levels = 12;
@@ -21,9 +21,9 @@ function _getLevels() {
 	var levels = document.cookie.replace(/(?:(?:^|.*;\s*)levels\s*\=\s*((?:[^;](?!;))*[^;]?).*)|.*/, "$1");
 	return levels;
     }
-    return Cookies.resetLevels();
+    return Storage.resetLevels();
 }
-Cookies.resetLevels = function _resetLevels() {
+Storage.resetLevels = function _resetLevels() {
     var levels = "505040110";
     for (var i = 2; i <= _levels; i++) {
 	if( i < 10 ) { levels += +"0"; }
@@ -32,7 +32,7 @@ Cookies.resetLevels = function _resetLevels() {
     document.cookie = "levels=" + levels;
     return levels;
 }
-Cookies.setLevelCompletion = function setLevelCompletion(id, completed) {
+Storage.setLevelCompletion = function setLevelCompletion(id, completed) {
     var levels = _getLevels().split("");
     var lIndex = _getLevelCompletionIndex(id);
     if ( completed > levels[ lIndex + 2 ] ) {
@@ -42,12 +42,12 @@ Cookies.setLevelCompletion = function setLevelCompletion(id, completed) {
     levels[ nextLIndex ] = 1;
     document.cookie = "levels=" + levels.join("");
 }
-Cookies.getLevelCompletion = function getLevelCompletion(id) {
+Storage.getLevelCompletion = function getLevelCompletion(id) {
     var levels = _getLevels();
     var lIndex =  _getLevelCompletionIndex(id);
     return levels[ lIndex ];
 }
-Cookies.isLevelUnlocked = function isLevelUnlocked(id) {
+Storage.isLevelUnlocked = function isLevelUnlocked(id) {
     var levels = _getLevels();
     var lIndex =  _getLevelUnlockedIndex(id);
     return levels[ lIndex ];
@@ -68,7 +68,7 @@ function _resetSound() {
     document.cookie = "SRS=" + sound;
     return sound;
 }
-Cookies.getSoundSettings = function getSoundSettings(type){
+Storage.getSoundSettings = function getSoundSettings(type){
     var sound = _getSound();
     switch ( type ) {
 	case "music":
@@ -80,7 +80,7 @@ Cookies.getSoundSettings = function getSoundSettings(type){
     }
     return 0;
 }
-Cookies.toggleSound = function toggleSound(element){
+Storage.toggleSound = function toggleSound(element){
     var sound = _getSound().split("");
     var index = -1;
     

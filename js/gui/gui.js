@@ -1,11 +1,49 @@
-function showLevelSelect() {
-    clearUI();
+var Gui = Gui || {};
+
+var fullpage = true;
+var sx = 1, sy = 1;
+var gameWidth = 1920;
+var gameHeight = 1080;
+
+window.onresize = function(event) {
+    scale();
+}
+window.onload = function(event) {
+    scale();
+}
+function scale() {
+    var tx = 0;
+    if(fullpage){
+        var h = window.innerHeight;
+        var w = (h * 16) / 9;
+        if(window.innerWidth < w)
+        {
+            w = window.innerWidth;
+            h = (w * 9) / 16;
+        }
+        sx = w / gameWidth;
+        sy = h / gameHeight;
+        
+        d1 = (gameWidth - w) / 2;
+        d2 = window.innerWidth - d1 - w;
+        d3 = Math.max(0, window.innerWidth - gameWidth);
+        tx = (d1 - d2 + d3) / 2;
+    }
+    document.getElementById("GameHolder").style.transform="translate(-"+tx+"px) scale("+sx+","+sy+")";
+    document.getElementById("GameHolder").style.webkitTransform="translate(-"+tx+"px) scale("+sx+","+sy+")";
+    document.getElementById("GameHolder").style.OTransform="translate(-"+tx+"px) scale("+sx+","+sy+")";
+    document.getElementById("GameHolder").style.msTransform="translate(-"+tx+"px) scale("+sx+","+sy+")";
+    document.getElementById("GameHolder").style.MozTransform="translate(-"+tx+"px) scale("+sx+","+sy+")";
+}
+
+Gui.showLevelSelect = function showLevelSelect() {
+    Gui.clearUI();
     document.getElementById("WrapsLevels").style.display = "block";
     var wrapsLevels = document.getElementById("WrapsLevels");
     var levels = Array();
     for (i = 1; i <= 12; i++) {
-    	var completion = Cookies.getLevelCompletion(i);
-	var unlocked = Cookies.isLevelUnlocked(i);
+    	var completion = Storage.getLevelCompletion(i);
+	var unlocked = Storage.isLevelUnlocked(i);
     	levels.push({ "order": i, "unlocked": unlocked, "completed": completion })
     }
     var levelRow;
@@ -29,14 +67,14 @@ function showLevelSelect() {
             level.onclick = (function (index){
 		return function () {
 		    	document.getElementById("canvas").style.display = "block";
-                        clearUI();
+                        Gui.clearUI();
                         init(index);};
                 })(i+1);
         }
         level.innerHTML = levels[i].order;
     }
 }
-function clearUI() {
+Gui.clearUI = function clearUI() {
     document.getElementById("Levels").innerHTML = "";
     document.getElementById("WrapsLevels").style.display = "none";
     document.getElementById("WrapsSettings").style.display = "none";
@@ -44,63 +82,63 @@ function clearUI() {
     document.getElementById("WrapsScoreScreen").style.display = "none";
     document.getElementById("WrapsPauseMenu").style.display = "none";
 }
-function showTitleScreen() {
-    clearUI();
+Gui.showTitleScreen = function showTitleScreen() {
+    Gui.clearUI();
     document.getElementById("WrapsTitle").style.display = "block";
 }
-function showPauseMenu() {
-    clearUI();
+Gui.showPauseMenu = function showPauseMenu() {
+    Gui.clearUI();
     document.getElementById("WrapsPauseMenu").style.display = "block";
-    if(Cookies.getSoundSettings("music") == 0){
+    if(Storage.getSoundSettings("music") == 0){
         document.getElementById("PMToggleMusic").innerHTML = "Music is Off";
     } else {
         document.getElementById("PMToggleMusic").innerHTML = "Music is On";
     }
     
-    if(Cookies.getSoundSettings("sfx") == 0){
+    if(Storage.getSoundSettings("sfx") == 0){
         document.getElementById("PMToggleSFX").innerHTML = "SFX is Off";
     } else {
         document.getElementById("PMToggleSFX").innerHTML = "SFX is On";
     }
 }
-function showSettings() {
-    clearUI();
+Gui.showSettings = function showSettings() {
+    Gui.clearUI();
     document.getElementById("WrapsSettings").style.display = "block";
     document.getElementById("Reset").setAttribute("class","title-button");
     
-    if(Cookies.getSoundSettings("music") == 0){
+    if(Storage.getSoundSettings("music") == 0){
         document.getElementById("ToggleMusic").innerHTML = "Music is Off";
     } else {
         document.getElementById("ToggleMusic").innerHTML = "Music is On";
     }
     
-    if(Cookies.getSoundSettings("sfx") == 0){
+    if(Storage.getSoundSettings("sfx") == 0){
         document.getElementById("ToggleSFX").innerHTML = "SFX is Off";
     } else {
         document.getElementById("ToggleSFX").innerHTML = "SFX is On";
     }
 }
-function showScoreScreen() {
-    clearUI();
+Gui.showScoreScreen = function showScoreScreen() {
+    Gui.clearUI();
     devResetStats();
     document.getElementById("WrapsScoreScreen").style.display = "block";
-    setTimeout(function(){showStats()},200);
+    setTimeout(function(){Gui.showStats()},200);
 }
-function showStats(){
-    setTimeout(function(){animateKillRate(100);},1300);
+Gui.showStats = function showStats(){
+    setTimeout(function(){Gui.animateKillRate(100);},1300);
     document.getElementById("ScoreScreenTest").setAttribute("onclick","devResetStats();");
     document.getElementById("ScoreScreenTest").innerHTML = "RESET";
-    animateStats("Conclusion");
-    setTimeout(function(){animateStats("KilledStats")},400);
-    setTimeout(function(){animateStats("MissedStats")},800);
+    Gui.animateStats("Conclusion");
+    setTimeout(function(){Gui.animateStats("KilledStats")},400);
+    setTimeout(function(){Gui.animateStats("MissedStats")},800);
 } 
-function animateStats(statsId)
+Gui.animateStats = function animateStats(statsId)
 {
     setTimeout(function(){Sound.playSFX(Sound.SFXConst.stats);},300);
     document.getElementById(statsId).className = "stats-box show";
     document.getElementById(statsId).style.bottom = "" + (400 - 115 * parseInt(document.getElementById(statsId).getAttribute("data-order")) || 1) + "px";
 }
-function animateKillRate(currentPercentage)
+Gui.animateKillRate = function animateKillRate(currentPercentage)
 {
     currentPercentage = parseInt(currentPercentage);
     var actualPercentage = document.getElementById("KRPercentage").innerHTML;
@@ -155,9 +193,9 @@ function devResetStats(){
     document.getElementById("ScoreScreenNav").style.display = "none"
     document.getElementById("WrapsScoreScreen").className = "";
 }
-function updateKilledStats(value) {
+Gui.updateKilledStats = function updateKilledStats(value) {
     document.getElementById("KilledStats").innerHTML = "You killed " + value + " koochas.";
 }
-function updateMissedStats(value) {
+Gui.updateMissedStats = function updateMissedStats(value) {
     document.getElementById("MissedStats").innerHTML = "You missed " + value + " times.";
 }

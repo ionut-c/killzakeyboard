@@ -1,39 +1,41 @@
-function _levelUpdateUI(level) {
+var Game = Game || {};
+
+function _levelUpdateGUI(level) {
     var kills = level.entityManager.getKills();
     var projCount = level.entityManager.getTotalProjectileCount();
-    updateKilledStats( kills );
-    updateMissedStats( projCount - kills );
+    Gui.updateKilledStats( kills );
+    Gui.updateMissedStats( projCount - kills );
 }
-function Level(id, maxX, maxY){
+Game.Level = function Level(id, maxX, maxY){
     this.waves = [];
     this.score = 0;
     this.time = 0;
     this.id = id;
     this.raport = 0;
-    this.entityManager = new EntityManager(maxX, maxY);
+    this.entityManager = new Game.EntityManager(maxX, maxY);
     this.waveIndex = 0;
     this.over = false;
     this.totalEnemies = 0;
     this.duration = 0;
 }
-Level.prototype.getId = function Level_GetId() {
+Game.Level.prototype.getId = function Level_GetId() {
     return this.id;
 }
-Level.prototype.getReport = function Level_GetReport() {
+Game.Level.prototype.getReport = function Level_GetReport() {
     return this.raport;
 }
-Level.prototype.getCompletion = function Level_GetCompletion() {
+Game.Level.prototype.getCompletion = function Level_GetCompletion() {
     if     (this.raport == 1.00 ) { return 3; }
     else if(this.raport >= 0.75 ) { return 2; }
     else if(this.raport >= 0.50 ) { return 1; }
     else                          { return 0; }
 }
-Level.prototype.addWave = function Level_addWave(wave){
+Game.Level.prototype.addWave = function Level_addWave(wave){
     this.totalEnemies += wave.getEnemiesCount();
     this.duration += wave.getDuration();
     this.waves.push(wave);
 }
-Level.prototype.update = function Level_update(deltaTime){
+Game.Level.prototype.update = function Level_update(deltaTime){
     this.time += deltaTime;
     
     this.entityManager.update(deltaTime);
@@ -50,24 +52,24 @@ Level.prototype.update = function Level_update(deltaTime){
         this.waveIndex++;
         if(this.waveIndex == this.waves.length ){
             this.over = true;
-	    _levelUpdateUI(this);
+	    _levelUpdateGUI(this);
         }
 	console.log( " Percent for progress bar : " + proc );
     }
 }
-Level.prototype.render = function Level_render(){
+Game.Level.prototype.render = function Level_render(){
     this.entityManager.render();
 }
-Level.prototype.getEntityManager = function Level_getEntityManger(){
+Game.Level.prototype.getEntityManager = function Level_getEntityManger(){
     return this.entityManager;
 }
-Level.prototype.isOver = function Level_isOver(){
+Game.Level.prototype.isOver = function Level_isOver(){
     return this.over;
 }
 
 
 
-function Wave( spawners, startOffset, endOffset){
+Game.Wave = function Wave( spawners, startOffset, endOffset){
     this.startOffset = startOffset;
     this.endOffset = endOffset;
     this.spawners = spawners;
@@ -84,7 +86,7 @@ function Wave( spawners, startOffset, endOffset){
 	this.enemiesCount = spawners[0].getEnemiesCount();
     }
 }
-Wave.prototype.getSpawned = function Wave_getSpawned(deltaTime){
+Game.Wave.prototype.getSpawned = function Wave_getSpawned(deltaTime){
     this.elapsedTime += deltaTime;
     var tor = null;
     if( this.elapsedTime > this.startOffset){
@@ -96,15 +98,15 @@ Wave.prototype.getSpawned = function Wave_getSpawned(deltaTime){
     }
     return tor;
 }
-Wave.prototype.hasEnded = function Wave_hasEnded(){
+Game.Wave.prototype.hasEnded = function Wave_hasEnded(){
     if( this.elapsedTime > this.startOffset + this.duration + this.endOffset){
         return true;
     }
     return false;
 }
-Wave.prototype.getEnemiesCount = function Wave_getEnemiesCount(){
+Game.Wave.prototype.getEnemiesCount = function Wave_getEnemiesCount(){
     return this.enemiesCount;
 }
-Wave.prototype.getDuration = function Wave_getDuration(){
+Game.Wave.prototype.getDuration = function Wave_getDuration(){
     return this.startOffset + this.duration + this.endOffset;
 }

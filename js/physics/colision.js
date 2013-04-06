@@ -1,27 +1,27 @@
-﻿var Collision = Collision || { };
+﻿var Physics = Physics || { };
 
 // type : ["line","rect","circle"]
 // params :
 //           - line : x1, y1, x2, y2
 //           - rect : x, y, width, height
 //           - circle : x, y, radius
-Collision.Bounder = function Bounder(type, params){
+Physics.Bounder = function Bounder(type, params){
     this.type = type;
     this.params = params;
 }
-Collision.Bounder.prototype.getType = function Bounder_getType(){
+Physics.Bounder.prototype.getType = function Bounder_getType(){
     return this.type;
 }
-Collision.Bounder.prototype.getParams = function Bounder_getParams(){
+Physics.Bounder.prototype.getParams = function Bounder_getParams(){
     return this.params;
 }
-Collision.Bounder.prototype.setParams = function Bounder_setParams(params){
+Physics.Bounder.prototype.setParams = function Bounder_setParams(params){
     this.params = params;
 }
-Collision.Bounder.prototype.checkCollision = function Bounder_checkCollision(bounder){
+Physics.Bounder.prototype.checkCollision = function Bounder_checkCollision(bounder){
     var bounder_type = bounder.getType();
     
-    with( Collision ){
+    with( Physics ){
         if( this.type == "cirlce" && bounder_type == "cirlce" ) {return checkCircleCircle(this.params, bounder.getParams())}
         if( this.type == "line" && bounder_type == "line" ) {return checkLineLine(this.params, bounder.getParams())}
         if( this.type == "rect" && bounder_type == "rect" ) {return checkRectangleRectangle(this.params, bounder.getParams())}
@@ -35,7 +35,7 @@ Collision.Bounder.prototype.checkCollision = function Bounder_checkCollision(bou
     }
     return false;
 }
-Collision.Bounder.prototype.render = function Bounder_render(color, context){
+Physics.Bounder.prototype.render = function Bounder_render(color, context){
     if(this.type == "circle"){
         context.strokeStyle = color;
         context.beginPath();
@@ -55,7 +55,7 @@ Collision.Bounder.prototype.render = function Bounder_render(color, context){
 }
 
 // circle : x, y, radius
-Collision.checkCircleCircle = function collisionCC(circle1, circle2) {
+Physics.checkCircleCircle = function collisionCC(circle1, circle2) {
     dist = Math.sqrt(Math.pow(circle1.x - circle2.x, 2) + Math.pow(circle1.y - circle2.y, 2));
     if (dist < circle1.radius + circle2.radius) {
         return true;
@@ -64,16 +64,19 @@ Collision.checkCircleCircle = function collisionCC(circle1, circle2) {
 }
 // circle : x, y, radius
 // line   : x1, y1, x2, y2
-Collision.checkCircleLine = function collisionCL(circle, line) {
-    var v = new Vector(line.x2 - line.x1, line.y2 - line.y1);
-    var w = new Vector(circle.x - line.x1, circle.y - line.y1);
-    var t = w.dot(v) / v.dot(v);
+Physics.checkCircleLine = function collisionCL(circle, line) {
+    var vx = line.x2 - line.x1;
+    var vy = line.y2 - line.y1;
+    var wx = circle.x - line.x1;
+    var wy = circle.y - line.y1;
+    var t = ((wx * vx) + (wy * vy)) / ((vx * vx) + (vy * vvy));
     t = Math.max(0, t);
     t = Math.min(1, t);
-    var p = new Vector(line.x1 + v.x * t, line.y1 + v.y * t);
-    p.x = p.x - circle.x;
-    p.y = p.y - circle.y;
-    if (p.dot(p) <= circle.radius * circle.radius) {
+    var px = line.x1 + v.x * t;
+    var py = line.y1 + v.y * t;
+    px = px - circle.x;
+    py = py - circle.y;
+    if ((px * px) + (py * py) <= circle.radius * circle.radius) {
         return true;
     }
     return false;
@@ -81,7 +84,7 @@ Collision.checkCircleLine = function collisionCL(circle, line) {
 // This is for normal, not rotated rectangles
 // circle : x, y, radius
 // rect   : x, y, width, height
-Collision.checkCircleRectangle = function collisionCR(circle, rect) {
+Physics.checkCircleRectangle = function collisionCR(circle, rect) {
     // check to see if the circle is close enough to one of the lines
     // WARNING : this counts on the fact that the rectangle is not rotated
     var testY = circle.y > rect.y && circle.y < rect.y + rect.height;
@@ -103,19 +106,22 @@ Collision.checkCircleRectangle = function collisionCR(circle, rect) {
     return false;
 }
 // line   : x1, y1, x2, y2
-Collision.checkLineLine = function collisionLL(line1, line2) {
-    var b = new Vector(line1.x2 - line1.x1, line1.y2 - line1.y1);
-    var d = new Vector(line2.x2 - line2.x1, line2.y2 - line2.y1);
-    var b_dot_d_perp = b.x * d.y - b.y * d.x;
+Physics.checkLineLine = function collisionLL(line1, line2) {
+    var bx = line1.x2 - line1.x1;
+    var by = line1.y2 - line1.y1;
+    var dx = line2.x2 - line2.x1;
+    var dy = line2.y2 - line2.y1;
+    var b_dot_d_perp = bx * dy - by * dx;
     if(b_dot_d_perp == 0) {
         return null;
     }
-    var c = new Vector(line2.x1 - line1.x1, line2.y1 - line1.y1);
-    var t = (c.x * d.y - c.y * d.x) / b_dot_d_perp;
+    var cx = line2.x1 - line1.x1;
+    var cy = line2.y1 - line1.y1;
+    var t = (cx * dy - cy * dx) / b_dot_d_perp;
     if(t < 0 || t > 1) {
         return null;
     }
-    var u = (c.x * b.y - c.y * b.x) / b_dot_d_perp;
+    var u = (cx * by - cy * bx) / b_dot_d_perp;
     if(u < 0 || u > 1) { 
         return null;
     }
@@ -124,7 +130,7 @@ Collision.checkLineLine = function collisionLL(line1, line2) {
 // This is for normal, not rotated rectangles
 // line   : x1, y1, x2, y2
 // rect   : x, y, width, height
-Collision.checkLineRectangle = function collisionLR(line, rect) {
+Physics.checkLineRectangle = function collisionLR(line, rect) {
     var p = new Array({ "x": rect.x, "y": rect.y },
                       { "x": rect.x, "y": rect.y - rect.height },
                       { "x": rect.x + rect.width, "y": rect.y },
@@ -151,7 +157,7 @@ Collision.checkLineRectangle = function collisionLR(line, rect) {
     }
 }
 // rect   : x, y, width, height
-Collision.checkRectangleRectangle = function collisionRR(rect1, rect2){
+Physics.checkRectangleRectangle = function collisionRR(rect1, rect2){
     var rect1_left = rect2.x < rect1.x && rect1.x < rect2.x + rect2.width;
     var rect1_right = rect2.x < rect1.x + rect1.width && rect1.x + rect1.width < rect2.x + rect2.width;
     var rect1_top = rect2.y < rect1.y && rect1.y < rect2.y + rect2.height;

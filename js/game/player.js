@@ -1,7 +1,7 @@
-﻿PlayerModel = new Model("assets/player_sprite.png", 191.25, 60, 24, 1, 1000/24);
+﻿var Game = Game || {};
 
-function Player(x, y, context, maxX, maxY){
-    this.model = new ModelObject(PlayerModel, context);
+Game.Player = function Player(x, y, context, maxX, maxY){
+    this.model = new Graphics.ModelObject(PlayerModel, context);
     this.speed = 10;
     this.position = new Point(x, y);
     this.shootInterval = 200;
@@ -12,21 +12,21 @@ function Player(x, y, context, maxX, maxY){
     
     this.model.setPosition(this.position);
     this.s = this.model.getSize();
-    this.bounder = new Collision.Bounder("rect", new Rect(this.position.x, this.position.y + 29, this.s.width, this.s.height - 37));
+    this.bounder = new Physics.Bounder("rect", new Rect(this.position.x, this.position.y + 29, this.s.width, this.s.height - 37));
 };
-Player.prototype.checkCollision = function Player_checkCollision(bounder){
+Game.Player.prototype.checkCollision = function Player_checkCollision(bounder){
     return this.bounder.checkCollision(bounder);
 }
-Player.prototype.getBounder = function Player_getBounder(){
+Game.Player.prototype.getBounder = function Player_getBounder(){
     return this.bounder;
 }
-Player.prototype.getY = function Player_getY(){
+Game.Player.prototype.getY = function Player_getY(){
     return this.position.y;
 }
-Player.prototype.getHeight = function Player_getHeight(){
+Game.Player.prototype.getHeight = function Player_getHeight(){
     return this.s.height;
 }
-Player.prototype.update = function Player_update(inputHandler, deltaTime){
+Game.Player.prototype.update = function Player_update(inputHandler, deltaTime){
     if(!this.canShoot){
         this.elapsedTime += deltaTime;
         if( this.elapsedTime >= this.shootInterval){
@@ -40,7 +40,7 @@ Player.prototype.update = function Player_update(inputHandler, deltaTime){
     
     if (inputHandler.checkKey(32) && this.canShoot) {
         Sound.playSFX(Sound.SFXConst.shoot);
-        var tor = new Apple(this.position.x + this.s.width, this.position.y + this.s.height / 2, this.model.getContext(), this.maxX, this.maxY);
+        var tor = new Game.Apple(this.position.x + this.s.width, this.position.y + this.s.height / 2, this.model.getContext(), this.maxX, this.maxY);
         this.canShoot = false;
     }
     if (inputHandler.checkKey(38) && this.position.y >= this.speed) { this.position.y -= this.speed; }
@@ -54,6 +54,6 @@ Player.prototype.update = function Player_update(inputHandler, deltaTime){
     if(tor != null){ return tor; }
     else { return null; }
 }
-Player.prototype.render = function Player_render(deltaTime){
+Game.Player.prototype.render = function Player_render(deltaTime){
     this.model.render();
 }
