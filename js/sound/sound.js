@@ -3,11 +3,11 @@ var temp;
 var music;
 
 Sound.SFXConst = {
-				shoot: "assets/shoot",
-				stats: "assets/postscreen_stats"
+				shoot: "assets/sound/shoot",
+				stats: "assets/sound/postscreen_stats"
 			}
 Sound.MusicConst = {
-				music1: "assets/thebeat",
+				music1: "assets/sound/thebeat",
 			}
 
 Sound.playSFX = function playSFX(soundConst){
