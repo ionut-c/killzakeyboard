@@ -40,7 +40,7 @@
     -o-transition: opacity 0.2s; /* Opera */
 }
 #ProgressBarIcon {
-    background: url('../assets/raccoon_head.png') center center no-repeat;
+    background: url('../assets/gui/raccoon_head.png') center center no-repeat;
     background-size: contain;
     width: 45px;
     height: 36px;
@@ -143,7 +143,7 @@ button.disabled {
     padding-top: 5px;
 }
 .title-logo {
-    background: url('../assets/titlescreen_logo.png') center 25% no-repeat;
+    background: url('../assets/gui/titlescreen_logo.png') center 25% no-repeat;
     position: absolute;
     top: 0;
     right: 0;
@@ -164,7 +164,7 @@ button.disabled {
     overflow: hidden;
 }
 #WrapsScoreScreen.winner {
-    background: url('../assets/scorescreen_2.png') 600px center no-repeat #333;
+    background: url('../assets/gui/scorescreen_2.png') 600px center no-repeat #333;
 }
 #WrapsPauseMenu {
     right: 700px;
@@ -226,7 +226,7 @@ button.disabled {
 .kill-rate-box #KRStars {
     width: 529px;
     height: 272px;
-    background: url('../assets/killrate_stars.png') 0 0 no-repeat;
+    background: url('../assets/sprites/killrate_stars.png') 0 0 no-repeat;
 }
 .kill-rate-box #KRStars.s1 {
     background-position: -529px 0;
