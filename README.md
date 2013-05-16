@@ -2,10 +2,8 @@
 ==============
 ___
 
-##W8A - Last Updated: 02.04.2013
-- Experimental Post Screen, Sound prefferences, New Enemy spawning, Full HD User Interface, Full HD Canvas, Sound support (MP3), Namespaces, New Score Screen
-
-###[Queuing Features]
+##W8A
+- recreate app
 
 ___
 
@@ -34,14 +32,17 @@ Ionut
 - make divs for level completion stars
 - folder structure
 - check namespaces
+- remove X from pause menu (breaks up the game / unneeded / confusing with resume)
+- remove pause menu from main screen
+- add "The way of the Raccoon" menu to main screen
+- 
 
 **Candy**
 - koocha die sounds (2-4)
-- finish ui design (waiting for Art)
+- create minimalistic background for menus
 
 Notable Bugs
 ====
-- Slower rendering/movement in Firefox (questionable, aditional testing required)
 - Levels end sooner than they should (suspecting enemy spawn system)
 
 Backlog
