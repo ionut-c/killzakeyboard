@@ -118,9 +118,9 @@ function draw() {
 }
 
 function loadModels() {
-    PlayerModel = new Graphics.Model("assets/player_sprite.png", 191.25, 60, 24, 1, 1000/24);
-    BirdModel = new Graphics.Model("assets/koocha_sprite_2.png", 88, 94, 23, 1, 1000/24);
-    AppleModel = new Graphics.Model("assets/apple_sprite.png", 22, 27, 1, 1, 1000/24);
+    PlayerModel = new Graphics.Model("assets/sprites/player_sprite.png", 191.25, 60, 24, 1, 1000/24);
+    BirdModel = new Graphics.Model("assets/sprites/koocha_sprite_2.png", 88, 94, 23, 1, 1000/24);
+    AppleModel = new Graphics.Model("assets/sprites/apple_sprite.png", 22, 27, 1, 1, 1000/24);
 }
 
 function init( level_id ) {
@@ -145,7 +145,7 @@ function init( level_id ) {
     player = new Game.Player(20, h / 2, main.context, w, h);
     Hud.refreshProgressBar(0);
     document.getElementById("ProgressBar").style.display = "block";
-    var background = new Graphics.Background(main.context, "assets/background.png", 3840, 1080, w, h);
+    var background = new Graphics.Background(main.context, "assets/backgrounds/background.png", 3840, 1080, w, h);
     var input = InputController();
     var extension = {"background": background,"input": input, "player": player, "canvas": main.canvas, "context": main.context, 'level': level };
     //console.profile();
