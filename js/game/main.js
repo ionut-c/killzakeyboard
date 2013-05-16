@@ -7,6 +7,7 @@
 })();
 
 var main = {
+ "running" : false,
  "paused" : false,
  "restart" : false,
  "deltaTime" : 0,
@@ -18,6 +19,10 @@ var main = {
 
 // Game namespace stuff here
 var Game = Game || {};
+
+Game.isRunning = function Main_isRunning() {
+    return main.running;
+}
 
 Game.restartLevel = function Main_restart() {
     main.restart = true;
@@ -85,6 +90,7 @@ function gameLoop(time){
     if ( this.level.isOver() ){
 	document.getElementById("canvas").style.display = "none";
 	document.getElementById("ProgressBar").style.display = "none";
+	main.running = false;
 	Gui.showScoreScreen(this.level.getKillPercent());
 	Sound.pauseMusic();
         Storage.setLevelCompletion(this.level.getId(),this.level.getCompletion());
@@ -125,6 +131,7 @@ function loadModels() {
 
 function init( level_id ) {
     Game.currentLevel = level_id;
+    main.running = true;
     main.prevTime = 0;
     main.deltaTime = 0;
     main.paused = false;

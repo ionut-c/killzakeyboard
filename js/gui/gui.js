@@ -12,13 +12,15 @@ window.onload = function(event) {
     scale();
 }
 window.onblur = function(event) {
-    Game.setPaused(true);
-    Gui.showPauseMenu();
-    context = Game.getContext();
-    context.save();
-    context.fillStyle = "rgba( 0, 0, 0, 0.2)"; 	
-    context.fillRect(0, 0, canvas.width, canvas.height );
-    context.restore();
+    if (Game.isRunning()) {
+	Game.setPaused(true);
+	Gui.showPauseMenu();
+	context = Game.getContext();
+	context.save();
+	context.fillStyle = "rgba( 0, 0, 0, 0.2)"; 	
+	context.fillRect(0, 0, canvas.width, canvas.height );
+	context.restore();
+    }
 }
 
 function scale() {
