@@ -11,6 +11,16 @@ window.onresize = function(event) {
 window.onload = function(event) {
     scale();
 }
+window.onblur = function(event) {
+    Game.setPaused(true);
+    Gui.showPauseMenu();
+    context = Game.getContext();
+    context.save();
+    context.fillStyle = "rgba( 0, 0, 0, 0.2)"; 	
+    context.fillRect(0, 0, canvas.width, canvas.height );
+    context.restore();
+}
+
 function scale() {
     var tx = 0;
     if(fullpage){
@@ -118,14 +128,14 @@ Gui.showSettings = function showSettings() {
         document.getElementById("ToggleSFX").innerHTML = "SFX is On";
     }
 }
-Gui.showScoreScreen = function showScoreScreen() {
+Gui.showScoreScreen = function showScoreScreen(kill_percent) {
     Gui.clearUI();
     devResetStats();
     document.getElementById("WrapsScoreScreen").style.display = "block";
-    setTimeout(function(){Gui.showStats()},200);
+    setTimeout(function(){Gui.showStats(kill_percent)},200);
 }
-Gui.showStats = function showStats(){
-    setTimeout(function(){Gui.animateKillRate(100);},1300);
+Gui.showStats = function showStats(kill_percent){
+    setTimeout(function(){Gui.animateKillRate(kill_percent);},1300);
     document.getElementById("ScoreScreenTest").setAttribute("onclick","devResetStats();");
     document.getElementById("ScoreScreenTest").innerHTML = "RESET";
     Gui.animateStats("Conclusion");

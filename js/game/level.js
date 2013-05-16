@@ -43,7 +43,6 @@ Game.Level.prototype.update = function Level_update(deltaTime){
     if( spawned != null){ this.entityManager.addEntities(spawned); }
     
     this.raport = this.entityManager.getKills() / this.totalEnemies;
-    //var proc = this.time / this.duration;
     var proc = this.entityManager.getTotalEntitiesCount() / this.totalEnemies;
     proc = Math.ceil(proc * 100);
     Hud.refreshProgressBar( proc );
@@ -66,7 +65,9 @@ Game.Level.prototype.getEntityManager = function Level_getEntityManger(){
 Game.Level.prototype.isOver = function Level_isOver(){
     return this.over;
 }
-
+Game.Level.prototype.getKillPercent = function Level_getKillPercent(){
+    return this.raport * 100;
+}
 
 
 Game.Wave = function Wave( spawners, startOffset, endOffset){

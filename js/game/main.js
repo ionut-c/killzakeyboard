@@ -85,7 +85,7 @@ function gameLoop(time){
     if ( this.level.isOver() ){
 	document.getElementById("canvas").style.display = "none";
 	document.getElementById("ProgressBar").style.display = "none";
-	Gui.showScoreScreen();
+	Gui.showScoreScreen(this.level.getKillPercent());
 	Sound.pauseMusic();
         Storage.setLevelCompletion(this.level.getId(),this.level.getCompletion());
     }
