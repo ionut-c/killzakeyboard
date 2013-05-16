@@ -15,9 +15,6 @@ Dragos
 **Programming**
 - define 12 levels
 - increase canvas objects/assets by 87.5% (background already increased)
-- pause game on ESCAPE
-- pause game on blur
-- ScoreScreen Real Kill Rate
 - ScoreScreen Next button (play Next Level) - only show Replay button if level was lost (not enough kill rate), hide button when last level was completed
 - Scorescreen Replay (replay current Level) - available after any level
 
