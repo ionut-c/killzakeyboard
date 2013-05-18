@@ -7,7 +7,6 @@ Dragos
 **Programming**
 - make gameplay movement faster, seems too easy
 - define 4 levels
-- check why only level 1 saves completion other levels only unlock next levels
 
 **Art**
 - per level backgrounds
@@ -35,6 +34,8 @@ Ionut
 Notable Bugs
 ====
 - Levels end sooner than they should (suspecting enemy spawn system)
+- only level 1 saves completion other levels only unlock next levels
+- score screen shows only 50% 75% or 100% checkpoints it should show the real value.
 
 Backlog
 =====
