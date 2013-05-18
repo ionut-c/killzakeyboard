@@ -166,6 +166,9 @@ button.disabled {
 #WrapsScoreScreen.winner {
     background: url('../assets/gui/scorescreen_2.png') 600px center no-repeat rgba(255,255,255,.6);
 }
+#WrapsScoreScreen.loser {
+    background: url('../assets/sprites/apple_sprite.png') center center no-repeat rgba(255,255,255,.6);
+}
 #WrapsPauseMenu {
     right: 700px;
     top: 150px;
@@ -245,7 +248,7 @@ button.disabled {
     width: 400px;
     top: 100px;
 }
-#NextLevel {
+.btn-primary {
     background: #096;
     border: 0;
     width: 100%;
@@ -256,7 +259,7 @@ button.disabled {
     font-size: 60px;
 }
 
-#ReplayLevel {
+.btn-secondary {
     background: #5e5e5e;
     border: 0;
     width: 100%;
@@ -265,6 +268,10 @@ button.disabled {
     padding: 0;
     text-align: left;
     font-size: 30px;
+}
+
+#Conclusion {
+    text-transform: uppercase;
 }
 
 #NextLevel:hover, #ReplayLevel:hover {

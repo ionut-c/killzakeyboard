@@ -18,16 +18,16 @@ function _hasLevels() {
 }
 function _getLevels() {
     if ( _hasLevels() ) {
-	var levels = document.cookie.replace(/(?:(?:^|.*;\s*)levels\s*\=\s*((?:[^;](?!;))*[^;]?).*)|.*/, "$1");
-	return levels;
+    var levels = document.cookie.replace(/(?:(?:^|.*;\s*)levels\s*\=\s*((?:[^;](?!;))*[^;]?).*)|.*/, "$1");
+    return levels;
     }
     return Storage.resetLevels();
 }
 Storage.resetLevels = function _resetLevels() {
     var levels = "505040110";
     for (var i = 2; i <= _levels; i++) {
-	if( i < 10 ) { levels += +"0"; }
-	levels += i + "00";
+    if( i < 10 ) { levels += +"0"; }
+    levels += i + "00";
     }
     document.cookie = "levels=" + levels;
     return levels;
@@ -36,10 +36,13 @@ Storage.setLevelCompletion = function setLevelCompletion(id, completed) {
     var levels = _getLevels().split("");
     var lIndex = _getLevelCompletionIndex(id);
     if ( completed > levels[ lIndex + 2 ] ) {
-	levels[ lIndex ] = completed;
+       levels[ lIndex ] = completed;
     }
     var nextLIndex = _getLevelUnlockedIndex(id + 1);
-    levels[ nextLIndex ] = 1;
+    if( completed > 0 )
+    {
+        levels[ nextLIndex ] = 1;
+    }
     document.cookie = "levels=" + levels.join("");
 }
 Storage.getLevelCompletion = function getLevelCompletion(id) {
@@ -58,8 +61,8 @@ function _hasSound() {
 }
 function _getSound() {
     if ( _hasSound() ) {
-	var sound = document.cookie.replace(/(?:(?:^|.*;\s*)SRS\s*\=\s*((?:[^;](?!;))*[^;]?).*)|.*/, "$1");
-	return sound;
+    var sound = document.cookie.replace(/(?:(?:^|.*;\s*)SRS\s*\=\s*((?:[^;](?!;))*[^;]?).*)|.*/, "$1");
+    return sound;
     }
     return _resetSound();
 }
@@ -71,12 +74,12 @@ function _resetSound() {
 Storage.getSoundSettings = function getSoundSettings(type){
     var sound = _getSound();
     switch ( type ) {
-	case "music":
-	    return sound[0];
-	case "sfx":
-	    return sound[1];
-	default:
-	    return 0;
+    case "music":
+        return sound[0];
+    case "sfx":
+        return sound[1];
+    default:
+        return 0;
     }
     return 0;
 }
@@ -91,11 +94,11 @@ Storage.toggleSound = function toggleSound(element){
     if ( testSFX   != -1) { index = 1; }
     
     if ( sound[index] == 0) {
-	sound[index] = 1;
-	element.innerHTML = element.innerHTML.replace('Off', 'On');
+    sound[index] = 1;
+    element.innerHTML = element.innerHTML.replace('Off', 'On');
     } else {
-	sound[index] = 0;
-	element.innerHTML = element.innerHTML.replace('On', 'Off');
+    sound[index] = 0;
+    element.innerHTML = element.innerHTML.replace('On', 'Off');
     }
     document.cookie = "SRS=" + sound.join("");
 }
