@@ -35,7 +35,7 @@ Storage.resetLevels = function _resetLevels() {
 Storage.setLevelCompletion = function setLevelCompletion(id, completed) {
     var levels = _getLevels().split("");
     var lIndex = _getLevelCompletionIndex(id);
-    if ( completed > levels[ lIndex + 2 ] ) {
+    if ( completed > levels[ lIndex ] ) {
        levels[ lIndex ] = completed;
     }
     var nextLIndex = _getLevelUnlockedIndex(id + 1);
