@@ -36,6 +36,7 @@ Notable Bugs
 - Levels end sooner than they should (suspecting enemy spawn system)
 - only level 1 saves completion other levels only unlock next levels
 - score screen shows only 50% 75% or 100% checkpoints it should show the real value.
+- music not stopping from pause menu
 
 Backlog
 =====
