@@ -95,7 +95,6 @@ button {
 button:hover {
     background: rgba(255,255,255,0.8);
     color: #333;
-
 }
 button.disabled {
     cursor: default;
@@ -127,7 +126,7 @@ button.disabled {
     padding: 5px;
     height: 100px;
 }
-.close-button:hover, .level:hover, .level.completed:hover {
+.close-button:hover, .level a:hover, .level.completed a:hover {
     background: #fff!important;
     color: #333;
 }
@@ -160,12 +159,12 @@ button.disabled {
     right: 150px;
     bottom: 150px;
     top: 150px;
-    background: rgba(255,255,255,.3);
+    background: rgba(255,255,255,.6);
     color: #333;
     overflow: hidden;
 }
 #WrapsScoreScreen.winner {
-    background: url('../assets/gui/scorescreen_2.png') 600px center no-repeat #333;
+    background: url('../assets/gui/scorescreen_2.png') 600px center no-repeat rgba(255,255,255,.6);
 }
 #WrapsPauseMenu {
     right: 700px;
@@ -190,14 +189,14 @@ button.disabled {
     position: absolute;
     bottom: -80px;
     right: 20px;
-    background: #222;
+    background: rgba(38,38,38,.6);
 }
 .kill-rate-box {
     transition: all 0.8s cubic-bezier(1, -0.53, 0.0, 1.1);
     -webkit-transition: all 0.8s cubic-bezier(1, -0.53, 0.0, 1.1);
     -o-transition: all 0.8s cubic-bezier(1, -0.53, 0.0, 1.1);
     -moz-transition: all 0.8s cubic-bezier(1, -0.53, 0.0, 1.1);
-    background: #222;
+    background: rgba(38,38,38,.6);
     width: 550px;
     color: #222;
     height: 600px;
@@ -247,7 +246,7 @@ button.disabled {
     top: 100px;
 }
 #NextLevel {
-    background: #0d86cc;
+    background: #096;
     border: 0;
     width: 100%;
     line-height: 90px;
@@ -256,6 +255,7 @@ button.disabled {
     text-align: left;
     font-size: 60px;
 }
+
 #ReplayLevel {
     background: #5e5e5e;
     border: 0;
@@ -266,6 +266,11 @@ button.disabled {
     text-align: left;
     font-size: 30px;
 }
+
+#NextLevel:hover, #ReplayLevel:hover {
+    background: #fff;
+}
+
 #WrapsSettings h2, #WrapsLevels h2, #WrapsPauseMenu h2  {
     background: rgba(255,255,255,0.8);
     color: #095;
@@ -282,44 +287,57 @@ button.disabled {
     margin-top: 100px;
     clear: both;
 }
+
 .level {
-    width: 80px;
-    height: 80px;
     display: inline-block;
-    border: 6px solid #fff;
-    background: #0b8;
+    background: url(../assets/sprites/level_stars.png) no-repeat;
+    background-position: 0 90px;
+    width: 80px;
+    height: 130px;
+    margin: 20px;
+}
+
+.level a {
+    width: 70px;
+    height: 70px;
+    display: inline-block;
+    border: 5px solid #fff;
+    background: rgba(38,38,38,0.2);
     color: #fff;
-    line-height: 80px;
+    line-height: 70px;
     font-weight: bold;
     font-size: 32px;
-    margin: 20px;
     border-radius: 50px;
     cursor: pointer;
 }
-.level:hover {
+.level a:hover {
     color: #333;
 }
-.level.disabled, .level.disabled:hover, .level.disabled:focus, .level.disabled:active {
+.level.disabled {
+    opacity: 0.3;
+}
+.level.disabled a, .level.disabled a:hover, .level.disabled a:focus, .level.disabled a:active {
     background: rgba(38,38,38,0.2) !important;
     color: #fff;
-    opacity: 0.5;
     border-color: rgba(38,38,38,0.3);
     cursor: default;
 }
 .level.completed1 {
-    border-color: #fff;
-    background: #00a2ff;
+    background-position: -82px bottom;
 }
-.level.completed2
-{
-    border-color: green;
-    background: #00a2ff;
+
+.level.completed1 a, .level.completed2 a, .level.completed3 a {
+    background: #0b8;
 }
-.level.completed3
-{
-    border-color: orange;
-    background: #00a2ff;
+
+.level.completed2 {
+    background-position: -164px bottom;
 }
+
+.level.completed3 {
+    background-position: -246px bottom;
+}
+
 @media screen and (-ms-view-state: fullscreen-landscape) {
 }
 

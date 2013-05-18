@@ -64,17 +64,20 @@ Gui.showLevelSelect = function showLevelSelect() {
             var levelRow = document.createElement("li")
             document.getElementById("Levels").appendChild(levelRow);
         }
+        var levelHolder = document.createElement("div");
         var level = document.createElement("a");
-        levelRow.appendChild(level);
+        levelRow.appendChild(levelHolder);
+        levelHolder.appendChild(level);
         if (levels[i].unlocked == 0) {
-            level.setAttribute("class", "level disabled");
+            levelHolder.setAttribute("class", "level disabled");
         }
         else {
+            console.log(levels[i].completed);
             if (levels[i].completed == 0) {
-                level.setAttribute("class", "level");
+                levelHolder.setAttribute("class", "level");
             }
             else {
-                level.setAttribute("class", "level completed"+levels[i].completed);
+                levelHolder.setAttribute("class", "level completed"+levels[i].completed);
             }
             level.onclick = (function (index){
 		return function () {
@@ -132,14 +135,11 @@ Gui.showSettings = function showSettings() {
 }
 Gui.showScoreScreen = function showScoreScreen(kill_percent) {
     Gui.clearUI();
-    devResetStats();
     document.getElementById("WrapsScoreScreen").style.display = "block";
     setTimeout(function(){Gui.showStats(kill_percent)},200);
 }
 Gui.showStats = function showStats(kill_percent){
     setTimeout(function(){Gui.animateKillRate(kill_percent);},1300);
-    document.getElementById("ScoreScreenTest").setAttribute("onclick","devResetStats();");
-    document.getElementById("ScoreScreenTest").innerHTML = "RESET";
     Gui.animateStats("Conclusion");
     setTimeout(function(){Gui.animateStats("KilledStats")},400);
     setTimeout(function(){Gui.animateStats("MissedStats")},800);
@@ -190,20 +190,6 @@ Gui.animateKillRate = function animateKillRate(currentPercentage)
             clearInterval(int);
         }
     },400);
-}
-function devResetStats(){
-    document.getElementById("ScoreScreenTest").setAttribute("onclick","showStats();");
-    document.getElementById("ScoreScreenTest").innerHTML = "End Level";
-    document.getElementById("KilledStats").style.bottom = "-80px";
-    document.getElementById("KilledStats").className = "stats-box";
-    document.getElementById("MissedStats").style.bottom = "-80px";
-    document.getElementById("MissedStats").className = "stats-box";
-    document.getElementById("Conclusion").style.bottom = "-80px";
-    document.getElementById("Conclusion").className = "stats-box";
-    document.getElementById("KRPercentage").innerHTML = "0%";
-    document.getElementById("KRStars").className = "";
-    document.getElementById("ScoreScreenNav").style.display = "none"
-    document.getElementById("WrapsScoreScreen").className = "";
 }
 Gui.updateKilledStats = function updateKilledStats(value) {
     document.getElementById("KilledStats").innerHTML = "You killed " + value + " koochas.";
