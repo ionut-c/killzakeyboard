@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Modules</title>
+    <title>SuperRaccoon</title>
     <link href="css/default.css" rel="stylesheet" />
 
     <script src="js/game/main.js"></script>
@@ -54,12 +54,11 @@
             <div class="navigation">
                 <button onclick="Gui.showLevelSelect();" class="title-button" id="Start">Obliterate Koochas</button>
                 <button onclick="Gui.showSettings();" class="title-button" id="Settings">Settings</button>
-                <button onclick="Gui.showScoreScreen();" class="title-button" id="ScoreScreen">[DEV] Score Screen</button>
-                <button onclick="Gui.showPauseMenu();" class="title-button" id="PauseMenu">[DEV] Pause Menu</button>
+                <button onclick="Gui.showHelp();" class="title-button" id="Help">The way of the Raccoon</button>
+                <button onclick="Gui.showCredits();" class="title-button" id="Credits">About</button>
             </div>
         </div>
         <div id="WrapsPauseMenu">
-            <a onclick="Gui.showTitleScreen();" class="close-button">X</a>
             <br /><h2>Pause</h2>
             <div class="button-group">
                 <button onclick="Game.setPaused(false)" class="title-button" id="Resume">RESUME</button>
