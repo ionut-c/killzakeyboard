@@ -8,7 +8,6 @@ Dragos
 - make gameplay movement faster (it's too easy)
 - define 4 levels
 - Scorescreen Replay (replay current Level) - available after any level
-- implement minimum killrate for the next level to unlock
 - Change the "Next" button into the Replay button if the level was lost
 - Scorescreen change "You freaking rock message" "Better luck next time" based on winning or losing
 - Change the "dead bird" to something that says "haha you lost" based on winning or losing
