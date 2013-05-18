@@ -1,47 +1,42 @@
 #killzakeyboard
 ==============
-___
-
-##W8A - Last Updated: 02.04.2013
-- Experimental Post Screen, Sound prefferences, New Enemy spawning, Full HD User Interface, Full HD Canvas, Sound support (MP3), Namespaces, New Score Screen
-
-###[Queuing Features]
-
-___
 
 Dragos
 ======
 
 **Programming**
-- define 12 levels
-- increase canvas objects/assets by 87.5% (background already increased)
-- ScoreScreen Next button (play Next Level) - only show Replay button if level was lost (not enough kill rate), hide button when last level was completed
+- make gameplay movement faster (it's too easy)
+- define 4 levels
 - Scorescreen Replay (replay current Level) - available after any level
+- implement minimum killrate for the next level to unlock
+- Change the "Next" button into the Replay button if the level was lost
+- Scorescreen change "You freaking rock message" "Better luck next time" based on winning or losing
+- Change the "dead bird" to something that says "haha you lost" based on winning or losing
+- check why only level 1 saves completion other levels only unlock next levels
 
 **Art**
-- level completion stars
-- title screen background
-- level selection background and icons
 - per level backgrounds
-- fix assets quality
 - death animation
+- bigger raccoon
+- bigger birds
+- bigger apple
+- bigger raccoon head (progressbar)
 
 Ionut
 =====
 
 **Programming**
-- bring W8A up to date (ongoing)
-- make divs for level completion stars
-- folder structure
+- port final app to Windows 8
 - check namespaces
+- fix "Return to main menu" not killing the game properly
+- create the way of the raccoon screen
+- create about screen
 
 **Candy**
 - koocha die sounds (2-4)
-- finish ui design (waiting for Art)
 
 Notable Bugs
 ====
-- Slower rendering/movement in Firefox (questionable, aditional testing required)
 - Levels end sooner than they should (suspecting enemy spawn system)
 
 Backlog
