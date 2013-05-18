@@ -5,12 +5,8 @@ Dragos
 ======
 
 **Programming**
-- make gameplay movement faster (it's too easy)
+- make gameplay movement faster, seems too easy
 - define 4 levels
-- Scorescreen Replay (replay current Level) - available after any level
-- Change the "Next" button into the Replay button if the level was lost
-- Scorescreen change "You freaking rock message" "Better luck next time" based on winning or losing
-- Change the "dead bird" to something that says "haha you lost" based on winning or losing
 - check why only level 1 saves completion other levels only unlock next levels
 
 **Art**
@@ -20,6 +16,8 @@ Dragos
 - bigger birds
 - bigger apple
 - bigger raccoon head (progressbar)
+- replace dead bird for winner's screen
+- create something for loser's screen
 
 Ionut
 =====
