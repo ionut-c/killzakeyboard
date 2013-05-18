@@ -23,8 +23,6 @@ Ionut
 
 **Programming**
 - port final app to Windows 8
-- check namespaces
-- fix "Return to main menu" not killing the game properly
 - create the way of the raccoon screen
 - create about screen
 
@@ -35,8 +33,11 @@ Notable Bugs
 ====
 - Levels end sooner than they should (suspecting enemy spawn system)
 - only level 1 saves completion other levels only unlock next levels
-- score screen shows only 50% 75% or 100% checkpoints it should show the real value.
+- score screen shows only 50% 75% or 100% checkpoints it should show the real value. (needs investigation)
 - music not stopping from pause menu
+- return to main menu not working
+- restart level not working properly
+- change level not working properly
 
 Backlog
 =====
