@@ -1,5 +1,5 @@
 ﻿body {
-    background: #33b4ff;
+    background: #0b8;
     margin: 0;
     overflow: hidden;
     position: fixed;
@@ -17,7 +17,7 @@
     width: 1920px;
     position: relative;
     margin: 0 auto;
-    background: #00a2ff;
+    background: url(../assets/gui/titlescreen_bg.png);
     height: 1080px;
     transform-origin: 50% 0;
     -webkit-transform-origin: 50% 0;
@@ -25,7 +25,7 @@
 }
 #ProgressBar {
     width: 1864px;
-    height: 8px;
+    height: 14px;
     /*width: 1860px;
     height: 12px; */
     display: none;
@@ -50,9 +50,9 @@
 }
 #ProgressFill {
     width: 0%;
-    height: 12px;
-    background: #f5211f;
+    height: 14px;
     border-radius: 20px;
+    background: #f5211f;
     position: relative;
     transition: width 1s;
     -moz-transition: width 1s; /* Firefox 4 */
@@ -79,20 +79,21 @@
     -webkit-transform-origin: 50% 0;
 }
 button {
-    background: #07c;
+    background: rgba(38,38,38,.6);
     width: 450px;
+    text-transform: uppercase;
     cursor: pointer;
+    font-weight: bold;
     font-size: 24px;
     margin-bottom: 20px;
-    border: 2px solid #fff;
-    border-radius: 12px;
-    padding: 15px 0;
+    border: 0px solid #fff;
+    padding: 13px 0;
 }
 .button-group {
     margin: 50px 0;
 }
-button:hover, button:focus, button:active {
-    background: #fff;
+button:hover {
+    background: rgba(255,255,255,0.8);
     color: #333;
 }
 button.disabled {
@@ -114,9 +115,9 @@ button.disabled {
     width: 100px;
     display: block;
     border: 4px solid #fff;
-    background: #33B4FF;
-    border-radius: 100px;
+    background: #0b8;
     line-height: 145px;
+    border-radius: 100px;
     cursor: pointer;
     font-size: 24px;
     color: #fff;
@@ -125,7 +126,7 @@ button.disabled {
     padding: 5px;
     height: 100px;
 }
-.close-button:hover, .level:hover, .level.completed:hover {
+.close-button:hover, .level a:hover, .level.completed a:hover {
     background: #fff!important;
     color: #333;
 }
@@ -158,13 +159,12 @@ button.disabled {
     right: 150px;
     bottom: 150px;
     top: 150px;
-    border-radius: 15px 0 15px 15px;
-    background: #333;
-    color: #fff;
+    background: rgba(255,255,255,.6);
+    color: #333;
     overflow: hidden;
 }
 #WrapsScoreScreen.winner {
-    background: url('../assets/gui/scorescreen_2.png') 600px center no-repeat #333;
+    background: url('../assets/gui/scorescreen_2.png') 600px center no-repeat rgba(255,255,255,.6);
 }
 #WrapsPauseMenu {
     right: 700px;
@@ -189,19 +189,17 @@ button.disabled {
     position: absolute;
     bottom: -80px;
     right: 20px;
-    border-radius: 12px;
-    background: #222;
+    background: rgba(38,38,38,.6);
 }
 .kill-rate-box {
     transition: all 0.8s cubic-bezier(1, -0.53, 0.0, 1.1);
     -webkit-transition: all 0.8s cubic-bezier(1, -0.53, 0.0, 1.1);
     -o-transition: all 0.8s cubic-bezier(1, -0.53, 0.0, 1.1);
     -moz-transition: all 0.8s cubic-bezier(1, -0.53, 0.0, 1.1);
-    background: #222;
+    background: rgba(38,38,38,.6);
     width: 550px;
     color: #222;
     height: 600px;
-    border-radius: 20px;
     font-size: 175px;
     position: absolute;
     bottom: 50px;
@@ -248,8 +246,7 @@ button.disabled {
     top: 100px;
 }
 #NextLevel {
-    background: #0d86cc;
-    border-radius: 10px;
+    background: #096;
     border: 0;
     width: 100%;
     line-height: 90px;
@@ -258,9 +255,9 @@ button.disabled {
     text-align: left;
     font-size: 60px;
 }
+
 #ReplayLevel {
     background: #5e5e5e;
-    border-radius: 10px;
     border: 0;
     width: 100%;
     line-height: 40px;
@@ -269,22 +266,20 @@ button.disabled {
     text-align: left;
     font-size: 30px;
 }
-#WrapsSettings h2, #WrapsLevels h2 {
-    float: left;
-    font-weight: normal;
-    margin: 20px 20px 0 30px;
-    line-height: 30px;
-    padding-top: 0;
-    font-size: 56px;
+
+#NextLevel:hover, #ReplayLevel:hover {
+    background: #fff;
 }
-#WrapsPauseMenu h2 
-{
-    text-align: left;
+
+#WrapsSettings h2, #WrapsLevels h2, #WrapsPauseMenu h2  {
+    background: rgba(255,255,255,0.8);
+    color: #095;
+    display: block;
+    float: left;
+    font-size: 50px;
+    margin: 20px 0 50px 0;
     font-weight: normal;
-    margin: 20px 0px 40px 30px;
-    line-height: 40px;
-    padding-top: 0;
-    font-size: 56px;
+    padding: 15px 55px;
 }
 #WrapsLevels ul {
     list-style-type: none;
@@ -292,43 +287,57 @@ button.disabled {
     margin-top: 100px;
     clear: both;
 }
+
 .level {
-    width: 80px;
-    height: 80px;
     display: inline-block;
-    border: 8px solid #ccc;
-    background: #999;
+    background: url(../assets/sprites/level_stars.png) no-repeat;
+    background-position: 0 90px;
+    width: 80px;
+    height: 130px;
+    margin: 20px;
+}
+
+.level a {
+    width: 70px;
+    height: 70px;
+    display: inline-block;
+    border: 5px solid #fff;
+    background: rgba(38,38,38,0.2);
     color: #fff;
-    line-height: 80px;
+    line-height: 70px;
     font-weight: bold;
     font-size: 32px;
-    border-radius: 48px;
-    margin: 20px;
+    border-radius: 50px;
     cursor: pointer;
 }
-.level:hover {
+.level a:hover {
     color: #333;
 }
-.level.disabled, .level.disabled:hover, .level.disabled:focus, .level.disabled:active {
-    background: #999!important;
+.level.disabled {
+    opacity: 0.3;
+}
+.level.disabled a, .level.disabled a:hover, .level.disabled a:focus, .level.disabled a:active {
+    background: rgba(38,38,38,0.2) !important;
     color: #fff;
-    border-color: #444;
+    border-color: rgba(38,38,38,0.3);
     cursor: default;
 }
 .level.completed1 {
-    border-color: #fff;
-    background: #00a2ff;
+    background-position: -82px bottom;
 }
-.level.completed2
-{
-    border-color: green;
-    background: #00a2ff;
+
+.level.completed1 a, .level.completed2 a, .level.completed3 a {
+    background: #0b8;
 }
-.level.completed3
-{
-    border-color: orange;
-    background: #00a2ff;
+
+.level.completed2 {
+    background-position: -164px bottom;
 }
+
+.level.completed3 {
+    background-position: -246px bottom;
+}
+
 @media screen and (-ms-view-state: fullscreen-landscape) {
 }
 
