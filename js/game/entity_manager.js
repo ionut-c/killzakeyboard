@@ -16,6 +16,9 @@ Game.EntityManager.prototype.addEntities = function EntityManager_addEntities(en
     this.entitiesTotalCount += entities.length;
     this.entities = this.entities.concat(entities);
 }
+Game.EntityManager.prototype.getEntityCount = function EntityManager_getEntityCount(){
+    return this.entities.length;
+}
 Game.EntityManager.prototype.update = function EntityManager_update(deltaTime) {
     this.entities = this.entities
                     .map(function(entity) {

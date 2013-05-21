@@ -101,6 +101,7 @@ function gameLoop(time){
         // ends.
         Sound.pauseMusic();
 	main.restart = false;
+    main.running = false;
     } else {
 	requestAnimationFrame(gameLoop.bind(this));
     }
