@@ -17,6 +17,7 @@ Game.Level = function Level(id, maxX, maxY){
     this.over = false;
     this.totalEnemies = 0;
     this.duration = 0;
+    this.endTime = 0;
 }
 Game.Level.prototype.getId = function Level_GetId() {
     return this.id;
@@ -47,13 +48,20 @@ Game.Level.prototype.update = function Level_update(deltaTime){
     proc = Math.ceil(proc * 100);
     Hud.refreshProgressBar( proc );
 
-    if(this.waves[this.waveIndex].hasEnded()){
-        this.waveIndex++;
-        if(this.waveIndex == this.waves.length ){
-            this.over = true;
-	    _levelUpdateGUI(this);
+    var endTimer = this.entityManager.getTotalEntitiesCount() == this.totalEnemies
+                            && this.entityManager.getEntityCount() == 0;
+    if (endTimer){
+        this.endTime += deltaTime;
+    }
+    if (this.endTime >= 2000){
+        this.over = true;
+        _levelUpdateGUI(this);
+    }
+
+    if (this.waves[this.waveIndex].hasEnded()){
+        if (this.waveIndex < this.waves.length){
+            this.waveIndex++;
         }
-	console.log( " Percent for progress bar : " + proc );
     }
 }
 Game.Level.prototype.render = function Level_render(){
