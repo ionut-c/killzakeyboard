@@ -7,7 +7,6 @@ Dragos
 **Programming**
 - make gameplay movement faster, seems too easy
 - define 4 levels
-- check why only level 1 saves completion other levels only unlock next levels
 
 **Art**
 - per level backgrounds
@@ -24,8 +23,6 @@ Ionut
 
 **Programming**
 - port final app to Windows 8
-- check namespaces
-- fix "Return to main menu" not killing the game properly
 - create the way of the raccoon screen
 - create about screen
 
@@ -35,6 +32,11 @@ Ionut
 Notable Bugs
 ====
 - Levels end sooner than they should (suspecting enemy spawn system)
+- score screen shows only 50% 75% or 100% checkpoints it should show the real value. (needs investigation)
+- music not stopping from pause menu
+- return to main menu not working
+- restart level not working properly
+- change level not working properly
 
 Backlog
 =====
