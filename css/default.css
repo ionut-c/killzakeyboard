@@ -166,6 +166,9 @@ button.disabled {
 #WrapsScoreScreen.winner {
     background: url('../assets/gui/scorescreen_2.png') 600px center no-repeat rgba(255,255,255,.6);
 }
+#WrapsScoreScreen.loser {
+    background: url('../assets/sprites/apple_sprite.png') center center no-repeat rgba(255,255,255,.6);
+}
 #WrapsPauseMenu {
     right: 700px;
     top: 150px;
@@ -245,7 +248,7 @@ button.disabled {
     width: 400px;
     top: 100px;
 }
-#NextLevel {
+.btn-primary {
     background: #096;
     border: 0;
     width: 100%;
@@ -256,7 +259,7 @@ button.disabled {
     font-size: 60px;
 }
 
-#ReplayLevel {
+.btn-secondary {
     background: #5e5e5e;
     border: 0;
     width: 100%;
@@ -265,6 +268,10 @@ button.disabled {
     padding: 0;
     text-align: left;
     font-size: 30px;
+}
+
+#Conclusion {
+    text-transform: uppercase;
 }
 
 #NextLevel:hover, #ReplayLevel:hover {
@@ -291,22 +298,22 @@ button.disabled {
 .level {
     display: inline-block;
     background: url(../assets/sprites/level_stars.png) no-repeat;
-    background-position: 0 90px;
-    width: 80px;
-    height: 130px;
+    background-position: 0 bottom;
+    width: 120px;
+    height: 170px;
     margin: 20px;
 }
 
 .level a {
-    width: 70px;
-    height: 70px;
+    width: 90px;
+    height: 90px;
     display: inline-block;
     border: 5px solid #fff;
-    background: rgba(38,38,38,0.2);
+    background: rgba(38,38,38,0.4);
     color: #fff;
-    line-height: 70px;
+    line-height: 90px;
     font-weight: bold;
-    font-size: 32px;
+    font-size: 36px;
     border-radius: 50px;
     cursor: pointer;
 }
@@ -323,7 +330,7 @@ button.disabled {
     cursor: default;
 }
 .level.completed1 {
-    background-position: -82px bottom;
+    background-position: -122px bottom;
 }
 
 .level.completed1 a, .level.completed2 a, .level.completed3 a {
@@ -331,11 +338,11 @@ button.disabled {
 }
 
 .level.completed2 {
-    background-position: -164px bottom;
+    background-position: -242px bottom;
 }
 
 .level.completed3 {
-    background-position: -246px bottom;
+    background-position: -362px bottom;
 }
 
 @media screen and (-ms-view-state: fullscreen-landscape) {

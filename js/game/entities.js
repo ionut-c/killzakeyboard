@@ -3,7 +3,7 @@ var Game = Game || {};
 Game.Bird = function Bird(context, path){
     this.model = new Graphics.ModelObject(BirdModel, context);
     this.walker = new PathWalker(path);
-    this.speed = 5;
+    this.speed = 10;
     this.visible = true;
     this.alive = true;
     

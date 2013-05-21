@@ -23,7 +23,9 @@ var Game = Game || {};
 Game.isRunning = function Main_isRunning() {
     return main.running;
 }
-
+Game.stopLevel = function Main_stopLevel (argument) {
+    main.restart = true;
+}
 Game.restartLevel = function Main_restart() {
     main.restart = true;
     setTimeout( function(){
@@ -71,7 +73,6 @@ function updatePause( context, canvas, value ) {
 	Gui.clearUI();
     }
     main.prev_state = value;
-
 }
 
 function gameLoop(time){
@@ -96,7 +97,11 @@ function gameLoop(time){
         Storage.setLevelCompletion(this.level.getId(),this.level.getCompletion());
     }
     else if ( main.restart ) {
+        // if main.restart is true requestAnimationFrame is avoided and the game loop
+        // ends.
+        Sound.pauseMusic();
 	main.restart = false;
+    main.running = false;
     } else {
 	requestAnimationFrame(gameLoop.bind(this));
     }
