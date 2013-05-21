@@ -63,14 +63,14 @@
             <div class="button-group">
                 <button onclick="Game.setPaused(false)" class="title-button" id="Resume">RESUME</button>
                 <br /><button onclick="Game.restartLevel()" class="title-button" id="RestartLevel">Restart Level</button>
-                <br /><button onclick="Gui.showLevelSelect()" class="title-button" id="ChangeLevel">Change Level</button>
+                <br /><button onclick="Gui.changeLevel()" class="title-button" id="ChangeLevel">Change Level</button>
             </div>
             <div class="button-group">
                 <button onclick="Storage.toggleSound(this);" class="title-button" id="PMToggleMusic"></button>
                 <br /><button onclick="Storage.toggleSound(this);" class="title-button" id="PMToggleSFX"></button>
             </div>
             <div class="button-group">
-                <button onclick="Gui.showTitleScreen()" class="title-button" id="EndLevel">BACK TO MAIN MENU</button>
+                <button onclick="Gui.backToMainMenu()" class="title-button" id="EndLevel">BACK TO MAIN MENU</button>
             </div>
         </div>
         <div id="WrapsScoreScreen">

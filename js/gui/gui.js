@@ -226,3 +226,15 @@ Gui.updateKilledStats = function updateKilledStats(value) {
 Gui.updateMissedStats = function updateMissedStats(value) {
     document.getElementById("MissedStats").innerHTML = "You missed " + value + " times.";
 }
+Gui.backToMainMenu = function backToMainMenu(){
+    Game.stopLevel();
+    Gui.showTitleScreen();
+    document.getElementById("canvas").style.display = "none";
+    document.getElementById("ProgressBar").style.display = "none";
+}
+Gui.changeLevel = function changeLevel(){
+    Game.stopLevel();
+    document.getElementById("canvas").style.display = "none";
+    document.getElementById("ProgressBar").style.display = "none";
+    Gui.showLevelSelect();
+}
