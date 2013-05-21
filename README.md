@@ -5,7 +5,6 @@ Dragos
 ======
 
 **Programming**
-- make gameplay movement faster, seems too easy
 - define 4 levels
 
 **Art**
@@ -30,13 +29,9 @@ Ionut
 - koocha die sounds (2-4)
 
 Notable Bugs
-====
-- Levels end sooner than they should (suspecting enemy spawn system)
+=====
 - score screen shows only 50% 75% or 100% checkpoints it should show the real value. (needs investigation)
 - music not stopping from pause menu
-- return to main menu not working
-- restart level not working properly
-- change level not working properly
 
 Backlog
 =====
