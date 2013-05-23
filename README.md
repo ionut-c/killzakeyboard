@@ -1,6 +1,5 @@
 #killzakeyboard
-==============
-
+======
 Dragos
 ======
 
@@ -24,6 +23,7 @@ Ionut
 - port final app to Windows 8
 - create the way of the raccoon screen
 - create about screen
+- make scorescreen display animated killrate
 
 Notable Bugs
 =====
