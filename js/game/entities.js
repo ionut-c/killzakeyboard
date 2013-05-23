@@ -14,7 +14,10 @@ Game.Bird = function Bird(context, path){
 }
 Game.Bird.prototype.checkCollision = function Bird_checkCollision(bounder){
     var test = this.bounder.checkCollision(bounder);
-    if( test ){ this.alive = false; }
+    if( test ){ 
+        this.alive = false;
+        var deathSound = Math.floor((Math.random()*2));
+        Sound.playSFX(Sound.SFXConst.enemy_died[deathSound]); }
     return test;
 }
 Game.Bird.prototype.isAlive = function Bird_isAlive(){

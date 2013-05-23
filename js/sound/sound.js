@@ -4,7 +4,8 @@ var music;
 
 Sound.SFXConst = {
 				shoot: "assets/sound/shoot",
-				stats: "assets/sound/postscreen_stats"
+				stats: "assets/sound/postscreen_stats",
+				enemy_died: new Array("assets/sound/enemy_died_01","assets/sound/enemy_died_02")
 			}
 Sound.MusicConst = {
 				music1: "assets/sound/thebeat",
