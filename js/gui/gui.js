@@ -200,11 +200,11 @@ Gui.animateKillRate = function animateKillRate(currentPercentage)
             document.getElementById("ScoreScreenNav").style.display = "block"
             if(currentPercentage > 24)
             {
-                document.getElementById("WrapsScoreScreen").className = "winner";
+                document.getElementById("WrapsScoreScreen").className = "screen winner";
             }
             else
             {
-                document.getElementById("WrapsScoreScreen").className = "loser";
+                document.getElementById("WrapsScoreScreen").className = "screen loser";
             }
             clearInterval(int);
         }
@@ -223,7 +223,7 @@ function resetStats(){
     document.getElementById("KRPercentage").innerHTML = "0%";
     document.getElementById("KRStars").className = "";
     document.getElementById("ScoreScreenNav").style.display = "none"
-    document.getElementById("WrapsScoreScreen").className = "";
+    document.getElementById("WrapsScoreScreen").className = "screen";
 }
 Gui.updateKilledStats = function updateKilledStats(value) {
     document.getElementById("KilledStats").innerHTML = "You killed " + value + " koochas.";
