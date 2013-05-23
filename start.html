@@ -34,13 +34,13 @@
                 <div id="ProgressBarIcon"></div>
             </div>
         </div>
-        <div id="WrapsLevels">
+        <div id="WrapsLevels" class="screen">
             <a onclick="Gui.showTitleScreen();" id="A1" class="close-button">X</a>
             <br /><h2>Level Select</h2>
             <ul id="Levels">
             </ul>
         </div>
-        <div id="WrapsSettings">
+        <div id="WrapsSettings" class="screen">
             <a onclick="Gui.showTitleScreen();" class="close-button">X</a>
             <br /><h2>Settings</h2>
             <div style="clear:both"></div>
@@ -58,7 +58,7 @@
                 <button onclick="Gui.showCredits();" class="title-button" id="Credits">About</button>
             </div>
         </div>
-        <div id="WrapsPauseMenu">
+        <div id="WrapsPauseMenu" class="screen">
             <br /><h2>Pause</h2>
             <div class="button-group">
                 <button onclick="Game.setPaused(false)" class="title-button" id="Resume">RESUME</button>
@@ -73,7 +73,7 @@
                 <button onclick="Gui.backToMainMenu()" class="title-button" id="EndLevel">BACK TO MAIN MENU</button>
             </div>
         </div>
-        <div id="WrapsScoreScreen">
+        <div id="WrapsScoreScreen" class="screen">
             <a onclick="Gui.showTitleScreen();" class="close-button">X</a>
             <div id="Conclusion" class="stats-box" data-order="1">You freaking rock!</div>
             <div id="KilledStats" class="stats-box" data-order="2">You killed 0 koochas.</div>
@@ -88,6 +88,28 @@
                 <button onclick="Game.playNextLevel();" id="NextLevel" class="btn-primary">NEXT</button>
                 <button onclick="Game.replayLevel();" id="ReplayLevel" class="btn-secondary">REPLAY</button>
             </div>
+        </div>
+        <div id="WrapsCredits" class="screen">
+            <a onclick="Gui.showTitleScreen();" class="close-button">X</a>
+            <br /><h2>About</h2>
+            <div style="clear:both"></div>
+            <p>This is a demo version for an application named: <strong>Super Raccoon</strong></p>
+            created by
+            <p>Dragoș Blaj</p>
+            <ul>
+                <li>Level Design, Level System</li>
+                <li>Enemies, Projectiles, Collision Detection</li>
+                <li>Animations, GFX</li>
+                <li>Storage</li>
+            </ul>
+            <p>Ionuț Claudiu Iancău</p>
+            <ul>
+                <li>Graphical User Interface, Heads-up Display</li>
+                <li>Storage, Player Movement</li>
+                <li>SFX, Music, GFX</li>
+                <li>Windows 8 Porting</li>
+            </ul>
+            <p>Version string: 0.144:230513</p>
         </div>
     	<div class="canvasHolder" id="canvasHolder">
     		<canvas style="background-color:#00a2ff" height="0" id="canvas">

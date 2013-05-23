@@ -151,7 +151,7 @@ button.disabled {
     left: 0;
     bottom: 0;
 }
-#WrapsPauseMenu, #WrapsSettings, #WrapsLevels, #WrapsScoreScreen {
+.screen {
     display: none;
     text-align: center;
     position: absolute;
@@ -278,7 +278,7 @@ button.disabled {
     background: #fff;
 }
 
-#WrapsSettings h2, #WrapsLevels h2, #WrapsPauseMenu h2  {
+.screen h2  {
     background: rgba(255,255,255,0.8);
     color: #095;
     display: block;
@@ -288,6 +288,20 @@ button.disabled {
     font-weight: normal;
     padding: 15px 55px;
 }
+
+.screen p, .screen p strong {
+    color: #555;
+    font-size: 30px;
+}
+.screen ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+.screen ul li {
+    color: #555!important;
+    font-size: 20px;
+}
+
 #WrapsLevels ul {
     list-style-type: none;
     padding: 0;
