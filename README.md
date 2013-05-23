@@ -23,6 +23,7 @@ Ionut
 - port final app to Windows 8
 - create the way of the raccoon screen
 - create about screen
+- music not toggling from pause menu
 - make scorescreen display animated killrate
 
 Notable Bugs
