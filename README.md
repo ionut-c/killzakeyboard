@@ -25,13 +25,9 @@ Ionut
 - create the way of the raccoon screen
 - create about screen
 
-**Candy**
-- koocha die sounds (2-4)
-
 Notable Bugs
 =====
-- score screen shows only 50% 75% or 100% checkpoints it should show the real value. (needs investigation)
-- music not stopping from pause menu
+- score screen kill rate rounding is weird mostly numbers ending in 0 or 5 (needs more info)
 
 Backlog
 =====
