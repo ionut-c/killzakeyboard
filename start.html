@@ -46,8 +46,8 @@
             <br /><h2>Settings</h2>
             <div style="clear:both"></div>
         	<br /><button onclick="Storage.resetLevels();" class="title-button" id="Reset">Reset Progress</button>
-            <br /><button onclick="Storage.toggleSound(this);" class="title-button" id="ToggleMusic"></button>
-            <br /><button onclick="Storage.toggleSound(this);" class="title-button" id="ToggleSFX"></button>
+            <br /><button onclick="Storage.toggleSound(this, 'menus');" class="title-button" id="ToggleMusic"></button>
+            <br /><button onclick="Storage.toggleSound(this, 'menus');" class="title-button" id="ToggleSFX"></button>
         </div>
         <div id="WrapsTitle">
     	    <div class="title-logo">
@@ -67,8 +67,8 @@
                 <br /><button onclick="Gui.changeLevel()" class="title-button" id="ChangeLevel">Change Level</button>
             </div>
             <div class="button-group">
-                <button onclick="Storage.toggleSound(this);" class="title-button" id="PMToggleMusic"></button>
-                <br /><button onclick="Storage.toggleSound(this);" class="title-button" id="PMToggleSFX"></button>
+                <button onclick="Storage.toggleSound(this, 'ingame');" class="title-button" id="PMToggleMusic"></button>
+                <br /><button onclick="Storage.toggleSound(this, 'ingame');" class="title-button" id="PMToggleSFX"></button>
             </div>
             <div class="button-group">
                 <button onclick="Gui.backToMainMenu()" class="title-button" id="EndLevel">BACK TO MAIN MENU</button>
@@ -118,7 +118,7 @@
             <div style="clear:both"></div>
             <p>Use the following keys to move the raccoon</p>
             <div class="keyboard-key">
-                
+
             </div>
         </div>
     	<div class="canvasHolder" id="canvasHolder">

@@ -83,7 +83,7 @@ Storage.getSoundSettings = function getSoundSettings(type){
     }
     return 0;
 }
-Storage.toggleSound = function toggleSound(element){
+Storage.toggleSound = function toggleSound(element, mode){
     var sound = _getSound().split("");
     var index = -1;
     
@@ -94,11 +94,16 @@ Storage.toggleSound = function toggleSound(element){
     if ( testSFX   != -1) { index = 1; }
     
     if ( sound[index] == 0) {
-    sound[index] = 1;
-    element.innerHTML = element.innerHTML.replace('Off', 'On');
+        sound[index] = 1;
+        element.innerHTML = element.innerHTML.replace('Off', 'On');
+
     } else {
-    sound[index] = 0;
-    element.innerHTML = element.innerHTML.replace('On', 'Off');
+        sound[index] = 0;
+        element.innerHTML = element.innerHTML.replace('On', 'Off');
     }
     document.cookie = "SRS=" + sound.join("");
+    if(mode == "ingame" && index == 0)
+    {
+        Sound.updateMusic();
+    }
 }

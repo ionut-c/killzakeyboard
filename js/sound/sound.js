@@ -25,6 +25,7 @@ Sound.playSFX = function playSFX(soundConst){
 }
 
 Sound.playMusic = function playMusic(musicConst){
+	console.log("hi");
     if(Storage.getSoundSettings("music") == 1 && Audio !== undefined){
     	music = null;
 	    music = new Audio(musicConst+'.ogg');
@@ -41,4 +42,13 @@ Sound.pauseMusic = function pauseMusic(){
     if (music != undefined) {
 		music.pause();
     }
+}
+
+Sound.updateMusic = function updateMusic() {
+	if(Storage.getSoundSettings("music") == 1){
+		music.play();
+	}
+	else {
+		music.pause();
+	}
 }
