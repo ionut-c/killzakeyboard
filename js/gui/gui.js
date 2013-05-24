@@ -47,9 +47,15 @@ function scale() {
     document.getElementById("GameHolder").style.msTransform="translate(-"+tx+"px) scale("+sx+","+sy+")";
     document.getElementById("GameHolder").style.MozTransform="translate(-"+tx+"px) scale("+sx+","+sy+")";
 }
+
 Gui.showCredits = function showCredits() {
     Gui.clearUI();
     document.getElementById("WrapsCredits").style.display = "block";
+}
+
+Gui.showHelp = function showHelp() {
+    Gui.clearUI();
+    document.getElementById("WrapsHelp").style.display = "block";
 }
 
 Gui.showLevelSelect = function showLevelSelect() {
@@ -97,6 +103,7 @@ Gui.clearUI = function clearUI() {
     document.getElementById("Levels").innerHTML = "";
     document.getElementById("WrapsLevels").style.display = "none";
     document.getElementById("WrapsCredits").style.display = "none";
+    document.getElementById("WrapsHelp").style.display = "none";
     document.getElementById("WrapsSettings").style.display = "none";
     document.getElementById("WrapsTitle").style.display = "none";
     document.getElementById("WrapsScoreScreen").style.display = "none";
