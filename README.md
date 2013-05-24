@@ -24,7 +24,6 @@ Ionut
 **Programming**
 - port final app to Windows 8
 - finish tutorial
-- music not toggling from pause menu
 - make scorescreen display animated killrate
 
 Notable Bugs
