@@ -24,12 +24,9 @@ Ionut
 **Programming**
 - port final app to Windows 8
 - finish tutorial
-- music not toggling from pause menu
-- make scorescreen display animated killrate
 
 Notable Bugs
 =====
-- score screen kill rate rounding is weird mostly numbers ending in 0 or 5 (needs more info)
 
 Backlog
 =====
