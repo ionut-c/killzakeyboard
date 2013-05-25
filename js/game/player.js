@@ -1,7 +1,7 @@
 ﻿var Game = Game || {};
 
 Game.Player = function Player(x, y, context, maxX, maxY){
-    this.model = new Graphics.ModelObject(PlayerModel, context, new Size(200,100));
+    this.model = new Graphics.ModelObject(PlayerModel, context, new Size(300,125));
     this.speed = 10;
     this.position = new Point(x, y);
     this.shootInterval = 200;
