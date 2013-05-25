@@ -1,7 +1,7 @@
 var Game = Game || {};
 
 Game.Bird = function Bird(context, path){
-    this.model = new Graphics.ModelObject(BirdModel, context);
+    this.model = new Graphics.ModelObject(BirdModel, context, new Size(100,100));
     this.walker = new PathWalker(path);
     this.speed = 10;
     this.visible = true;
@@ -45,7 +45,7 @@ Game.Bird.prototype.isVisible = function Bird_isVisible(){
 }
 
 Game.Apple = function Apple(x, y, context, maxX, maxY){
-    this.model = new Graphics.ModelObject(AppleModel, context);
+    this.model = new Graphics.ModelObject(AppleModel, context, new Size(100,100));
     this.speed = 20;
     this.position = new Point(x, y);
     this.visible = true;

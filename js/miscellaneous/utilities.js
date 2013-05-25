@@ -15,3 +15,8 @@ function Circle(x, y, radius){
     this.y = y;
     this.radius = radius;
 }
+
+function Size(width, height) {
+    this.width = width;
+    this.height = height;
+}
