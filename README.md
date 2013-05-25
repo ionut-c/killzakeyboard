@@ -1,5 +1,8 @@
-#killzakeyboard
+killzakeyboard
 ======
+Hello!
+
+
 Dragos
 ======
 
@@ -12,7 +15,6 @@ Dragos
 - bigger raccoon
 - bigger birds
 - bigger apple
-- bigger raccoon head (progressbar)
 - replace dead bird for winner's screen
 - create something for loser's screen
 
@@ -21,14 +23,10 @@ Ionut
 
 **Programming**
 - port final app to Windows 8
-- create the way of the raccoon screen
-- create about screen
-- music not toggling from pause menu
-- make scorescreen display animated killrate
+- finish tutorial
 
 Notable Bugs
 =====
-- score screen kill rate rounding is weird mostly numbers ending in 0 or 5 (needs more info)
 
 Backlog
 =====

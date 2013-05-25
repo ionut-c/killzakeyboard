@@ -70,7 +70,7 @@ function LoadLevel2(canvas, context, paths, id){
     var spawner2 = new Game.EnemySpawner(context, paths[3], Game.Bird, 10, 1000);
     
     var wave1 = new Game.Wave( [spawner1], 0,0);
-    var wave2 = new Game.Wave( [spawner2], 0, 8000);
+    var wave2 = new Game.Wave( [spawner2], 0, 7000);
     
     var level = new Game.Level(id, canvas.width, canvas.height);
     level.addWave(wave1);
@@ -86,7 +86,7 @@ function LoadLevel3(canvas, context, paths, id){
 
     var wave1 = new Game.Wave( [spawner1], 0,0);
     var wave2 = new Game.Wave( [spawner2], 1000, 0);
-    var wave3 = new Game.Wave( [spawner3], 1000, 8000);
+    var wave3 = new Game.Wave( [spawner3], 1000, 7000);
     
     var level = new Game.Level(id, canvas.width, canvas.height);
     level.addWave(wave1);
