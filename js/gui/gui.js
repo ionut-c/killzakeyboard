@@ -177,33 +177,30 @@ Gui.animateKillRate = function animateKillRate(currentPercentage)
     var int = setInterval(function() { 
         if(actualPercentage < currentPercentage)
         {
-            if(currentPercentage >= 50 && actualPercentage < 50)
+            console.log(actualPercentage);
+            actualPercentage++;
+            document.getElementById("KRPercentage").innerHTML = actualPercentage + "%";
+            if(actualPercentage == 50)
             {
-                actualPercentage = 50;
+                //actualPercentage = 50;
                 Sound.playSFX(Sound.SFXConst.stats);
                 document.getElementById("KRStars").className = "s1";
             }
-            else if(currentPercentage >= 75 && actualPercentage < 75)
+            if(actualPercentage == 75)
             {
-                actualPercentage = 75;
+                //actualPercentage = 75;
                 Sound.playSFX(Sound.SFXConst.stats);
                 document.getElementById("KRStars").className = "s2";
             }
-            else if(currentPercentage == 100 && actualPercentage < 100)
+            if(actualPercentage == 100)
             {
-                actualPercentage = 100;
+                //actualPercentage = 100;
                 Sound.playSFX(Sound.SFXConst.stats);
                 document.getElementById("KRStars").className = "s3";
             }
-            else
-            {
-                actualPercentage = currentPercentage;
-            }
-            document.getElementById("KRPercentage").innerHTML = actualPercentage + "%";
         }
         else
         {
-            Sound.playSFX(Sound.SFXConst.stats);
             document.getElementById("ScoreScreenNav").style.display = "block"
             if(currentPercentage > 24)
             {
@@ -215,7 +212,7 @@ Gui.animateKillRate = function animateKillRate(currentPercentage)
             }
             clearInterval(int);
         }
-    },400);
+    },11);
 }
 function resetStats(){
     document.getElementById("NextLevel").style.display = "block";
