@@ -22,7 +22,7 @@ Graphics.Model.prototype.getSize = function Model_getSize(){
     return this.frameSize;
 }
 
-Graphics.ModelObject = function ModelObject(model, context, objSize){
+Graphics.ModelObject = function ModelObject(model, context){
     this.context = context;
     this.model = model;
     this.index = 0;
@@ -32,11 +32,6 @@ Graphics.ModelObject = function ModelObject(model, context, objSize){
     this.position = { "x" : 0, "y" : 0 }
     this.current = { 'x': 0, 'y': 0 }
     this.modelSize = this.model.getSize();
-    if ( objSize == undefined ) {
-        this.objectSize = this.modelSize;
-    } else {
-        this.objectSize = objSize;
-    }
 }
 Graphics.ModelObject.prototype.update = function ModelObject_update(deltaTime){
     this.elapsedTime += deltaTime;
@@ -54,8 +49,8 @@ Graphics.ModelObject.prototype.render = function ModelObject_render(){
                       this.modelSize.height,
                       this.position.x,
                       this.position.y,
-                      this.objectSize.width,
-                      this.objectSize.height);
+                      this.modelSize.width,
+                      this.modelSize.height);
 }
 Graphics.ModelObject.prototype.setPosition = function ModelObject_setPosition(point) {
     this.position.x = point.x;
@@ -65,7 +60,7 @@ Graphics.ModelObject.prototype.getPosition = function ModelObject_getPosition(){
     return { "x": this.position.x, "y": this.position.y };
 }
 Graphics.ModelObject.prototype.getSize = function ModelObject_getSize(){
-    return this.objectSize;
+    return this.modelSize;
 }
 Graphics.ModelObject.prototype.getContext = function ModelObject_getContext(){
     return this.context;
