@@ -129,9 +129,9 @@ function draw() {
 }
 
 function loadModels() {
-    PlayerModel = new Graphics.Model("assets/sprites/player_sprite.png", 191.25, 60, 24, 1, 1000/24);
-    BirdModel = new Graphics.Model("assets/sprites/koocha_sprite_2.png", 88, 94, 23, 1, 1000/24);
-    AppleModel = new Graphics.Model("assets/sprites/apple_sprite.png", 22, 27, 1, 1, 1000/24);
+    PlayerModel = new Graphics.Model("assets/sprites/player_sprite.png", 240, 100, 6, 1, 1000/15);
+    BirdModel = new Graphics.Model("assets/sprites/koocha_sprite.png", 105, 100, 6, 1, 1000/15);
+    AppleModel = new Graphics.Model("assets/sprites/apple_sprite.png", 22, 27, 1, 1, 1000/1000);
 }
 
 function init( level_id ) {

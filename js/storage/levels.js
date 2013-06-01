@@ -8,22 +8,22 @@ function makePaths(canvas) {
     paths[0] = [{"x": width, "y": 30},
 		 {"x": 0    , "y": 30},
 		 {"x": 0    , "y": 30},
-                 {"x": -100 , "y": 30}];
+                 {"x": -500 , "y": 30}];
 
     paths[1] = [{"x": width, "y": 30},
 		 {"x": -100 , "y": 0},
 		 {"x": width, "y": height},
-		 {"x": -100 , "y": height}];
+		 {"x": -500 , "y": height}];
 
     paths[2] = [{"x": width, "y": height - 94},
 		 {"x": -100 , "y": height},
 		 {"x": width, "y": 0},
-		 {"x": -100 , "y": 30 }];
+		 {"x": -500 , "y": 30 }];
 
     paths[3] = [{"x": width, "y": height - 94},
 		 {"x": 0    , "y": height - 94},
 		 {"x": 0    , "y": height - 94},
-		 {"x": -100 , "y": height - 94}];
+		 {"x": -500 , "y": height - 94}];
     
     return paths;
 }
