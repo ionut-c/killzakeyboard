@@ -1,65 +1,4 @@
-﻿body {
-    background: #0b8;
-    margin: 0;
-    overflow: hidden;
-    position: fixed;
-    right: 0;
-    left: 0;
-    top: 0;
-    bottom: 0;
-}
-#Music {
-    height: 0;
-    width: 0;
-    overflow: hidden;
-}
-#GameHolder {
-    width: 1920px;
-    position: relative;
-    margin: 0 auto;
-    background: url(../assets/gui/titlescreen_bg.png);
-    height: 1080px;
-    transform-origin: 50% 0;
-    -webkit-transform-origin: 50% 0;
-    -o-transform-origin: 50% 0;
-}
-#ProgressBar {
-    width: 1804px;
-    height: 14px;
-    /*width: 1860px;
-    height: 12px; */
-    display: none;
-    position: absolute;
-    bottom: 30px;
-    left: 60px;
-    border-radius: 24px;
-    background: rgba(255,255,255,0.3);
-    transition: opacity 0.2s;
-    -moz-transition: opacity 0.2s; /* Firefox 4 */
-    -webkit-transition: opacity 0.2s; /* Safari and Chrome */
-    -o-transition: opacity 0.2s; /* Opera */
-}
-#ProgressBarIcon {
-    background: url('../assets/gui/raccoon_head.png') center center no-repeat;
-    background-size: contain;
-    width: 80px;
-    height: 70px;
-    position: absolute;
-    top: -30px;
-    right: -23px;
-}
-#ProgressFill {
-    width: 0%;
-    height: 14px;
-    border-radius: 20px;
-    background: #f5211f;
-    position: relative;
-    transition: width 1s;
-    -moz-transition: width 1s; /* Firefox 4 */
-    -webkit-transition: width 1s; /* Safari and Chrome */
-    -o-transition: width 1s; /* Opera */
-}
-*{
+﻿* {
     font-family: Arial;
     color: white;
     -webkit-touch-callout: none!important;
@@ -69,15 +8,18 @@
     -ms-user-select: none!important;
     user-select: none!important;
 }
-.canvasHolder{
-    width: 100%;
-    text-align: center;
+
+body {
+    background: #0b8;
+    margin: 0;
+    overflow: hidden;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
 }
-#canvas{
-    display: inline;
-    transform-origin: 50% 0;
-    -webkit-transform-origin: 50% 0;
-}
+
 button {
     background: rgba(38,38,38,.6);
     width: 450px;
@@ -90,26 +32,22 @@ button {
     border: 0px solid #fff;
     padding: 15px 0;
 }
-.button-group {
-    margin: 50px 0;
-}
+
 button:hover {
     background: rgba(255,255,255,0.8);
     color: #333;
 }
+
 button.disabled {
     cursor: default;
     background: #444!important;
     color: #fff!important;
 }
-.navigation {
-    position: absolute;
-    bottom: 50px;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    width: 450px;
+
+.button-group {
+    margin: 50px 0;
 }
+
 .close-button {
     float: right;
     margin: -55px -55px 5px 5px;
@@ -127,10 +65,88 @@ button.disabled {
     padding: 5px;
     height: 100px;
 }
+
 .close-button:hover, .level a:hover, .level.completed a:hover {
     background: #fff!important;
     color: #333;
 }
+
+.navigation {
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 450px;
+}
+
+#Music {
+    height: 0;
+    width: 0;
+    overflow: hidden;
+}
+
+#GameHolder {
+    width: 1920px;
+    position: relative;
+    margin: 0 auto;
+    background: url(../assets/gui/titlescreen_bg.png);
+    height: 1080px;
+    transform-origin: 50% 0;
+    -webkit-transform-origin: 50% 0;
+    -o-transform-origin: 50% 0;
+}
+
+.canvasHolder {
+    width: 100%;
+    text-align: center;
+}
+
+#canvas {
+    display: inline;
+    transform-origin: 50% 0;
+    -webkit-transform-origin: 50% 0;
+}
+
+#ProgressBar {
+    width: 1804px;
+    height: 14px;
+    /*width: 1860px;
+    height: 12px; */
+    display: none;
+    position: absolute;
+    bottom: 30px;
+    left: 60px;
+    border-radius: 24px;
+    background: rgba(255,255,255,0.3);
+    transition: opacity 0.2s;
+    -moz-transition: opacity 0.2s; /* Firefox 4 */
+    -webkit-transition: opacity 0.2s; /* Safari and Chrome */
+    -o-transition: opacity 0.2s; /* Opera */
+}
+
+#ProgressBarIcon {
+    background: url('../assets/gui/raccoon_head.png') center center no-repeat;
+    background-size: contain;
+    width: 80px;
+    height: 70px;
+    position: absolute;
+    top: -30px;
+    right: -23px;
+}
+
+#ProgressFill {
+    width: 0%;
+    height: 14px;
+    border-radius: 20px;
+    background: #f5211f;
+    position: relative;
+    transition: width 1s;
+    -moz-transition: width 1s; /* Firefox 4 */
+    -webkit-transition: width 1s; /* Safari and Chrome */
+    -o-transition: width 1s; /* Opera */
+}
+
 .debug {
     width: 273px;
     overflow-y: scroll;
@@ -165,21 +181,117 @@ button.disabled {
     color: #333;
     overflow: hidden;
 }
-#WrapsScoreScreen.winner {
-    background: url('../assets/gui/scorescreen_2.png') 600px center no-repeat rgba(255,255,255,.6);
+
+.screen h2  {
+    background: rgba(255,255,255,0.8);
+    color: #095;
+    display: block;
+    float: left;
+    font-size: 50px;
+    margin: 20px 0 50px 0;
+    font-weight: normal;
+    padding: 15px 55px;
 }
-#WrapsScoreScreen.loser {
-    background: url('../assets/sprites/apple_sprite.png') center center no-repeat rgba(255,255,255,.6);
+
+.screen p, .screen p strong {
+    color: #555;
+    font-size: 30px;
 }
+
+.screen ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.screen ul li {
+    color: #555!important;
+    font-size: 20px;
+}
+
+#WrapsCredits h2 {
+    margin-bottom: 0;
+}
+
+#WrapsLevels ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 100px;
+    clear: both;
+}
+
+.level {
+    display: inline-block;
+    background: url(../assets/sprites/level_stars.png) no-repeat;
+    background-position: 0 bottom;
+    width: 120px;
+    height: 170px;
+    margin: 20px;
+}
+
+.level a {
+    width: 88px;
+    height: 88px;
+    display: inline-block;
+    border: 6px solid #fff;
+    background: rgba(38,38,38,0.4);
+    color: #fff;
+    line-height: 88px;
+    font-weight: bold;
+    font-size: 39px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.level a:hover {
+    color: #333;
+}
+
+.level.disabled {
+    opacity: 0.3;
+}
+
+.level.disabled a, .level.disabled a:hover, .level.disabled a:focus, .level.disabled a:active {
+    background: rgba(38,38,38,0.2) !important;
+    color: #fff;
+    border-color: rgba(38,38,38,0.3);
+    cursor: default;
+}
+
+.level.completed1 {
+    background-position: -122px bottom;
+}
+
+.level.completed1 a, .level.completed2 a, .level.completed3 a {
+    background: #0b8;
+}
+
+.level.completed2 {
+    background-position: -242px bottom;
+}
+
+.level.completed3 {
+    background-position: -362px bottom;
+}
+
 #WrapsPauseMenu {
     right: 700px;
     top: 150px;
     bottom: 150px;
     left: 700px;
 }
+
+#WrapsScoreScreen.winner {
+    background: url('../assets/gui/scorescreen_2.png') 600px center no-repeat rgba(255,255,255,.6);
+}
+
+#WrapsScoreScreen.loser {
+    background: url('../assets/sprites/apple_sprite.png') center center no-repeat rgba(255,255,255,.6);
+}
+
 .stats-box.show {
     color: #fff;
 }
+
 .stats-box {
     transition: all 0.8s cubic-bezier(1, -0.53, 0.0, 1.1);
     -webkit-transition: all 0.8s cubic-bezier(1, -0.53, 0.0, 1.1);
@@ -196,6 +308,7 @@ button.disabled {
     right: 20px;
     background: rgba(38,38,38,.6);
 }
+
 .kill-rate-box {
     transition: all 0.8s cubic-bezier(1, -0.53, 0.0, 1.1);
     -webkit-transition: all 0.8s cubic-bezier(1, -0.53, 0.0, 1.1);
@@ -210,6 +323,7 @@ button.disabled {
     bottom: 50px;
     left: 50px;
 }
+
 .kill-rate-box h2 {
     font-size: 80px !important;
     line-height: 80px !important;
@@ -219,33 +333,40 @@ button.disabled {
     color: #fff !important;
     padding: 0 !important;
 }
+
 .kill-rate-box hr {
     color: #777;
     margin: 5px 20px 15px 20px;
 }
+
 .kill-rate-box #KRPercentage {
     position: absolute;
     bottom: 20px;
     width: 550px;
     text-align: center;
 }
+
 .kill-rate-box #KRStars {
     width: 529px;
     height: 272px;
     background: url('../assets/sprites/killrate_stars.png') 0 0 no-repeat;
 }
+
 .kill-rate-box #KRStars.s1 {
     background-position: -529px 0;
     /*background: url('../assets/krs_1.png') 0 0 no-repeat;*/
 }
+
 .kill-rate-box #KRStars.s2 {
     background-position: -1058px 0;
     /*background: url('../assets/krs_2.png') 0 0 no-repeat;*/
 }
+
 .kill-rate-box #KRStars.s3 {
     background-position: -1587px 0;
     /*background: url('../assets/krs_3.png') 0 0 no-repeat;*/
 }
+
 #ScoreScreenNav {
     position: absolute;
     display: none;
@@ -253,6 +374,7 @@ button.disabled {
     width: 400px;
     top: 100px;
 }
+
 .btn-primary {
     background: #096;
     border: 0;
@@ -285,91 +407,6 @@ button.disabled {
 
 #NextLevel:hover, #ReplayLevel:hover {
     background: #fff;
-}
-
-.screen h2  {
-    background: rgba(255,255,255,0.8);
-    color: #095;
-    display: block;
-    float: left;
-    font-size: 50px;
-    margin: 20px 0 50px 0;
-    font-weight: normal;
-    padding: 15px 55px;
-}
-
-#WrapsCredits h2 {
-    margin-bottom: 0;
-}
-
-.screen p, .screen p strong {
-    color: #555;
-    font-size: 30px;
-}
-.screen ul {
-    list-style-type: none;
-    padding-left: 0;
-}
-.screen ul li {
-    color: #555!important;
-    font-size: 20px;
-}
-
-#WrapsLevels ul {
-    list-style-type: none;
-    padding: 0;
-    margin-top: 100px;
-    clear: both;
-}
-
-.level {
-    display: inline-block;
-    background: url(../assets/sprites/level_stars.png) no-repeat;
-    background-position: 0 bottom;
-    width: 120px;
-    height: 170px;
-    margin: 20px;
-}
-
-.level a {
-    width: 88px;
-    height: 88px;
-    display: inline-block;
-    border: 6px solid #fff;
-    background: rgba(38,38,38,0.4);
-    color: #fff;
-    line-height: 88px;
-    font-weight: bold;
-    font-size: 39px;
-    border-radius: 50px;
-    cursor: pointer;
-}
-.level a:hover {
-    color: #333;
-}
-.level.disabled {
-    opacity: 0.3;
-}
-.level.disabled a, .level.disabled a:hover, .level.disabled a:focus, .level.disabled a:active {
-    background: rgba(38,38,38,0.2) !important;
-    color: #fff;
-    border-color: rgba(38,38,38,0.3);
-    cursor: default;
-}
-.level.completed1 {
-    background-position: -122px bottom;
-}
-
-.level.completed1 a, .level.completed2 a, .level.completed3 a {
-    background: #0b8;
-}
-
-.level.completed2 {
-    background-position: -242px bottom;
-}
-
-.level.completed3 {
-    background-position: -362px bottom;
 }
 
 @media screen and (-ms-view-state: fullscreen-landscape) {
