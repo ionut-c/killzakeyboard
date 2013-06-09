@@ -30,66 +30,19 @@
 </head>
 <body>
     <div id="GameHolder">
+
+        <div class="canvasHolder" id="canvasHolder">
+            <canvas height="0" id="canvas">
+                Your browser doesn't support canvas. Please download a great browser!
+            </canvas>
+        </div>
+
         <div id="ProgressBar">
             <div id="ProgressFill">
                 <div id="ProgressBarIcon"></div>
             </div>
         </div>
-        <div id="WrapsLevels" class="screen">
-            <a onclick="Gui.showTitleScreen();" id="A1" class="close-button">X</a>
-            <br /><h2>Level Select</h2>
-            <ul id="Levels">
-            </ul>
-        </div>
-        <div id="WrapsSettings" class="screen">
-            <a onclick="Gui.showTitleScreen();" class="close-button">X</a>
-            <br /><h2>Settings</h2>
-            <div style="clear:both"></div>
-        	<br /><button onclick="Storage.resetLevels();" class="title-button" id="Reset">Reset Progress</button>
-            <br /><button onclick="Storage.toggleSound(this, 'menus');" class="title-button" id="ToggleMusic"></button>
-            <br /><button onclick="Storage.toggleSound(this, 'menus');" class="title-button" id="ToggleSFX"></button>
-        </div>
-        <div id="WrapsTitle">
-    	    <div class="title-logo">
-    	    </div>
-            <div class="navigation">
-                <button onclick="Gui.showLevelSelect();" class="title-button" id="Start">Obliterate Koochas</button>
-                <button onclick="Gui.showSettings();" class="title-button" id="Settings">Settings</button>
-                <button onclick="Gui.showHelp();" class="title-button" id="Help">The way of the Raccoon</button>
-                <button onclick="Gui.showCredits();" class="title-button" id="Credits">About</button>
-            </div>
-        </div>
-        <div id="WrapsPauseMenu" class="screen">
-            <br /><h2>Pause</h2>
-            <div class="button-group">
-                <button onclick="Game.setPaused(false)" class="title-button" id="Resume">RESUME</button>
-                <br /><button onclick="Game.restartLevel()" class="title-button" id="RestartLevel">Restart Level</button>
-                <br /><button onclick="Gui.changeLevel()" class="title-button" id="ChangeLevel">Change Level</button>
-            </div>
-            <div class="button-group">
-                <button onclick="Storage.toggleSound(this, 'ingame');" class="title-button" id="PMToggleMusic"></button>
-                <br /><button onclick="Storage.toggleSound(this, 'ingame');" class="title-button" id="PMToggleSFX"></button>
-            </div>
-            <div class="button-group">
-                <button onclick="Gui.backToMainMenu()" class="title-button" id="EndLevel">BACK TO MAIN MENU</button>
-            </div>
-        </div>
-        <div id="WrapsScoreScreen" class="screen">
-            <a onclick="Gui.showTitleScreen();" class="close-button">X</a>
-            <div id="Conclusion" class="stats-box" data-order="1">You freaking rock!</div>
-            <div id="KilledStats" class="stats-box" data-order="2">You killed 0 koochas.</div>
-            <div id="MissedStats" class="stats-box" data-order="3">You missed 0 times.</div>
-            <div id="KillRate" class="kill-rate-box">
-                <h2>Kill Rate</h2>
-                <hr />
-                <div id="KRStars"></div>
-                <div id="KRPercentage">0%</div>
-            </div>
-            <div id="ScoreScreenNav">
-                <button onclick="Game.playNextLevel();" id="NextLevel" class="btn-primary">NEXT</button>
-                <button onclick="Game.replayLevel();" id="ReplayLevel" class="btn-secondary">REPLAY</button>
-            </div>
-        </div>
+
         <div id="WrapsCredits" class="screen">
             <a onclick="Gui.showTitleScreen();" class="close-button">X</a>
             <br /><h2>About</h2>
@@ -112,21 +65,92 @@
             </ul>
             <p>Version string: 0.144:230513</p>
         </div>
+
         <div id="WrapsHelp" class="screen">
             <a onclick="Gui.showTitleScreen();" class="close-button">X</a>
             <br /><h2>Tutorial</h2>
             <div style="clear:both"></div>
             <p>Use the following keys to move the raccoon</p>
             <div class="keyboard-key">
-
+                ←
+            </div>
+            <div class="keyboard-key">
+                ↑
+            </div>
+            <div class="keyboard-key">
+                →
+            </div>
+            <div class="keyboard-key">
+                ↓
+            </div>
+            <p>Use the following key to shoot</p>
+            <div class="keyboard-key-space">
+                space
             </div>
         </div>
-    	<div class="canvasHolder" id="canvasHolder">
-    		<canvas style="background-color:#00a2ff" height="0" id="canvas">
-                Your browser doesn't support canvas. Please download a great browser!
-            </canvas>
-    	</div>
+
+        <div id="WrapsLevels" class="screen">
+            <a onclick="Gui.showTitleScreen();" id="A1" class="close-button">X</a>
+            <br /><h2>Level Select</h2>
+            <ul id="Levels">
+            </ul>
+        </div>
+
+        <div id="WrapsPauseMenu" class="screen">
+            <br /><h2>Pause</h2>
+            <div class="button-group">
+                <button onclick="Game.setPaused(false)" class="title-button" id="Resume">RESUME</button>
+                <br /><button onclick="Game.restartLevel()" class="title-button" id="RestartLevel">Restart Level</button>
+                <br /><button onclick="Gui.changeLevel()" class="title-button" id="ChangeLevel">Change Level</button>
+            </div>
+            <div class="button-group">
+                <button onclick="Storage.toggleSound(this, 'ingame');" class="title-button" id="PMToggleMusic"></button>
+                <br /><button onclick="Storage.toggleSound(this, 'ingame');" class="title-button" id="PMToggleSFX"></button>
+            </div>
+            <div class="button-group">
+                <button onclick="Gui.backToMainMenu()" class="title-button" id="EndLevel">BACK TO MAIN MENU</button>
+            </div>
+        </div>
+
+        <div id="WrapsScoreScreen" class="screen">
+            <a onclick="Gui.showTitleScreen();" class="close-button">X</a>
+            <div id="Conclusion" class="stats-box" data-order="1">You freaking rock!</div>
+            <div id="KilledStats" class="stats-box" data-order="2">You killed 0 koochas.</div>
+            <div id="MissedStats" class="stats-box" data-order="3">You missed 0 times.</div>
+            <div id="KillRate" class="kill-rate-box">
+                <h2>Kill Rate</h2>
+                <hr />
+                <div id="KRStars"></div>
+                <div id="KRPercentage">0%</div>
+            </div>
+            <div id="ScoreScreenNav">
+                <button onclick="Game.playNextLevel();" id="NextLevel" class="btn-primary">NEXT</button>
+                <button onclick="Game.replayLevel();" id="ReplayLevel" class="btn-secondary">REPLAY</button>
+            </div>
+        </div>
+
+        <div id="WrapsSettings" class="screen">
+            <a onclick="Gui.showTitleScreen();" class="close-button">X</a>
+            <br /><h2>Settings</h2>
+            <div style="clear:both"></div>
+        	<br /><button onclick="Storage.resetLevels();" class="title-button" id="Reset">Reset Progress</button>
+            <br /><button onclick="Storage.toggleSound(this, 'menus');" class="title-button" id="ToggleMusic"></button>
+            <br /><button onclick="Storage.toggleSound(this, 'menus');" class="title-button" id="ToggleSFX"></button>
+        </div>
+
+        <div id="WrapsTitle">
+    	    <div class="title-logo">
+    	    </div>
+            <div class="navigation">
+                <button onclick="Gui.showLevelSelect();" class="title-button" id="Start">Obliterate Koochas</button>
+                <button onclick="Gui.showSettings();" class="title-button" id="Settings">Settings</button>
+                <button onclick="Gui.showHelp();" class="title-button" id="Help">The way of the Raccoon</button>
+                <button onclick="Gui.showCredits();" class="title-button" id="Credits">About</button>
+            </div>
+        </div>
+
         <div id="debug-panel" class="debug"></div>
+
     </div>
 </body>
 </html>
