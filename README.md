@@ -23,7 +23,6 @@ Ionut
 
 **Programming**
 - port final app to Windows 8
-- finish tutorial
 - add weapon icon in the top left corner
 
 Notable Bugs
