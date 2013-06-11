@@ -7,6 +7,7 @@ Game.EntityManager = function EntityManager(maxX, maxY) {
     this.kills = 0;
     this.projectileTotalCount = 0;
     this.entitiesTotalCount = 0;
+    this.escaped = 0;
 }
 Game.EntityManager.prototype.addCollider = function EntityManager_addCollider(collider){
     this.projectileTotalCount += 1;
@@ -36,14 +37,18 @@ Game.EntityManager.prototype.update = function EntityManager_update(deltaTime) {
     this.colliders = this.colliders.filter(function (o) { return o.isVisible();});
     this.entities = this.entities.filter(function (o) { return o.isVisible();});
     var killed = 0;
+    var missed = 0;
     this.entities = this.entities.filter(function (o) {
         var test = o.isAlive();
         if( !test ){ killed++;}
         if( !this.bounder.checkCollision( o.getBounder() )){
+            missed++;
             return false;
         }
         return test;
         }, this);
+
+    this.escaped += missed;
     this.kills += killed;
 }
 Game.EntityManager.prototype.render = function EntityManager_render(){
@@ -58,4 +63,7 @@ Game.EntityManager.prototype.getTotalProjectileCount = function EntityManager_ge
 }
 Game.EntityManager.prototype.getTotalEntitiesCount = function EntityManager_getTotalEntitiesCount(){
     return this.entitiesTotalCount;
+}
+Game.EntityManager.prototype.getCurrentMissed = function EntityManager_getCurrentMissed(){
+    return this.escaped;
 }

@@ -94,8 +94,8 @@ function gameLoop(time){
 
     if ( this.level.isOver() ){
 	document.getElementById("canvas").style.display = "none";
-    document.getElementById("ProgressBar").style.display = "none";
-    document.getElementById("WeaponHolder").style.display = "none";
+	document.getElementById("ProgressBar").style.display = "none";
+	document.getElementById("WeaponHolder").style.display = "none";
 	document.getElementById("MissedEnemies").style.display = "none";
 	main.running = false;
 	Gui.showScoreScreen(this.level.getKillPercent());
@@ -107,7 +107,7 @@ function gameLoop(time){
         // ends.
         Sound.pauseMusic();
 	main.restart = false;
-    main.running = false;
+	main.running = false;
     } else {
 	requestAnimationFrame(gameLoop.bind(this));
     }
@@ -121,6 +121,7 @@ function process(deltaTime){
     }
     this.level.update(deltaTime);
     global.EffectManager.update(deltaTime);
+    Gui.updateMissedKoochas(this.level.getEntityManager().getCurrentMissed());
 }
 
 // rendering frame

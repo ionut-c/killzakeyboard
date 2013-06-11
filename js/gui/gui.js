@@ -97,7 +97,6 @@ Gui.showLevelSelect = function showLevelSelect() {
         }
         else
         {
-            console.log(levels[i].completed);
             if (levels[i].completed == 0)
             {
                 levelHolder.setAttribute("class", "level");
@@ -217,6 +216,10 @@ Gui.updateKilledStats = function updateKilledStats(value) {
 
 Gui.updateMissedStats = function updateMissedStats(value) {
     document.getElementById("MissedStats").innerHTML = "You missed " + value + " times.";
+}
+
+Gui.updateMissedKoochas = function updateMissedKoochas(value) {
+    document.getElementById("MissedEnemies").innerHTML = value;
 }
 
 Gui.resetScoreScreen = function resetScoreScreen() {
