@@ -14,7 +14,7 @@ Graphics.Background.prototype.update = function Background_update(deltaTime){
     this.elapsedTime += deltaTime;
     if(this.elapsedTime >= 10){
         this.elapsedTime = 0;
-        this.position.x++;
+        this.position.x+=3;
         if( this.position.x >= this.width){
             this.position.x = 0;
         }

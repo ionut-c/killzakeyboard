@@ -269,11 +269,15 @@ Gui.backToMainMenu = function backToMainMenu() {
     Gui.showTitleScreen();
     document.getElementById("canvas").style.display = "none";
     document.getElementById("ProgressBar").style.display = "none";
+    document.getElementById("WeaponHolder").style.display = "none";
+    document.getElementById("MissedEnemies").style.display = "none";
 }
 
 Gui.changeLevel = function changeLevel() {
     Game.stopLevel();
     document.getElementById("canvas").style.display = "none";
     document.getElementById("ProgressBar").style.display = "none";
+    document.getElementById("WeaponHolder").style.display = "none";
+    document.getElementById("MissedEnemies").style.display = "none";
     Gui.showLevelSelect();
 }

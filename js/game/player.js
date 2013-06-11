@@ -23,6 +23,9 @@ Game.Player.prototype.getBounder = function Player_getBounder(){
 Game.Player.prototype.getY = function Player_getY(){
     return this.position.y;
 }
+Game.Player.prototype.getX = function Player_getX(){
+    return this.position.x;
+}
 Game.Player.prototype.getHeight = function Player_getHeight(){
     return this.s.height;
 }

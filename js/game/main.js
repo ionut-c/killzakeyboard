@@ -94,7 +94,9 @@ function gameLoop(time){
 
     if ( this.level.isOver() ){
 	document.getElementById("canvas").style.display = "none";
-	document.getElementById("ProgressBar").style.display = "none";
+    document.getElementById("ProgressBar").style.display = "none";
+    document.getElementById("WeaponHolder").style.display = "none";
+	document.getElementById("MissedEnemies").style.display = "none";
 	main.running = false;
 	Gui.showScoreScreen(this.level.getKillPercent());
 	Sound.pauseMusic();
@@ -155,8 +157,10 @@ function init( level_id ) {
     var h = main.canvas.height;
     
     player = new Game.Player(20, h / 2, main.context, w, h);
-    Hud.refreshProgressBar(0);
+    Hud.refreshHUD(0);
     document.getElementById("ProgressBar").style.display = "block";
+    document.getElementById("WeaponHolder").style.display = "block";
+    document.getElementById("MissedEnemies").style.display = "block";
     var input = InputController();
     var extension = {"input": input, "player": player, "canvas": main.canvas, "context": main.context, 'level': level };
     //console.profile();
