@@ -17,6 +17,10 @@ var main = {
  "canvas" : undefined
 };
 
+var global = {
+  "EffectManager" : undefined,  
+};
+
 // Game namespace stuff here
 var Game = Game || {};
 
@@ -115,6 +119,7 @@ function process(deltaTime){
     }
     this.level.update(deltaTime);
     this.background.update(deltaTime);
+    global.EffectManager.update(deltaTime);
 }
 
 // rendering frame
@@ -126,12 +131,7 @@ function draw() {
     this.background.render();
     this.level.render();
     this.player.render();
-}
-
-function loadModels() {
-    PlayerModel = new Graphics.Model("assets/sprites/player_sprite.png", 240, 100, 6, 1, 1000/15);
-    BirdModel = new Graphics.Model("assets/sprites/koocha_sprite.png", 105, 100, 6, 1, 1000/15);
-    AppleModel = new Graphics.Model("assets/sprites/apple_sprite.png", 22, 27, 1, 1, 1000/1000);
+    global.EffectManager.render();
 }
 
 function init( level_id ) {
@@ -145,8 +145,10 @@ function init( level_id ) {
     main.canvas.height = gameHeight;
     document.getElementById("canvas").style.display = "inline";
     main.context = canvas.getContext("2d");
-
-    loadModels();
+    // test
+    global.EffectManager = new Graphics.EffectManager(main.context);
+    //
+    Graphics.loadModels();
     Sound.playMusic(Sound.MusicConst.music1);
     
     level = Storage.getLevel( level_id );

@@ -16,6 +16,9 @@ Game.Bird.prototype.checkCollision = function Bird_checkCollision(bounder){
     var test = this.bounder.checkCollision(bounder);
     if( test ){ 
         this.alive = false;
+        // test
+        global.EffectManager.addEffect("KoochaDeath", this.model.getPosition());
+        //
         var deathSound = Math.floor((Math.random()*2));
         Sound.playSFX(Sound.SFXConst.enemy_died[deathSound]); }
     return test;

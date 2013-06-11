@@ -11,7 +11,6 @@ Dragos
 
 **Art**
 - per level backgrounds
-- death animation
 - bigger raccoon
 - bigger birds
 - bigger apple

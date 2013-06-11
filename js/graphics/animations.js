@@ -22,6 +22,13 @@ Graphics.Model.prototype.getSize = function Model_getSize(){
     return this.frameSize;
 }
 
+Graphics.loadModels = function Graphics_loadModels() {
+    PlayerModel = new Graphics.Model("assets/sprites/player_sprite.png", 240, 100, 6, 1, 1000/24);
+    BirdModel = new Graphics.Model("assets/sprites/koocha_sprite.png", 105, 100, 6, 1, 1000/24);
+    AppleModel = new Graphics.Model("assets/sprites/apple_sprite.png", 22, 27, 1, 1, 1000/1000);
+    KoochaDeathModel = new Graphics.Model("assets/sprites/death_animation_detail.png", 124, 100, 6, 1, 1000/24);
+}
+
 Graphics.ModelObject = function ModelObject(model, context){
     this.context = context;
     this.model = model;
@@ -32,12 +39,18 @@ Graphics.ModelObject = function ModelObject(model, context){
     this.position = { "x" : 0, "y" : 0 }
     this.current = { 'x': 0, 'y': 0 }
     this.modelSize = this.model.getSize();
+    this.ended = false;
 }
 Graphics.ModelObject.prototype.update = function ModelObject_update(deltaTime){
     this.elapsedTime += deltaTime;
     if( this.elapsedTime >= this.model.getFrameRate()){
         //next frame
-        this.index = this.index + 1 == this.lastIndex ? 0 : this.index + 1;
+        if (this.index + 1 == this.lastIndex) {
+            this.ended = true;
+            this.index = 0;
+        } else {
+            this.index++;
+        }
         this.current.x = this.index * this.modelSize.width;
         this.elapsedTime = 0;
     } 
@@ -64,4 +77,7 @@ Graphics.ModelObject.prototype.getSize = function ModelObject_getSize(){
 }
 Graphics.ModelObject.prototype.getContext = function ModelObject_getContext(){
     return this.context;
+}
+Graphics.ModelObject.prototype.isOver = function ModelObject_isOver(){
+    return this.ended;
 }
