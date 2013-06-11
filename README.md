@@ -7,10 +7,8 @@ Dragos
 ======
 
 **Programming**
-- define 4 levels
 
 **Art**
-- per level backgrounds
 - bigger raccoon
 - bigger birds
 - bigger apple

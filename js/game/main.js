@@ -118,7 +118,6 @@ function process(deltaTime){
         this.level.getEntityManager().addCollider(apple);
     }
     this.level.update(deltaTime);
-    this.background.update(deltaTime);
     global.EffectManager.update(deltaTime);
 }
 
@@ -128,7 +127,6 @@ function draw() {
     var context = this.context;
     
     context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.background.render();
     this.level.render();
     this.player.render();
     global.EffectManager.render();
@@ -159,9 +157,8 @@ function init( level_id ) {
     player = new Game.Player(20, h / 2, main.context, w, h);
     Hud.refreshProgressBar(0);
     document.getElementById("ProgressBar").style.display = "block";
-    var background = new Graphics.Background(main.context, "assets/backgrounds/background.png", 3840, 1080, w, h);
     var input = InputController();
-    var extension = {"background": background,"input": input, "player": player, "canvas": main.canvas, "context": main.context, 'level': level };
+    var extension = {"input": input, "player": player, "canvas": main.canvas, "context": main.context, 'level': level };
     //console.profile();
     requestAnimationFrame(gameLoop.bind(extension));
 }

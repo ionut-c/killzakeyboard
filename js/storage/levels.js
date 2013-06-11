@@ -43,12 +43,18 @@ Storage.getLevel = function Levels_getLevel( level_id ){
     case 3:
 	return LoadLevel3(canvas, context, paths, level_id);
 	break;
+    case 4:
+	return LoadLevel4(canvas, context, paths, level_id);
+	break;
     default:
 	throw "No level found";
     }
     return 0;
 }
-function LoadLevel1(canvas, context, paths, id){    
+function LoadLevel1(canvas, context, paths, id){
+    var width = canvas.width;
+    var height = canvas.height;
+    
     var spawner1 = new Game.EnemySpawner(context, paths[0], Game.Bird, 2, 1000);
     var spawner2 = new Game.EnemySpawner(context, paths[1], Game.Bird, 10, 1000);
     var spawner3 = new Game.EnemySpawner(context, paths[0], Game.Bird, 10, 1000);
@@ -62,10 +68,16 @@ function LoadLevel1(canvas, context, paths, id){
     level.addWave(wave1);
     level.addWave(wave2);
     level.addWave(wave3);
-
+    
+    var background = new Graphics.Background(main.context, "assets/backgrounds/background_1.png", 3840, 1080, width, height);
+    level.setBackground(background);
+    
     return level;
 }
-function LoadLevel2(canvas, context, paths, id){    
+function LoadLevel2(canvas, context, paths, id){
+    var width = canvas.width;
+    var height = canvas.height;
+    
     var spawner1 = new Game.EnemySpawner(context, paths[2], Game.Bird, 10, 1000);
     var spawner2 = new Game.EnemySpawner(context, paths[3], Game.Bird, 10, 1000);
     
@@ -75,10 +87,16 @@ function LoadLevel2(canvas, context, paths, id){
     var level = new Game.Level(id, canvas.width, canvas.height);
     level.addWave(wave1);
     level.addWave(wave2);
-
+    
+    var background = new Graphics.Background(main.context, "assets/backgrounds/background_1.png", 3840, 1080, width, height);
+    level.setBackground(background);
+    
     return level;
 }
 function LoadLevel3(canvas, context, paths, id){
+    var width = canvas.width;
+    var height = canvas.height;
+    
     var spawner1 = new Game.EnemySpawner(context, paths[0], Game.Bird, 10, 1000);
     var spawner2 = new Game.EnemySpawner(context, paths[1], Game.Bird, 10, 1000);
     var spawner3 = new Game.EnemySpawner(context, paths[2], Game.Bird, 20, 500);
@@ -92,6 +110,33 @@ function LoadLevel3(canvas, context, paths, id){
     level.addWave(wave1);
     level.addWave(wave2);
     level.addWave(wave3);
+    
+    var background = new Graphics.Background(main.context, "assets/backgrounds/background_2.png", 3840, 1080, width, height);
+    level.setBackground(background);
+    
+    return level;
+}
+function LoadLevel4(canvas, context, paths, id){
+    var width = canvas.width;
+    var height = canvas.height;
+    
+    var spawner1 = new Game.EnemySpawner(context, paths[0], Game.Bird, 2, 1000);
+    var spawner2 = new Game.EnemySpawner(context, paths[1], Game.Bird, 10, 1000);
+    var spawner3 = new Game.EnemySpawner(context, paths[0], Game.Bird, 10, 1000);
+    var spawner4 = new Game.EnemySpawner(context, paths[2], Game.Bird, 10, 1000);
+    var spawner5 = new Game.EnemySpawner(context, paths[3], Game.Bird, 10, 1000);
+    
+    var wave1 = new Game.Wave( [spawner1], 0,0);
+    var wave2 = new Game.Wave( [spawner3, spawner5], 0,0);
+    var wave3 = new Game.Wave( [spawner2, spawner4], 0, 7000);
+    
+    var level = new Game.Level(id, canvas.width, canvas.height);
+    level.addWave(wave1);
+    level.addWave(wave2);
+    level.addWave(wave3);
 
+    var background = new Graphics.Background(main.context, "assets/backgrounds/background_2.png", 3840, 1080, width, height);
+    level.setBackground(background);
+    
     return level;
 }

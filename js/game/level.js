@@ -18,6 +18,7 @@ Game.Level = function Level(id, maxX, maxY){
     this.totalEnemies = 0;
     this.duration = 0;
     this.endTime = 0;
+    this.background = undefined;
 }
 Game.Level.prototype.getId = function Level_GetId() {
     return this.id;
@@ -38,7 +39,7 @@ Game.Level.prototype.addWave = function Level_addWave(wave){
 }
 Game.Level.prototype.update = function Level_update(deltaTime){
     this.time += deltaTime;
-    
+    this.background.update(deltaTime);
     this.entityManager.update(deltaTime);
     var spawned = this.waves[this.waveIndex].getSpawned(deltaTime);
     if( spawned != null){ this.entityManager.addEntities(spawned); }
@@ -65,6 +66,7 @@ Game.Level.prototype.update = function Level_update(deltaTime){
     }
 }
 Game.Level.prototype.render = function Level_render(){
+    this.background.render();
     this.entityManager.render();
 }
 Game.Level.prototype.getEntityManager = function Level_getEntityManger(){
@@ -76,7 +78,9 @@ Game.Level.prototype.isOver = function Level_isOver(){
 Game.Level.prototype.getKillPercent = function Level_getKillPercent(){
     return this.raport * 100;
 }
-
+Game.Level.prototype.setBackground = function Level_setBackground(background){
+    this.background = background;
+}
 
 Game.Wave = function Wave( spawners, startOffset, endOffset){
     this.startOffset = startOffset;
