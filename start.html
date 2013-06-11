@@ -39,11 +39,18 @@
             </canvas>
         </div>
 
-        <div id="ProgressBar">
+        <div id="ProgressBar" class="hud">
             <div id="ProgressFill">
                 <div id="ProgressBarIcon"></div>
             </div>
         </div>
+
+        <div id="WeaponHolder" class="hud">
+        </div>
+
+        <span id="MissedEnemies" class="hud">
+            0
+        </span>
 
         <div id="WrapsCredits" class="screen">
             <a onclick="Gui.showTitleScreen();" class="close-button">X</a>
@@ -121,7 +128,6 @@
             <div id="MissedStats" class="stats-box" data-order="3">You missed 0 times.</div>
             <div id="KillRate" class="kill-rate-box">
                 <h2>Kill Rate</h2>
-                <hr />
                 <div id="KRStars"></div>
                 <div id="KRPercentage">0%</div>
             </div>

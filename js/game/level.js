@@ -47,7 +47,7 @@ Game.Level.prototype.update = function Level_update(deltaTime){
     this.raport = this.entityManager.getKills() / this.totalEnemies;
     var proc = this.entityManager.getTotalEntitiesCount() / this.totalEnemies;
     proc = Math.ceil(proc * 100);
-    Hud.refreshProgressBar( proc );
+    Hud.refreshHUD(proc);
 
     var endTimer = this.entityManager.getTotalEntitiesCount() == this.totalEnemies
                             && this.entityManager.getEntityCount() == 0;
