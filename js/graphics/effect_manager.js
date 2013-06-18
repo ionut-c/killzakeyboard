@@ -8,6 +8,9 @@ Graphics.EffectManager.prototype.addEffect = function EntityManager_addEffect(na
     var effect = null;
     if (name == "KoochaDeath") {
         effect = new Graphics.Effects.KoochaDeath(this.context, position);
+    } else
+    if (name == "ShootEffect") {
+        effect = new Graphics.Effects.ShootEffect(this.context, position);
     } else {
         throw "Invalid effect name for addEffect."
     }

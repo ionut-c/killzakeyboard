@@ -43,7 +43,9 @@ Game.Player.prototype.update = function Player_update(inputHandler, deltaTime){
     
     if (inputHandler.checkKey(32) && this.canShoot) {
         Sound.playSFX(Sound.SFXConst.shoot);
-        var tor = new Game.Apple(this.position.x + this.s.width, this.position.y + this.s.height / 2, this.model.getContext(), this.maxX, this.maxY);
+        global.EffectManager.addEffect("ShootEffect", this.model.getHook("Launcher"));
+        apple_position = this.model.getHook("Launcher").getPosition();
+        var tor = new Game.Apple(apple_position.x, apple_position.y, this.model.getContext(), this.maxX, this.maxY);
         this.canShoot = false;
     }
     if (inputHandler.checkKey(38) && this.position.y >= this.speed) { this.position.y -= this.speed; }
